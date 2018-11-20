@@ -9,7 +9,7 @@
                Lorsque le chronomètre va être arrêté la libraire va calculer le nombre de secondes 
                séparant le lancement du chrono à la fin.
 
- Remarque(s) : Utilisation de la fonction ctime pour calculer le temps              
+ Remarque(s) : Utilisation de la fonction ctime pour calculer le temps.              
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
