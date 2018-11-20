@@ -44,12 +44,6 @@ int demanderValeur(const string& message,const int& minimum, const int& maximum)
    return valeurEntrer;
 }
 
-//Affichage de la question pour l'utilisateur
-void afficherQuestion(const char& caractere)
-{
-   cout << "lettre : " << caractere << " : ";
-}
-
 //Affichage du résultat de la partie
 void afficherResultat(const int temps, const int reponsesCorrectes, const int lances)
 {
@@ -85,10 +79,19 @@ char recommencerPartieSaisie()
 
 //Permet de définir si la partie devra être recommencée ou non
 bool recommencerPartie()
-{   
-   if(recommencerPartieSaisie() == 'o')
-   {
-      return true;
-   }
-   return false;   
+{
+    return recommencerPartieSaisie() == 'o';
+}
+
+
+int nombreAleatoire(const int& min, const int& max) {
+    static bool premierAppel = true;
+
+    //Initialise le generateur aleatoire avec le temps actuel comme seed lors du premier appel
+    if (premierAppel) {
+        srand((unsigned int)time(NULL));
+        premierAppel = !premierAppel;
+    }
+
+    return rand() % (max - min + 1) + min;
 }

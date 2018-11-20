@@ -20,16 +20,33 @@
 
 using namespace std;
 
+/**
+ *
+ * @param caractere
+ * @return
+ */
+char saisieLettre(const char& caractere) {
+    char lettreEntree;
+
+    cout << "lettre : " << caractere << " : ";
+
+    cin >> lettreEntree;
+    viderBuffer();
+
+    return lettreEntree;
+}
+
 int testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int& nbSecondes) {
     char lettreEntree,
          lettreAttendue;
     double tempsDebut;
 
     int nbLettresCorrectes = 0;
-    tempsDebut = debutChrono();
 
     //Initialise le generateur aleatoire avec le temps actuel comme seed
     srand(time(NULL));
+
+    tempsDebut = debutChrono();
 
     for (int i = 0; i < nbLettre; ++i) {
         lettreAttendue = (char)(nombreAleatoire(lettreMin, lettreMax));
@@ -44,19 +61,4 @@ int testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int
     nbSecondes = stopChrono(tempsDebut);
     
     return nbLettresCorrectes;
-}
-
-int nombreAleatoire(const int& min, const int& max) {
-        return rand() % (max - min + 1) + min;
-}
-
-char saisieLettre(const char& caractere) {
-    char lettreEntree;
-    
-    afficherQuestion(caractere);
-    
-    cin >> lettreEntree;
-    viderBuffer();
-
-    return lettreEntree;
 }

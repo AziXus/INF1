@@ -15,8 +15,17 @@
 
 #ifndef CHRONO_H
 #define CHRONO_H
+/**
+ *
+ * @return
+ */
 double debutChrono();
 
+/**
+ *
+ * @param tempsDebut
+ * @return
+ */
 int    stopChrono(double tempsDebut);
 #endif
 

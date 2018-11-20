@@ -15,9 +15,15 @@
 
 #ifndef REFLEX_H
 #define REFLEX_H
+
+/**
+ *
+ * @param nbLettre
+ * @param lettreMin
+ * @param lettreMax
+ * @param nbSecondes
+ * @return
+ */
 int  testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int& nbSecondes);
 
-int  nombreAleatoire(const int& min, const int& max);
-
-char saisieLettre(const char& caractere);
 #endif

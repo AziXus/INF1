@@ -13,8 +13,6 @@ iostream
 -
 iomanip
 -
-string
--
 limits
 -
 annexe.h
@@ -51,8 +49,6 @@ annexe.h
 /home/rmuller/coding/INF1/Labo_08/annexe.h
 chrono.h
 /home/rmuller/coding/INF1/Labo_08/chrono.h
-string
--
 iostream
 -
 ctime
