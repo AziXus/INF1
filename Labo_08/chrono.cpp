@@ -1,3 +1,17 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : <nn>
+ Fichier     : <nom du fichier>.cpp
+ Auteur(s)   : <prénom> <nom>
+ Date        : <jj.mm.aaaa>
+
+ But         : <à compléter>
+
+ Remarque(s) : <à compléter>
+
+ Compilateur : MinGW-g++ <x.y.z>
+ -----------------------------------------------------------------------------------
+ */
 #include <ctime> //Permet d'utiliser la fonction time dans srand
 #include "chrono.h"
 
