@@ -35,7 +35,7 @@ void afficherResultat(const int temps, const int reponsesCorrectes, const int la
    cout << fixed << setprecision(2);
    cout << "nbre de reponses correctes : "  << reponsesCorrectes << endl;
    cout << "temps ecoule               : "  << temps             << endl;
-   cout << "=> " << (double) temps / lances << " sec par lettre" << endl;
+   cout << "=> " << (double) temps / lances << " sec par lettre" << endl << endl;
 }
 
 char recommencerPartieSaisie()
