@@ -39,15 +39,10 @@ char saisieLettre(const char& caractere) {
 int testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int& nbSecondes) {
     char lettreEntree,
          lettreAttendue;
-    double tempsDebut;
 
     int nbLettresCorrectes = 0;
 
-    //Initialise le generateur aleatoire avec le temps actuel comme seed
-    srand(time(NULL));
-
-    tempsDebut = debutChrono();
-
+    demarrerChrono();
     for (int i = 0; i < nbLettre; ++i) {
         lettreAttendue = (char)(nombreAleatoire(lettreMin, lettreMax));
         
@@ -58,7 +53,8 @@ int testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int
             ++nbLettresCorrectes;
     }
 
-    nbSecondes = stopChrono(tempsDebut);
+    //arreterChrono() retourne le nombre de secondes depuis son départ
+    nbSecondes = arreterChrono();
     
     return nbLettresCorrectes;
 }

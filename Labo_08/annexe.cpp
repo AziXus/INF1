@@ -15,7 +15,7 @@ int demanderValeur(const string& message,const int& minimum, const int& maximum)
 {
    bool valeurOk;
    int  valeurEntrer;
-   do{
+   do {
       cout << message << "[" << minimum << ".." << maximum << "] : ";
       //Vérification que la valeur saisie soit correcte(convertible en entier)
       //et comprise entre minimum et maximum

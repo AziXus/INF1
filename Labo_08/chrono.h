@@ -20,17 +20,16 @@
 
 #ifndef CHRONO_H
 #define CHRONO_H
-/**
- *
- * @return
- */
-double debutChrono();
 
 /**
  *
- * @param tempsDebut
+ */
+void demarrerChrono();
+
+/**
+ *
  * @return
  */
-int    stopChrono(double tempsDebut);
+int  arreterChrono();
 #endif
 
