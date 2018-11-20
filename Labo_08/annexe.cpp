@@ -5,20 +5,12 @@
 #include "annexe.h" 
 
 using namespace std;
-/**
- * Fonction permettant de vider le buffer
- */
+
 void viderBuffer()
 {
    cin.ignore(numeric_limits<streamsize>::max(),'\n');
 }
-/**
- * Vérification d'une saisie pour que la valeur entrée par l'utilisateur soit correcte
- * @param message 
- * @param minimum
- * @param maximum
- * @return 
- */
+
 int demanderValeur(const string& message,const int& minimum, const int& maximum)
 {
    bool valeurOk;
@@ -38,7 +30,6 @@ int demanderValeur(const string& message,const int& minimum, const int& maximum)
    return valeurEntrer;
 }
 
-//Affichage du résultat de la partie
 void afficherResultat(const int temps, const int reponsesCorrectes, const int lances)
 {
    cout << fixed << setprecision(2);
@@ -47,7 +38,6 @@ void afficherResultat(const int temps, const int reponsesCorrectes, const int la
    cout << "=> " << (double) temps / lances << " sec par lettre" << endl;
 }
 
-//Vérification que l'utilisateur entre une saisie correcte pour le recommencemnt de la partie(o ou n)
 char recommencerPartieSaisie()
 {
    char valeurSaisie;
@@ -71,7 +61,6 @@ char recommencerPartieSaisie()
    return valeurSaisie;
 }
 
-//Permet de définir si la partie devra être recommencée ou non
 bool recommencerPartie()
 {
     return recommencerPartieSaisie() == 'o';
