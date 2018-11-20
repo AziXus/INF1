@@ -12,14 +12,10 @@
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */
-#include <string>
-
-using namespace std;
 
 #ifndef REFLEX_H
 #define REFLEX_H
-
-int testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int& nbSecondes);
+int  testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int& nbSecondes);
 
 int  nombreAleatoire(const int& min, const int& max);
 

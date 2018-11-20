@@ -15,7 +15,6 @@
 #include "reflex.h"
 #include "annexe.h"
 #include "chrono.h"
-#include <string>
 #include <iostream>
 #include <ctime>
 
