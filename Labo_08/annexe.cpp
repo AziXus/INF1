@@ -10,7 +10,6 @@ void viderBuffer()
 {
    cin.ignore(numeric_limits<streamsize>::max(),'\n');
 }
-//test
 //vérification d'une saisie correcte de l'utilisateur
 int demanderValeur(const string& message,const int& minimum, const int& maximum)
 {
