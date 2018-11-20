@@ -5,12 +5,20 @@
 #include "annexe.h" 
 
 using namespace std;
-
+/**
+ * Fonction permettant de vider le buffer
+ */
 void viderBuffer()
 {
    cin.ignore(numeric_limits<streamsize>::max(),'\n');
 }
-//vérification d'une saisie correcte de l'utilisateur
+/**
+ * Vérification d'une saisie pour que la valeur entrée par l'utilisateur soit correcte
+ * @param message 
+ * @param minimum
+ * @param maximum
+ * @return 
+ */
 int demanderValeur(const string& message,const int& minimum, const int& maximum)
 {
    bool valeurOk;

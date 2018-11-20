@@ -1,18 +1,15 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08_Clavier
- Fichier     : main.cpp
+ Fichier     : chrono.h
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.11.2018
 
- But         : Générer des questions pour tester les réflexes de l'utilisateur.
-               L'utilisateur choisi le nombre de lances entre 1 et 10.
-               Un résultat indiquant le nombre de réponses correcteset le temps effectué
-               est donné en fin de programme
+ But         : Permet de démarrer et d'arrêter un chronomètre.
+               Lorsque le chronomètre va être arrêté la libraire va calculer le nombre de secondes 
+               séparant le lancement du chrono à la fin.
 
- Remarque(s) : Utilisation de la fonction ctime pour calculer le temps mis pour résoudre le questionnaire.
-               Le nombre de lances doit être comrpis entre 1 et 10.
-               Utilisation des libraires annexe et reflex.              
+ Remarque(s) : Utilisation de la fonction ctime pour calculer le temps              
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -20,15 +17,14 @@
 
 #ifndef CHRONO_H
 #define CHRONO_H
-
 /**
- *
+ * Démarrage du chronomètre
  */
 void demarrerChrono();
-
 /**
- *
- * @return
+ * Calcul du temps écoulé depuis le lancement du chronomètre tout en calculant 
+ * le nombre de seconde depuis le lancment du chronomètre
+ * @return les secondes depuis le lancement du chronomètre 
  */
 int  arreterChrono();
 #endif
