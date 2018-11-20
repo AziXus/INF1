@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rmuller/coding/INF1/Labo_07/main.cpp
+iostream
+-
+cstdlib
+-
+iomanip
+-
+cmath
+-
+limits
+-
+ctime
+-
+string
+-
+

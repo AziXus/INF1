@@ -1,0 +1,1 @@
+/usr/bin/g++-6   -Wall -Wconversion -Wextra -pedantic -g   CMakeFiles/Snippets.dir/main.cpp.o  -o Snippets 

@@ -1,0 +1,1 @@
+/usr/bin/g++   -Wall -Wconversion -Wextra -pedantic -g   CMakeFiles/coding.dir/main.cpp.o  -o coding 

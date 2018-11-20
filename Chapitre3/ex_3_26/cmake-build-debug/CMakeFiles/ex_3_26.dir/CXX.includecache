@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rmuller/coding/INF1/Chapitre3/ex_3_26/main.cpp
+iostream
+-
+cstdlib
+-
+limits
+-
+string
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/g++   -Wall -Wconversion -Wextra -pedantic -g   CMakeFiles/ex_3_19.dir/main.cpp.o  -o ex_3_19 

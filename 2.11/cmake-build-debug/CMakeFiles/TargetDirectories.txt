@@ -1,0 +1,3 @@
+C:/coding/INF1/2.11/cmake-build-debug/CMakeFiles/2_11.dir
+C:/coding/INF1/2.11/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/coding/INF1/2.11/cmake-build-debug/CMakeFiles/rebuild_cache.dir

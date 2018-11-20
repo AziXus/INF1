@@ -1,0 +1,1 @@
+/usr/bin/g++-6   -Wall -Wconversion -Wextra -pedantic -g   CMakeFiles/Labo_07.dir/main.cpp.o  -o Labo_07 

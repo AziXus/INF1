@@ -1,0 +1,1 @@
+/usr/bin/g++-6   -Wall -Wconversion -Wextra -pedantic -g   CMakeFiles/Labo_08.dir/main.cpp.o CMakeFiles/Labo_08.dir/reflex.cpp.o CMakeFiles/Labo_08.dir/annexe.cpp.o CMakeFiles/Labo_08.dir/chrono.cpp.o  -o Labo_08 
