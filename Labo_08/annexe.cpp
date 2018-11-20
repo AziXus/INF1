@@ -17,7 +17,7 @@ int demanderValeur(const string& message,const int& minimum, const int& maximum)
    int  valeurEntrer;
    do {
       cout << message << "[" << minimum << ".." << maximum << "] : ";
-      //Vérification que la valeur saisie soit correcte(convertible en entier)
+      //Vérification que la valeur saisie soit correcte (convertible en entier)
       //et comprise entre minimum et maximum
       valeurOk = (cin >> valeurEntrer) and valeurEntrer >= minimum and valeurEntrer <= maximum;
       if(!valeurOk)
@@ -70,11 +70,12 @@ bool recommencerPartie()
 int nombreAleatoire(const int& min, const int& max) {
     static bool premierAppel = true;
 
-    //Initialise le generateur aleatoire avec le temps actuel comme seed lors du premier appel
+    //Initialise le generateur aleatoire avec le temps actuel comme seed lors du premier appel de la fonction
     if (premierAppel) {
         srand((unsigned int)time(NULL));
         premierAppel = !premierAppel;
     }
 
+    //Génère un nombre aléatoire entre min et max compris
     return rand() % (max - min + 1) + min;
 }

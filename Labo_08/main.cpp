@@ -43,9 +43,12 @@ int main() {
    do {
       //Saisie de l'utlisateur pour le nombre de lancé
       nbLances = demanderValeur(MSG_NB_LANCES, NB_LANCES_MIN, NB_LANCES_MAX);
+
       //Démarrage du questionnaire
       nbLettresCorrectes = testerReflex(nbLances, LETTRE_MIN, LETTRE_MAX, nbSecondes);
+
       cout << endl;
+
       //Affichage du résultat de l'utilisateur
       afficherResultat(nbSecondes, nbLettresCorrectes, nbLances);
    } while(recommencerPartie());

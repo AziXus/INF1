@@ -21,10 +21,10 @@
  * Démarrage du chronomètre
  */
 void demarrerChrono();
+
 /**
- * Calcul du temps écoulé depuis le lancement du chronomètre tout en calculant 
- * le nombre de seconde depuis le lancment du chronomètre
- * @return les secondes depuis le lancement du chronomètre 
+ * Calcul du temps écoulé depuis le lancement du chronomètre et l'arrête.
+ * @return les secondes depuis le lancement du chronomètre
  */
 int  arreterChrono();
 #endif

@@ -12,9 +12,9 @@ void demarrerChrono()
 
 int arreterChrono()
 {
-   //difftime permet de calculer le temps écouler entre deux varibales de temps
-   //Dans la décalrations ci-dessous le différence va être calculée entre le début du chronomètre
-   //et l'heure actuel du système
+   //difftime permet de calculer le temps écouler entre deux variables de temps
+   //Dans la déclaration ci-dessous le différence entre le début du chronomètre et
+   //le temps actuel du système est calculé
    int secondes = (int)difftime(time(NULL),(time_t)tempsDebut);
 
    //Reinitialise le chronomètre
