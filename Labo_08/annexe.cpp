@@ -25,7 +25,7 @@ void viderBuffer()
    cin.ignore(numeric_limits<streamsize>::max(),'\n');
 }
 
-int demanderValeur(const string& message,const int& minimum, const int& maximum)
+int demanderValeur(const string& message, const int& minimum, const int& maximum)
 {
    bool valeurOk;
    int  valeurEntrer;

@@ -23,14 +23,14 @@
 void viderBuffer();
 
 /**
- * Vérification d'une saisie pour que la valeur entrée par l'utilisateur soit correcte
+ * Lecture d'une saisie et vérification que la valeur entrée soit un entier
  * et définie dans une borne.
- * @param message string constante contenant le message indiquant le but de la borne
+ * @param message string constante contenant le message indiquant le but de la valeur à entrée
  * @param minimum entier constant permettant de définir le minimum de la borne
  * @param maximum entier constant permettant de définir le maximum de la borne 
  * @return le nombre saisi par l'utilisateur
  */
-int  demanderValeur(const std::string& message, const int& maximum, const int& minimum);
+int demanderValeur(const std::string& message, const int& minimum, const int& maximum);
 
 /**
  * Fonction permmetant d'afficher le résultat de la partie.
