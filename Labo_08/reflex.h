@@ -1,12 +1,13 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08_Clavier
- Fichier     : reflex.h
+ Fichier     : reflex.cpp
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.11.2018
 
- But         : Générer des questions pour tester les réflexes de l'utilisateur.
-               Vérifier si l'utilisateur a répondu correctement (calcul du score).
+ But         : Générer des questions pour tester les réflexes clavier de l'utilisateur.
+               Les questions sont des lettres, situées dans une borne, qui devront être saisies.
+               Vérifie si l'utilisateur a répondu correctement(calcul du score) et calcul le temps.
 
  Remarque(s) : Utilisation des libraires annexe et chrono.
 
@@ -19,12 +20,12 @@
 
 /**
  * Génère des lettres aléatoirement et mesure les réflexes de l'utilisateur.
- * @param nbLettre   Le nombre de lettre demandée pour tester les reflex
- * @param lettreMin  La plus petite lettre pouvant être demandé
- * @param lettreMax  La plus grande lettre pouvant être demandé
- * @param nbSecondes Contient le nombre de secondes totales.
- * @return           Retourne le nombre de lettres correctement saisies par l'utilisateur
+ * @param nbLettre entier constant contenant le nombre de lettre demandée pour tester les reflex
+ * @param lettreMin entier constant définissant la lettre minimum pouvant être demandé
+ * @param lettreMax entier constant définissant la lettre maximum pouvant être demandé
+ * @param nbSecondes entier par référence avec le nombre de secondes totales.
+ * @return entier contenant le nombre de lettres correctement saisies par l'utilisateur
  */
-int  testerReflex(int nbLettre, const char& lettreMin, const char& lettreMax, int& nbSecondes);
+int testerReflex(const int nbLettre, const char lettreMin, const char lettreMax, int& nbSecondes);
 
 #endif

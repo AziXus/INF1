@@ -1,15 +1,14 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08_Clavier
- Fichier     : chrono.h
+ Fichier     : chrono.cpp
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.11.2018
 
  But         : Permet de démarrer et d'arrêter un chronomètre.
-               Lorsque le chronomètre va être arrêté la libraire va calculer le nombre de secondes 
-               séparant le lancement du chrono à la fin.
+               Lorsque le chronomètre va être arrêté la libraire calcule sa durée en secondes.
 
- Remarque(s) : Utilisation de la fonction ctime pour calculer le temps.              
+ Remarque(s) : Utilisation de la libraire ctime pour calculer un temps.              
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -23,8 +22,8 @@
 void demarrerChrono();
 
 /**
- * Calcul du temps écoulé depuis le lancement du chronomètre et l'arrête.
- * @return les secondes depuis le lancement du chronomètre
+ * Calcul du temps écoulé depuis le lancement du chronomètre puis l'arrête.
+ * @return entier, les secondes depuis le lancement du chronomètre
  */
 int  arreterChrono();
 #endif

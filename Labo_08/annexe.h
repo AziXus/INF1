@@ -17,6 +17,9 @@
 #ifndef ANNEXE_H
 #define ANNEXE_H
 #include <string>
+
+static const int PRECISION_FLOAT = 2;
+
 /**
  * Fonction permettant de vider le buffer
  */
@@ -30,36 +33,37 @@ void viderBuffer();
  * @param maximum entier constant permettant de définir le maximum de la borne 
  * @return le nombre saisi par l'utilisateur
  */
-int demanderValeur(const std::string& message, const int& minimum, const int& maximum);
+int demanderValeur(const std::string& message, const int minimum, const int maximum);
 
 /**
- * Fonction permmetant d'afficher le résultat de la partie.
- * Elle permet également de calculer la vitesse de réponse de l'utilisateur.
- * @param temps entier contenant la durée de la partie
+ * Fonction permettant d'afficher le résultat de la partie
+ * et de calculer la vitesse de réponse de l'utilisateur.
+ * @param temps entier constant contenant la durée de la partie en secondes
  * @param reponsesCorrectes entier constant contenant le nombre de réponse correctes
- * @param lances entier constant contenant le nombre de question pour la partie
+ * @param lances entier constant contenant le nombre de lancés pour la partie
  */
-void afficherResultat(const int temps, const int reponsesCorrectes, const int lances);
+void afficherResultat(const int temps,  const int reponsesCorrectes,
+                      const int lances, const int precision = PRECISION_FLOAT);
 
 /**
- * Vérification que l'utilisateur entre une saisie correcte pour le recommencemnt de la partie(o ou n)
- * @return un charactère soit o soit n
+ * Vérification que l'utilisateur entre une saisie correcte pour recomencer la partie(o ou n)
+ * @return charactère soit o soit n
  */
 char recommencerPartieSaisie();
 
 /**
- * Permet de définir si la partie devra être recommencée ou non
- * @return un booléan qui défini si la partie devra être recommencée(true) ou arrêtée(false)
+ * Permet de déterminer si la partie devra être recommencée ou non
+ * @return true pour recommencer et false pour arrêter
  */
 bool recommencerPartie();
 
 /**
- * Permet de générer un entier aléatoire entre min et max
- * @param min entier constant qui permet de définir le nombre minimum pouvant être générer aléatoirement
- * @param max entier constant qui permet de définir le nombre maximum pouvant être générer aléatoirement
- * @return un nombre entier générer aléatoirement entre min et max
+ * Permet de générer un entier aléatoire entre min et max compris
+ * @param min entier constant définissant la valeur minimum
+ * @param max entier constant définissant la valeur maximum
+ * @return nombre entier générer aléatoirement entre min et max
  */
-int  nombreAleatoire(const int& min, const int& max);
+int  nombreAleatoire(const int min, const int max);
 #endif
 
 

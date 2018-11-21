@@ -6,7 +6,7 @@
  Date        : 21.11.2018
 
  But         : Générer des questions pour tester les réflexes clavier de l'utilisateur.
-               Les questions sont des lettres de a à z qui devront être entrées.
+               Les questions sont des lettres de a à z qui devront être saisies.
                L'utilisateur choisi le nombre de lancés entre 1 et 10.
                Le nombre de réponses correctes et le temps effectué
                pour terminer le questionnaire est donné en fin de programme.

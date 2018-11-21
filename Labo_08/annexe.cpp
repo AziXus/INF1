@@ -25,7 +25,7 @@ void viderBuffer()
    cin.ignore(numeric_limits<streamsize>::max(),'\n');
 }
 
-int demanderValeur(const string& message, const int& minimum, const int& maximum)
+int demanderValeur(const string& message, const int minimum, const int maximum)
 {
    bool valeurOk;
    int  valeurEntrer;
@@ -44,10 +44,9 @@ int demanderValeur(const string& message, const int& minimum, const int& maximum
    return valeurEntrer;
 }
 
-void afficherResultat(const int temps, const int reponsesCorrectes, const int lances)
-{
-   
-   cout << fixed << setprecision(2);
+void afficherResultat(const int temps, const int reponsesCorrectes, const int lances, const int precision)
+{  
+   cout << fixed << setprecision(precision);
    cout << "nbre de reponses correctes : "  << reponsesCorrectes << endl;
    cout << "temps ecoule               : "  << temps             << endl;
    cout << "=> " << (double) temps / lances << " sec par lettre" << endl << endl;
@@ -81,7 +80,7 @@ bool recommencerPartie()
     return recommencerPartieSaisie() == 'o';
 }
 
-int nombreAleatoire(const int& min, const int& max) {
+int nombreAleatoire(const int min, const int max) {
     static bool premierAppel = true;
 
     //Initialise le generateur aléatoire avec le temps actuel comme seed lors 
