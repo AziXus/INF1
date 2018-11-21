@@ -1,11 +1,12 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08_Clavier
- Fichier     : annexe.h
+ Fichier     : annexe.cpp
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.11.2018
 
- But         : gérer les focntion d'affichages et entrée sortie du programme
+ But         : Gérer les fonctions d'entrées sorties du programme ainsi que des 
+               fonctions particulières
 
  Remarque(s) : Utilisation de la fonction srand pour générer des nombres aléatoires             
 
@@ -16,7 +17,6 @@
 #ifndef ANNEXE_H
 #define ANNEXE_H
 #include <string>
-
 /**
  * Fonction permettant de vider le buffer
  */

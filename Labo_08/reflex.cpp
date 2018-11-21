@@ -1,13 +1,14 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : <nn>
+ Laboratoire : Labo_08_Clavier
  Fichier     : reflex.cpp
- Auteur(s)   : Robin Müller
- Date        : 19.11.2018
+ Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
+ Date        : 21.11.2018
 
- But         : <à compléter>
+ But         : Générer des questions pour tester les réflexes de l'utilisateur.
+               Vérifier si l'utilisateur a répondu correctement (calcul du score).
 
- Remarque(s) : <à compléter>
+ Remarque(s) : Utilisation des libraires annexe et chrono.
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------

@@ -5,13 +5,15 @@
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.11.2018
 
- But         : Générer des questions pour tester les réflexes de l'utilisateur.
-               L'utilisateur choisi le nombre de lances entre 1 et 10.
-               Un résultat indiquant le nombre de réponses correctes et le temps effectué
+ But         : Générer des questions pour tester les réflexes clavier de l'utilisateur.
+               Les questions sont des lettres de a à z qui devront être entrées.
+               L'utilisateur choisi le nombre de lancés entre 1 et 10.
+               Le nombre de réponses correctes et le temps effectué
                pour terminer le questionnaire est donné en fin de programme.
+               Le programme peut ensuite être recommencé ou stoppé.
 
- Remarque(s) : Utilisation de la fonction ctime pour calculer le temps mis pour résoudre le questionnaire.
-               Le nombre de lances doit être compris entre 1 et 10.
+ Remarque(s) : Utilisation de la fonction ctime pour mesurer le temps pris pour résoudre le questionnaire.
+               Le nombre de lancés doit être compris entre 1 et 10.
                Utilisation des libraires annexe et reflex.              
 
  Compilateur : MinGW-g++ 6.3.0
@@ -29,8 +31,8 @@ using namespace std;
 int main() {
    const string MSG_NB_LANCES = "Combien de lances ";
    
-   const unsigned int NB_LANCES_MIN =  1,
-                      NB_LANCES_MAX = 10;
+   const unsigned int  NB_LANCES_MIN =  1,
+                       NB_LANCES_MAX = 10;
    
    const unsigned char LETTRE_MIN = 'a',
                        LETTRE_MAX = 'z';
@@ -41,7 +43,7 @@ int main() {
    
    cout << "ce programme ..." << endl;
    do {
-      //Saisie de l'utlisateur pour le nombre de lancé
+      //Saisie de l'utilisateur pour le nombre de lancé
       nbLances = demanderValeur(MSG_NB_LANCES, NB_LANCES_MIN, NB_LANCES_MAX);
 
       //Démarrage du questionnaire
@@ -51,7 +53,7 @@ int main() {
 
       //Affichage du résultat de l'utilisateur
       afficherResultat(nbSecondes, nbLettresCorrectes, nbLances);
-   } while(recommencerPartie());
+   } while(recommencerPartie());//Demande à l'utilisateur s'il veut rejouer
    
    return EXIT_SUCCESS;
 }
