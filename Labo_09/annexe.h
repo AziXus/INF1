@@ -23,7 +23,7 @@ static const int PRECISION_FLOAT = 2;
 /**
  * Fonction permettant de vider le buffer
  */
-void viderBuffer();
+void viderBuffer(const char delimiteur);
 
 /**
  * Permet de déterminer si la partie devra être recommencée ou non

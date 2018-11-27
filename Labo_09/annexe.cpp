@@ -20,9 +20,9 @@
 
 using namespace std;
 
-void viderBuffer()
+void viderBuffer(const char delimiteur)
 {
-   cin.ignore(numeric_limits<streamsize>::max(),'\n');
+   cin.ignore(numeric_limits<streamsize>::max(), delimiteur);
 }
 
 bool repondsOui(const string& msg, const string& msg_erreur, const char oui, const char non)
