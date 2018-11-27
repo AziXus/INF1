@@ -1,25 +1,32 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo_09_Date
+ Fichier     : main.cpp
+ Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
+ Date        : 21.11.2018
 
-/* 
- * File:   main.cpp
- * Author: stéphane
- *
- * Created on November 27, 2018, 1:51 PM
+ But         : Générer des questions pour tester les réflexes clavier de l'utilisateur.
+               Les questions sont des lettres de a à z qui devront être saisies.
+               L'utilisateur choisi le nombre de lancés entre 1 et 10.
+               Le nombre de réponses correctes et le temps effectué
+               pour terminer le questionnaire est donné en fin de programme.
+               Le programme peut ensuite être recommencé ou stoppé.
+
+ Remarque(s) : Utilisation de la fonction ctime pour mesurer le temps pris pour résoudre le questionnaire.
+               Le nombre de lancés doit être compris entre 1 et 10.
+               Utilisation des libraires annexe et reflex.              
+
+ Compilateur : MinGW-g++ 6.3.0
+ -----------------------------------------------------------------------------------
  */
 
 #include <cstdlib>
+#include <iostream>
 
 using namespace std;
 
-/*
- * 
- */
-int main(int argc, char** argv) {
-
-   return 0;
+int main() {
+    
+    return EXIT_SUCCESS;
 }
 
