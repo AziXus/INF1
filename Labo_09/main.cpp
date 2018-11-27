@@ -22,11 +22,13 @@
 
 #include <cstdlib>
 #include <iostream>
+#include "date.h"
 
 using namespace std;
 
 int main() {
-    
+    saisieDate("Saisie : ", "Erreur", 1900, 2200);
+
     return EXIT_SUCCESS;
 }
 
