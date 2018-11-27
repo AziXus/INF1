@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08_Clavier
- Fichier     : chrono.h
+ Fichier     : chrono.cpp
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.11.2018
 

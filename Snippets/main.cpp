@@ -5,52 +5,90 @@
 #include <limits>
 
 #define EMPTY_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
-#define EMPTY_BUFFER_SPACE cin.ignore(numeric_limits<streamsize>::max(), ' ')
 
 using namespace std;
 
-double withdraw(double& balance, double amount) {
-    double effectiveAmount = amount;
-    if (effectiveAmount > balance) {
-        effectiveAmount = balance;
-    } else if (balance < 0) {
-        effectiveAmount = 0;
-    }
-
-    balance -= effectiveAmount;
-
-    return effectiveAmount;
-}
-
-bool arithmeticOperation(double x, double y, char customOperator, double& res) {
-    switch (customOperator) {
-        case '+': res = x + y; break;
-        case '-': res = x - y; break;
-        case '*': res = x * y; break;
-        case '/': res = x / y; break;
-        default : res = 0.;     return false;
-    }
-
-    return true;
-}
+/*
+ * xxxx
+ * xxx
+ * xx
+ * x
+ */
+void printTriangle_1(unsigned int n, char c = 'x');
+void printTriangle_2(unsigned int n, char c = 'x');
+void printTriangle_3R(unsigned int n, unsigned int w, char c = 'x');
+void printTriangle_3(unsigned int n, char c = 'x');
+void printTriangle_4(unsigned int n, char c = 'x');
+void printTriangle_4R1(unsigned int n, unsigned int w, char c = 'x');
+void printTriangle_4R2(unsigned int n, unsigned int w, char c = 'x');
+void recursiveChar(unsigned int n, char c = 'x');
 
 int main() {
-    double x, y, res;
-    char   arithmeticOperator;
+    printTriangle_1(4);
+    cout << endl;
+    printTriangle_2(4);
+    cout << endl;
+    printTriangle_3(4);
+    cout << endl;
+    printTriangle_4(4);
 
-    cout << setprecision(2) << fixed;
-    cout << "Please enter a calculation (x [+ - * /] y) on the same line and press enter: ";
-    cin >> x;
-    EMPTY_BUFFER_SPACE;
-    cin >> arithmeticOperator;
-    EMPTY_BUFFER_SPACE;
-    cin >> y;
+    cout << "\nPress ENTER to quit\n";
     EMPTY_BUFFER;
 
-    if (arithmeticOperation(x, y, arithmeticOperator, res))
-        cout << x << " " << arithmeticOperator << " " << y << " = " << res;
-    else
-        cout << "Invalid operator.";
-
     return EXIT_SUCCESS;
+}
+
+void recursiveChar(unsigned int n, char c) {
+    if (n == 0)
+        return;
+
+    cout << c;
+    recursiveChar(n - 1);
+}
+
+void printTriangle_1(unsigned int n, char c) {
+    if (n == 0)
+        return;
+
+    cout << string(n, c) << endl;
+
+    printTriangle_1(n - 1, c);
+}
+
+void printTriangle_2(unsigned int n, char c) {
+    if (n > 0) {
+        printTriangle_2(n - 1, c);
+        cout << string(n, c) << endl;
+    }
+}
+
+void printTriangle_3(unsigned int n, char c) {
+    printTriangle_3R(n, n, c);
+}
+
+void printTriangle_3R(unsigned int n, unsigned int w, char c) {
+    if (n > 0) {
+        printTriangle_3R(n - 1, w, c);
+        cout << setw(w) << string(n, c) << endl;
+    }
+}
+
+void printTriangle_4(unsigned int n, char c) {
+    printTriangle_4R1(n, n, c);
+    printTriangle_4R2(n - 1, n, c);
+}
+
+void printTriangle_4R1(unsigned int n, unsigned int w, char c) {
+    if (n > 0) {
+        printTriangle_4R1(n - 1, w, c);
+        cout << setw(w) << string(n, c) << endl;
+    }
+}
+
+void printTriangle_4R2(unsigned int n, unsigned int w, char c) {
+    if (n > 0) {
+        cout << setw(w) << string(n, c) << endl;
+        printTriangle_4R2(n - 1, w, c);
+    }
+
 }

@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/rmuller/coding/INF1/Labo_08/annexe.cpp
-cstdlib
--
-iostream
--
-iomanip
--
-limits
--
-annexe.h
-/home/rmuller/coding/INF1/Labo_08/annexe.h
-
 /home/rmuller/coding/INF1/Labo_08/annexe.h
 string
 -
@@ -30,18 +18,6 @@ chrono.h
 
 /home/rmuller/coding/INF1/Labo_08/chrono.h
 
-/home/rmuller/coding/INF1/Labo_08/main.cpp
-cstdlib
--
-iostream
--
-string
--
-annexe.h
-/home/rmuller/coding/INF1/Labo_08/annexe.h
-reflex.h
-/home/rmuller/coding/INF1/Labo_08/reflex.h
-
 /home/rmuller/coding/INF1/Labo_08/reflex.cpp
 reflex.h
 /home/rmuller/coding/INF1/Labo_08/reflex.h
@@ -50,8 +26,6 @@ annexe.h
 chrono.h
 /home/rmuller/coding/INF1/Labo_08/chrono.h
 iostream
--
-ctime
 -
 
 /home/rmuller/coding/INF1/Labo_08/reflex.h
