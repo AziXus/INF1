@@ -1,6 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ -----------------------------------------------------------------------------------
+ Laboratoire : <nn>
+ Fichier     : <nom du fichier>.cpp
+ Auteur(s)   : <prénom> <nom>
+ Date        : <jj.mm.aaaa>
+
+ But         : <à compléter>
+
+ Remarque(s) : <à compléter>
+
+ Compilateur : MinGW-g++ <x.y.z>
+ -----------------------------------------------------------------------------------
  */
+
+
 
