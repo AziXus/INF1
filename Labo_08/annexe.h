@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_08_Clavier
- Fichier     : annexe.cpp
+ Fichier     : annexe.h
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.11.2018
 

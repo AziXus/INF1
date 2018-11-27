@@ -44,7 +44,8 @@ int testerReflex(const int nbLettre, const char lettreMin, const char lettreMax,
     int nbLettresCorrectes = 0;
 
     demarrerChrono();
-    //Génère des lettres aléatoire et compte le nombre de lettres correctement saisie jusqu'à nbLettre
+    //Génère des lettres aléatoire et compte le nombre de lettres correctement saisie 
+	//jusqu'à nbLettre
     for (int i = 0; i < nbLettre; ++i) {
         //Génère une lettre aléatoire entre lettreMin et lettreMax
         lettreAttendue = (char)(nombreAleatoire(lettreMin, lettreMax));
