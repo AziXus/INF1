@@ -13,19 +13,6 @@
  -----------------------------------------------------------------------------------
  */
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * File:   date.h
- * Author: stéphane
- *
- * Created on November 27, 2018, 1:55 PM
- */
-
 #include "date.h"
 #include "annexe.h"
 #include <cstdlib>
@@ -55,32 +42,37 @@ void saisieDate(const string&  msg,
         if (!(cin >> jour)) {
             cin.clear();
             valeurOk = false;
+            viderBuffer();
         }
-        viderBuffer(SEPARATEUR_DATE);
-
-        //Lecture du mois
-        if (!(cin >> mois)) {
-            cin.clear();
-            valeurOk = false;
+        else{
+            viderBuffer(SEPARATEUR_DATE);
+            //Lecture du mois
+            if(!(cin >> mois)){
+                cin.clear();
+                valeurOk = false;
+                viderBuffer();
+            }
+            else{
+                viderBuffer(SEPARATEUR_DATE);
+                //Lecture de l'annee
+                if (!(cin >> annee)) {
+                    cin.clear();
+                    valeurOk = false;
+                    viderBuffer();
+                }
+            }
         }
-        viderBuffer(SEPARATEUR_DATE);
-
-        //Lecture de l'annee
-        if (!(cin >> annee)) {
-            cin.clear();
-            valeurOk = false;
-        }
-        viderBuffer();
+        
 
         if (!valeurOk)
             continue;
 
         //Vérification des saisies
-        if(!anneeCorrecte(annee, annee_min, annee_max) or !moisCorrect(mois) or !jourCorrect(jour))
+/*        if(!anneeCorrecte(annee, annee_min, annee_max) or !moisCorrect(mois) or !jourCorrect(jour))
         {
             cout << msg_erreur << endl;
             valeurOk = false;
-        }
+        }*/
         viderBuffer();
     } while(!valeurOk);
 }
