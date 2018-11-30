@@ -46,18 +46,14 @@ void saisieDate(const string&  msg,
             viderBuffer();
         }
         else{
-            viderBuffer(SEPARATEUR_DATE);
             //Lecture du mois
-            if(!(cin >> mois)){
+            if(cin.get() != '-' && !(cin >> mois)){
                 cin.clear();
                 valeurOk = false;
                 viderBuffer();
             }
             else{
-                viderBuffer(SEPARATEUR_DATE);
-                cin >> bufferVide;
-                //Lecture de l'annee
-                if (!(cin >> annee) or bufferVide.empty()) {
+                if (cin.get() != '-' && !(cin >> annee)) {
                     cin.clear();
                     valeurOk = false;
                     viderBuffer();
@@ -66,11 +62,11 @@ void saisieDate(const string&  msg,
         }
 
         //Vérification des saisies
-/*        if(!anneeCorrecte(annee, annee_min, annee_max) or !moisCorrect(mois) or !jourCorrect(jour))
+        if(!anneeCorrecte(annee, annee_min, annee_max) or !moisCorrect(mois) or !jourCorrect(jour))
         {
             cout << msg_erreur << endl;
             valeurOk = false;
-        }*/
+        }
         /*viderBuffer();*/
     } while(!valeurOk);
 }
