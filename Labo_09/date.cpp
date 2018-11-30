@@ -29,6 +29,7 @@ void saisieDate(const string&  msg,
 
     unsigned jour, mois, annee;
 
+    string bufferVide = "";
     bool valeurOk;
     do {
         //On assume qu'il n'y a pas d'erreur en début de programme
@@ -54,18 +55,15 @@ void saisieDate(const string&  msg,
             }
             else{
                 viderBuffer(SEPARATEUR_DATE);
+                cin >> bufferVide;
                 //Lecture de l'annee
-                if (!(cin >> annee)) {
+                if (!(cin >> annee) or bufferVide.empty()) {
                     cin.clear();
                     valeurOk = false;
                     viderBuffer();
                 }
             }
         }
-        
-
-        if (!valeurOk)
-            continue;
 
         //Vérification des saisies
 /*        if(!anneeCorrecte(annee, annee_min, annee_max) or !moisCorrect(mois) or !jourCorrect(jour))
@@ -73,7 +71,7 @@ void saisieDate(const string&  msg,
             cout << msg_erreur << endl;
             valeurOk = false;
         }*/
-        viderBuffer();
+        /*viderBuffer();*/
     } while(!valeurOk);
 }
 
