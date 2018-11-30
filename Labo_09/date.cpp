@@ -74,7 +74,9 @@ void saisieDate(const string&  msg,
 
 bool anneeCorrecte(const unsigned annee,
                    const unsigned annee_min,
-                   const unsigned annee_max);
+                   const unsigned annee_max){
+    return annee >= annee_min and annee <= annee_max;
+}
 
 bool moisCorrect(const unsigned int mois);
 
