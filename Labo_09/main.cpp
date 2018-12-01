@@ -28,7 +28,7 @@ using namespace std;
 
 int main() {
     saisieDate("Saisie : ", "Erreur", 1900, 2200);
-
+    saisieDate("Saisie : ", "Erreur", 1900, 2200);
     return EXIT_SUCCESS;
 }
 
