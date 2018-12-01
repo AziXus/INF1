@@ -30,10 +30,11 @@ void saisieDate(const string&  msg,
     unsigned jour, mois, annee;
 
     string bufferVide = "";
+    
     bool valeurOk;
+    //On assume qu'il n'y a pas d'erreur en début de programme
+    valeurOk = true;
     do {
-        //On assume qu'il n'y a pas d'erreur en début de programme
-        valeurOk = true;
 
         //Message de saisie
         cout << msg     << JOUR_MIN << SEPARATEUR_DATE << MOIS_MIN << SEPARATEUR_DATE << annee_min
@@ -47,13 +48,13 @@ void saisieDate(const string&  msg,
         }
         else{
             //Lecture du mois
-            if(cin.get() != '-' && !(cin >> mois)){
+            if(cin.get() != '-' and !(cin >> mois)){
                 cin.clear();
                 valeurOk = false;
                 viderBuffer();
             }
             else{
-                if (cin.get() != '-' && !(cin >> annee)) {
+                if (cin.get() != '-' and !(cin >> annee)) {
                     cin.clear();
                     valeurOk = false;
                     viderBuffer();
@@ -78,9 +79,13 @@ bool anneeCorrecte(const unsigned annee,
     return annee >= annee_min and annee <= annee_max;
 }
 
-bool moisCorrect(const unsigned int mois);
+bool moisCorrect(const unsigned int mois){
+    return mois >= MOIS_MIN and mois <= MOIS_MAX;
+}
 
-bool jourCorrect(const unsigned int jour);
+bool jourCorrect(const unsigned int jour){
+    return jour >= JOUR_MIN and jour <= JOUR_MAX;
+}
 
 bool estBissextile(const unsigned int annee) {
     return annee % 400 == 0 or (annee % 4 == 0 and annee % 100 != 0);
