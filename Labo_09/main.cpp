@@ -34,16 +34,22 @@ int g(int d, int m, int y) {
     return 365 * y + y / 4 - y / 100 + y / 400 + (m * 306 + 5) / 10 + (d - 1);
 }
 
-int main() {
-    //saisieDate("Saisie : ", "Erreur", 1900, 2200);
-    //saisieDate("Saisie : ", "Erreur", 1900, 2200);
+int main2();
 
-    unsigned jourDebut =     1,
-             moisDebut  =   11,
-             anneeDebut = 2018,
-             jourFin   =     1,
-             moisFin    =   12,
-             anneeFin   = 2018;
+int main() {
+    main2();
+
+    return EXIT_SUCCESS;
+}
+
+int main2() {
+    const string MSG_SAISIE = "Veuillez saisir une date entre le ",
+                 MSG_ERREUR = "Date invalide";
+    unsigned jourDebut, moisDebut, anneeDebut,
+             jourFin,   moisFin  , anneeFin;
+
+    saisieDate(MSG_SAISIE, MSG_ERREUR, jourDebut, moisDebut, anneeDebut);
+    saisieDate(MSG_SAISIE, MSG_ERREUR, jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin);
 
     //internet formula
     cout << "Nb jours : " << nombreJourEntre(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin)  << endl;

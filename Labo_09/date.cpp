@@ -17,34 +17,64 @@
 #include "annexe.h"
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
+char SEPARATEUR_DATE = '-';
 
-static unsigned JOUR_MIN      =   1,
-                JOUR_MAX      =  31,
-                MOIS_MIN      =   1,
-                MOIS_MAX      =  12,
-                JOURS_FEVRIER =  28,
-                JOURS_ANNEE   = 365;
 
+static unsigned JOUR_MIN      =    1,
+                JOUR_MAX      =   31,
+                MOIS_MIN      =    1,
+                MOIS_MAX      =   12,
+                ANNEE_MIN     = 1900,
+                ANNEE_MAX     = 2200,
+                JOURS_FEVRIER =   28,
+                JOURS_ANNEE   =  365;
 
 void saisieDate(const string&  msg,
                 const string&  msg_erreur,
-                const unsigned annee_min,
-                const unsigned annee_max) {
-    //TODO parametre
-    const char SEPARATEUR_DATE = '-';
+                unsigned&      jour,
+                unsigned&      mois,
+                unsigned&      annee) {
+    saisieDate(msg, msg_erreur, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX, jour, mois, annee);
+}
 
-    unsigned jour, mois, annee;
+void saisieDate(const string&  msg,
+                const string&  msg_erreur,
+                const unsigned jour_min,
+                const unsigned mois_min,
+                const unsigned annee_min,
+                unsigned&      jour,
+                unsigned&      mois,
+                unsigned&      annee) {
+    saisieDate(msg, msg_erreur, jour_min, mois_min, annee_min, JOUR_MAX, MOIS_MAX, ANNEE_MAX, jour, mois, annee);
+}
+
+void saisieDate(const string&  msg,
+                const string&  msg_erreur,
+                const unsigned jour_min,
+                const unsigned mois_min,
+                const unsigned annee_min,
+                const unsigned jour_max,
+                const unsigned mois_max,
+                const unsigned annee_max,
+                unsigned&      jour,
+                unsigned&      mois,
+                unsigned&      annee) {
 
     bool valeurOk;
-    //On assume qu'il n'y a pas d'erreur en début de programme
-    valeurOk = true;
+
     do {
+        //On assume qu'il n'y a pas d'erreur en début de boucle
+        valeurOk = true;
 
         //Message de saisie
-        cout << msg     << JOUR_MIN << SEPARATEUR_DATE << MOIS_MIN << SEPARATEUR_DATE << annee_min
-             << " et "  << JOUR_MAX << SEPARATEUR_DATE << MOIS_MAX << SEPARATEUR_DATE << annee_max << " : ";
+        cout << msg;
+        printDate(jour_min, mois_min, annee_min);
+        cout << " et le ";
+        printDate(jour_max, mois_max, annee_max);
+        cout << " : ";
 
         //Lecture du jour
         if (!(cin >> jour)) {
@@ -159,6 +189,13 @@ unsigned nbJoursDepuisDebutAnnee(unsigned jour, unsigned mois, unsigned annee) {
     nbJours += jour;
 
     return nbJours;
+}
+
+void printDate(unsigned jour, unsigned mois, unsigned annee) {
+    char fillChar = '0';
+    cout << setfill(fillChar) << setw(2) << jour  << SEPARATEUR_DATE
+                              << setw(2) << mois  << SEPARATEUR_DATE
+                              << setw(4) << annee;
 }
 
 
