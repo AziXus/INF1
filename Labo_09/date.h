@@ -5,10 +5,20 @@
 
 #include <string>
 
-static unsigned JOUR_MIN =  1,
-                JOUR_MAX = 31,
-                MOIS_MIN =  1,
-                MOIS_MAX = 12;
+enum Mois {
+    Janvier = 1,
+    Fevrier,
+    Mars,
+    Avril,
+    Mai,
+    Juin,
+    Juillet,
+    Aout,
+    Septembre,
+    Octobre,
+    Novembre,
+    Decembre
+};
 
 /**
  *
@@ -44,21 +54,43 @@ bool anneeCorrecte(const unsigned annee,
  * @param mois
  * @return
  */
-bool moisCorrect(const unsigned int mois);
+bool moisCorrect(const unsigned mois);
 
 /**
  *
  * @param jour
  * @return
  */
-bool jourCorrect(const unsigned int jour);
+bool jourCorrect(const unsigned jour, const unsigned mois, const unsigned annee);
 
 /**
  *
  * @param annee
  * @return
  */
-bool estBissextile(const unsigned int annee);
+bool estBissextile(const unsigned annee);
 
+/**
+ *
+ * @param mois
+ * @param annee
+ * @return
+ */
+unsigned int nbJoursDansMois(const unsigned mois, const unsigned annee);
+
+unsigned nombreJourEntre(const unsigned jourDebut,
+                         const unsigned moisDebut,
+                         const unsigned anneeDebut,
+                         const unsigned jourFin,
+                         const unsigned moisFin,
+                         const unsigned anneeFin);
+
+//internet formula
+//source: https://stackoverflow.com/a/12863278
+int g(int d, int m, int y);
+
+unsigned nbJoursDansAnnee(unsigned annee);
+
+unsigned nbJoursDepuisDebutAnnee(unsigned jour, unsigned mois, unsigned annee);
 #endif /* DATE_H */
 

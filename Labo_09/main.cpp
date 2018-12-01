@@ -26,9 +26,30 @@
 
 using namespace std;
 
+
+int g(int d, int m, int y) {
+    m = (m + 9) % 12;
+    y = y - m / 10;
+
+    return 365 * y + y / 4 - y / 100 + y / 400 + (m * 306 + 5) / 10 + (d - 1);
+}
+
 int main() {
-    saisieDate("Saisie : ", "Erreur", 1900, 2200);
-    saisieDate("Saisie : ", "Erreur", 1900, 2200);
+    //saisieDate("Saisie : ", "Erreur", 1900, 2200);
+    //saisieDate("Saisie : ", "Erreur", 1900, 2200);
+
+    unsigned jourDebut =     1,
+             moisDebut  =   11,
+             anneeDebut = 2018,
+             jourFin   =     1,
+             moisFin    =   12,
+             anneeFin   = 2018;
+
+    //internet formula
+    cout << "Nb jours : " << nombreJourEntre(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin)  << endl;
+    cout << "Nb jours (internet) : " << g(jourFin, moisFin, anneeFin) - g(jourDebut, moisDebut, anneeDebut) << endl;
+
     return EXIT_SUCCESS;
 }
+
 
