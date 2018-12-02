@@ -21,6 +21,7 @@
 //permet de changer la valeur de SEPRATEUR_CHAR si nécessaire 
 extern char SEPARATEUR_DATE;
 
+//défini les chiffres allant avec les mois
 enum Mois {
     Janvier = 1,
     Fevrier,
@@ -37,7 +38,7 @@ enum Mois {
 };
 
 /**
- * 
+ * Fonction saisie date avec tout les paramètres pour saisir une date.
  * @param msg string constante contenant le message informant sur la saisie voulu 
  * @param msg_erreur string constante contenant le message d'erreur lors d'un mauvaise saisie
  * @param jour_min entier non-signé constant contenant le jour minimal pouvant être entré
@@ -144,14 +145,14 @@ bool estBissextile(const unsigned annee);
 unsigned int nbJoursDansMois(const unsigned mois, const unsigned annee);
 
 /**
- * 
- * @param jourDebut
- * @param moisDebut
- * @param anneeDebut
- * @param jourFin
- * @param moisFin
- * @param anneeFin
- * @return 
+ * Calcul le nombre de jour séparant une date de début et une date de fin
+ * @param jourDebut entier non-signé constant contenant le jour de la date de debut
+ * @param moisDebut entier non-signé constant contenant le mois de la date de debut
+ * @param anneeDebut entier non-signé constant contenant l'année de la date de debut
+ * @param jourFin entier non-signé constant contenant le jour de la date de fin
+ * @param moisFin entier non-signé constant contenant le mois de la date de fin
+ * @param anneeFin entier non-signé constant contenant l'annee de la date de fin
+ * @return entier contenant le nombre de jour séparant les 2 dates
  */
 unsigned nbJoursEntre(const unsigned jourDebut,
                          const unsigned moisDebut,
@@ -178,9 +179,9 @@ unsigned nbJoursDepuisDebutAnnee(unsigned jour, unsigned mois, unsigned annee);
 
 /**
  * Affiche la date dans le format JJ-MM-AAAA
- * @param jour
- * @param mois
- * @param annee
+ * @param jour entier non-signé contenant le jour à afficher
+ * @param mois entier non-signé contenant le mois à afficher
+ * @param annee eniter non-signé contenant l'année à afficher
  */
 void afficherDate(unsigned jour, unsigned mois, unsigned annee);
 #endif /* DATE_H */
