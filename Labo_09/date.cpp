@@ -8,7 +8,7 @@ using namespace std;
 //global car nécessaire... question
 char SEPARATEUR_DATE = '-';
 
-//static unsigned permmettant de mettre des valuers par défaut
+//static unsigned permettant de mettre des valeurs par défaut
 static unsigned JOUR_MIN      =    1,
                 JOUR_MAX      =   31,
                 MOIS_MIN      =    1,
@@ -65,7 +65,8 @@ void saisieDate(const string&  msg,
 
         //Lecture du jour
         //Essaie de lire la date et s'arrête à la première erreur.
-        //les cin.get vide les '-' du buffer
+        //les cin.get vide les SEPARATEUR_DATE du buffer 
+        //si SEPARATEUR_DATE = '-' on va supprimer le '-'
         valeurOk = cin >> jour and cin.get() == SEPARATEUR_DATE and cin >> mois and cin.get() == SEPARATEUR_DATE and cin >> annee;
 
         if (!valeurOk) {

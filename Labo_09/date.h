@@ -112,7 +112,7 @@ bool anneeCorrecte(const unsigned annee,
                    const unsigned annee_max);
 
 /**
- * Permet de définir si le mois entré par l'utlisateur est correct
+ * Permet de définir si le mois entré par l'utlisateur est correct(entre 1 et 12)
  * @param mois entier non-signé contenant le mois entré par l'utilisateur
  * @return true si le mois est dans la borne(1-12) false s'il est en dehors
  */
