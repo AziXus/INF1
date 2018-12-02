@@ -1,18 +1,3 @@
-/*
- -----------------------------------------------------------------------------------
- Laboratoire : <nn>
- Fichier     : <nom du fichier>.cpp
- Auteur(s)   : <prénom> <nom>
- Date        : <jj.mm.aaaa>
-
- But         : <à compléter>
-
- Remarque(s) : <à compléter>
-
- Compilateur : MinGW-g++ <x.y.z>
- -----------------------------------------------------------------------------------
- */
-
 #include "date.h"
 #include "annexe.h"
 #include <cstdlib>
@@ -20,24 +5,25 @@
 #include <iomanip>
 
 using namespace std;
+//global car nécessaire... question
 char SEPARATEUR_DATE = '-';
 
-
+//static unsigned permmettant de mettre des valuers par défaut
 static unsigned JOUR_MIN      =    1,
                 JOUR_MAX      =   31,
                 MOIS_MIN      =    1,
                 MOIS_MAX      =   12,
-                ANNEE_MIN     = 1900,
-                ANNEE_MAX     = 2200,
                 JOURS_FEVRIER =   28,
                 JOURS_ANNEE   =  365;
 
 void saisieDate(const string&  msg,
                 const string&  msg_erreur,
+                const unsigned annee_min,
+                const unsigned annee_max,
                 unsigned&      jour,
                 unsigned&      mois,
                 unsigned&      annee) {
-    saisieDate(msg, msg_erreur, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX, jour, mois, annee);
+    saisieDate(msg, msg_erreur, JOUR_MIN, MOIS_MIN, annee_min, JOUR_MAX, MOIS_MAX, annee_max, jour, mois, annee);
 }
 
 void saisieDate(const string&  msg,
@@ -45,10 +31,11 @@ void saisieDate(const string&  msg,
                 const unsigned jour_min,
                 const unsigned mois_min,
                 const unsigned annee_min,
+                const unsigned annee_max,
                 unsigned&      jour,
                 unsigned&      mois,
                 unsigned&      annee) {
-    saisieDate(msg, msg_erreur, jour_min, mois_min, annee_min, JOUR_MAX, MOIS_MAX, ANNEE_MAX, jour, mois, annee);
+    saisieDate(msg, msg_erreur, jour_min, mois_min, annee_min, JOUR_MAX, MOIS_MAX, annee_max, jour, mois, annee);
 }
 
 void saisieDate(const string&  msg,
@@ -77,7 +64,9 @@ void saisieDate(const string&  msg,
         cout << " : ";
 
         //Lecture du jour
-        valeurOk = cin >> jour and cin.get() == '-' and cin >> mois and cin.get() == '-' and cin >> annee;
+        //Essaie de lire la date et s'arrête à la première erreur.
+        //les cin.get vide les '-' du buffer
+        valeurOk = cin >> jour and cin.get() == SEPARATEUR_DATE and cin >> mois and cin.get() == SEPARATEUR_DATE and cin >> annee;
 
         if (!valeurOk) {
             cin.clear();
@@ -176,18 +165,3 @@ void afficherDate(unsigned jour, unsigned mois, unsigned annee) {
          << setw(2) << mois  << SEPARATEUR_DATE
          << setw(4) << annee << setfill(' ');
 }
-
-
-/*int g(int d, int m, int y) {
-    m = (m + 9) % 12;
-    y = y - m / 10;
-
-    //Days since 01-01-0000
-    return 365 * y + y / 4 - y / 100 + y / 400 + (m * 306 + 5) / 10 + (d - 1);
-}*/
-
-/*
- * mois 12
- * m = 9
- * y = 2018 - 9/10
- */
