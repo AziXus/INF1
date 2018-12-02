@@ -71,32 +71,18 @@ void saisieDate(const string&  msg,
 
         //Message de saisie
         cout << msg;
-        printDate(jour_min, mois_min, annee_min);
+        afficherDate(jour_min, mois_min, annee_min);
         cout << " et le ";
-        printDate(jour_max, mois_max, annee_max);
+        afficherDate(jour_max, mois_max, annee_max);
         cout << " : ";
 
         //Lecture du jour
-        if (!(cin >> jour)) {
+        valeurOk = cin >> jour and cin.get() == '-' and cin >> mois and cin.get() == '-' and cin >> annee;
+
+        if (!valeurOk) {
             cin.clear();
-            valeurOk = false;
-            viderBuffer();
         }
-        else {
-            //Lecture du mois
-            if (cin.get() != '-' or !(cin >> mois)){
-                cin.clear();
-                valeurOk = false;
-                viderBuffer();
-            }
-            else {
-                if (cin.get() != '-' or !(cin >> annee)) {
-                    cin.clear();
-                    valeurOk = false;
-                    viderBuffer();
-                }
-            }
-        }
+        viderBuffer();
 
         //Vérification des saisies
         if(!valeurOk or !anneeCorrecte(annee, annee_min, annee_max) or !moisCorrect(mois) or !jourCorrect(jour, mois, annee))
@@ -104,7 +90,6 @@ void saisieDate(const string&  msg,
             cout << msg_erreur << endl;
             valeurOk = false;
         }
-        /*viderBuffer();*/
     } while(!valeurOk);
 }
 
@@ -139,16 +124,15 @@ unsigned int nbJoursDansMois(const unsigned mois, const unsigned annee) {
     return nbJours;
 }
 
-unsigned nombreJourEntre(const unsigned jourDebut,
-                         const unsigned moisDebut,
-                         const unsigned anneeDebut,
-                         const unsigned jourFin,
-                         const unsigned moisFin,
-                         const unsigned anneeFin) {
+unsigned nbJoursEntre(const unsigned jourDebut,
+                      const unsigned moisDebut,
+                      const unsigned anneeDebut,
+                      const unsigned jourFin,
+                      const unsigned moisFin,
+                      const unsigned anneeFin) {
     unsigned nbJoursAnneeDebut,
              nbJoursAnneeFin,
              nbJours;
-
 
     //Calcul le nombre de jours de la date départ jusqu'à la fin de l'année de départ non-compris
     nbJoursAnneeDebut = nbJoursDansAnnee(anneeDebut) - nbJoursDepuisDebutAnnee(jourDebut, moisDebut, anneeDebut);
@@ -165,10 +149,6 @@ unsigned nombreJourEntre(const unsigned jourDebut,
     //Si l'annee de depart est identique à l'année de fin, on enlève une année (365 ou 366) au nombre de jours.
     if (anneeDebut == anneeFin)
         nbJours -= nbJoursDansAnnee(anneeDebut);
-
-    //internet formula
-    //nbJours = g(jourDebut, moisDebut, anneeDebut) - g(jourFin, moisFin, anneeFin);
-
 
     return nbJours;
 }
@@ -191,11 +171,10 @@ unsigned nbJoursDepuisDebutAnnee(unsigned jour, unsigned mois, unsigned annee) {
     return nbJours;
 }
 
-void printDate(unsigned jour, unsigned mois, unsigned annee) {
-    char fillChar = '0';
-    cout << setfill(fillChar) << setw(2) << jour  << SEPARATEUR_DATE
-                              << setw(2) << mois  << SEPARATEUR_DATE
-                              << setw(4) << annee;
+void afficherDate(unsigned jour, unsigned mois, unsigned annee) {
+    cout << setfill('0') << setw(2) << jour  << SEPARATEUR_DATE
+         << setw(2) << mois  << SEPARATEUR_DATE
+         << setw(4) << annee << setfill(' ');
 }
 
 

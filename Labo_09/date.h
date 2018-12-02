@@ -183,6 +183,6 @@ unsigned nbJoursDepuisDebutAnnee(unsigned jour, unsigned mois, unsigned annee);
  * @param mois
  * @param annee
  */
-void printDate(unsigned jour, unsigned mois, unsigned annee);
+void afficherDate(unsigned jour, unsigned mois, unsigned annee);
 #endif /* DATE_H */
 

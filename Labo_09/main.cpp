@@ -19,11 +19,11 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 #include "date.h"
 #include "annexe.h"
 
 using namespace std;
-
 
 int g(int d, int m, int y) {
     m = (m + 9) % 12;
@@ -53,16 +53,17 @@ int main() {
 }
 
 int main2() {
-    const string MSG_SAISIE = "Veuillez saisir une date entre le ",
-                 MSG_ERREUR = "Date invalide";
+    const string MSG_SAISIE_DEBUT = "Veuillez saisir la date de debut entre le ",
+                 MSG_SAISIE_FIN   = "Veuillez saisir la date de fin   entre le ",
+                 MSG_ERREUR       = "Date invalide";
     unsigned jourDebut, moisDebut, anneeDebut,
              jourFin,   moisFin  , anneeFin;
 
-    saisieDate(MSG_SAISIE, MSG_ERREUR, jourDebut, moisDebut, anneeDebut);
-    saisieDate(MSG_SAISIE, MSG_ERREUR, jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin);
+    saisieDate(MSG_SAISIE_DEBUT, MSG_ERREUR, jourDebut, moisDebut, anneeDebut);
+    saisieDate(MSG_SAISIE_FIN,   MSG_ERREUR, jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin);
 
+    cout << "Nb jours            : " << nbJoursEntre(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin)  << endl;
     //internet formula
-    cout << "Nb jours : " << nombreJourEntre(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin)  << endl;
     cout << "Nb jours (internet) : " << g(jourFin, moisFin, anneeFin) - g(jourDebut, moisDebut, anneeDebut) << endl;
 
     return EXIT_SUCCESS;
