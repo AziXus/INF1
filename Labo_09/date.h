@@ -97,10 +97,11 @@ void saisieDate(const std::string& msg,
                 unsigned&          annee);
 
 /**
- * Fonction vérifiant si une année
- * @param annee_min
- * @param annee_max
- * @return
+ * Fonction vérifiant si l'annee entré par l'utilisateur est correcte
+ * Comprise entre deux année(annee_min, annee_max)
+ * @param annee_min entier non-signée conteant l'année minimale de la borne
+ * @param annee_max entier non-signée conteant l'année maximale de la borne
+ * @return true si l'année est dans la borne false dans le cas inverse
  */
 bool anneeCorrecte(const unsigned annee,
                    const unsigned annee_min,
@@ -109,7 +110,7 @@ bool anneeCorrecte(const unsigned annee,
 /**
  * Permet de définir si le mois entré par l'utlisateur est correcte
  * @param mois entier non-signé contenant le mois entré par l'utilisateur
- * @return true si le mois est dans les bornes(1-12) false si il est en dehors
+ * @return true si le mois est dans les bornes(1-12) false s'il est en dehors
  */
 bool moisCorrect(const unsigned mois);
 
