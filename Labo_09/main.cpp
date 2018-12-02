@@ -3,26 +3,24 @@
  Laboratoire : Labo_09_Date
  Fichier     : main.cpp
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
- Date        : 21.11.2018
+ Date        : 05.12.2018
 
- But         : Générer des questions pour tester les réflexes clavier de l'utilisateur.
-               Les questions sont des lettres de a à z qui devront être saisies.
-               L'utilisateur choisi le nombre de lancés entre 1 et 10.
-               Le nombre de réponses correctes et le temps effectué
-               pour terminer le questionnaire est donné en fin de programme.
+ But         : Calucler le nombre de jorus séparant 2 dates entrées par l'utilsateur.
+               Les dates doivent être au format JJ-MM-AAAA.
+               L'erreur de saisie doit être gérée.
                Le programme peut ensuite être recommencé ou stoppé.
 
- Remarque(s) : Utilisation de la fonction ctime pour mesurer le temps pris pour résoudre le questionnaire.
-               Le nombre de lancés doit être compris entre 1 et 10.
-               Utilisation des libraires annexe et reflex.              
+ Remarque(s) : Les dates entrées doivent être incluses entre 01-01-1900 et 31-12-2200.
+               Utilisation des libraires annexe et date.              
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
-0 */
+*/
 
 #include <cstdlib>
 #include <iostream>
 #include "date.h"
+#include "annexe.h"
 
 using namespace std;
 
@@ -37,7 +35,19 @@ int g(int d, int m, int y) {
 int main2();
 
 int main() {
-    main2();
+    const string MSG_SAISIE      = "Veuillez saisir une date entre le ",
+                 MSG_ERREUR      = "Saisie incorrecte veuillez recommencer",
+                 MSG_RECOMMENCER = "Voulez-vous recommencer ?";
+    
+    const unsigned int ANNEE_MIN = 1900,
+                       ANNEE_MAX = 2200;
+    do{
+        //Demande de saisie des dates à l'utilisateur
+        SaisieDate(MSG_SAISIE, MSG_ERREUR, ANNEE_MIN, ANNEE_MAX);
+        SaisieDate(MSG_SAISIE, MSG_ERREUR, ANNEE_MIN, ANNEE_MAX);
+        //affichage du nombre de jour séparant les 2 dates rentrées
+        cout << nombreJourEntre() << endl;
+    }while(!repondsOui(MSG_RECOMMENCER, MSG_ERREUR));
 
     return EXIT_SUCCESS;
 }

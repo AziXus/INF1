@@ -3,7 +3,7 @@
  Laboratoire : Labo_08_Clavier
  Fichier     : annexe.cpp
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
- Date        : 21.11.2018
+ Date        : 05.12.2018
 
  But         : Gérer les fonctions d'entrées sorties du programme ainsi que des 
                fonctions particulières
@@ -33,12 +33,12 @@ bool repondsOui(const string& msg, const string& msg_erreur, const char oui, con
     do {
         cout << msg << " : " << " [ " << oui << " |  " << non << "] : ";
         cin  >> valeurSaisie;
-        if(valeurSaisie == 'o' || valeurSaisie == 'n')
+        if(valeurSaisie == oui || valeurSaisie == non)
             valeurOK = true;
         else
         {
             valeurOK = false;
-            cout << "Erreur de saisie. Veuillez entrer la valeur o ou n" << endl;
+            cout << msg_erreur << endl;
         }
         viderBuffer();
     } while(!valeurOK);
