@@ -21,6 +21,7 @@
 //permet de changer la valeur de SEPRATEUR_CHAR si nécessaire 
 extern char SEPARATEUR_DATE;
 
+//défini les chiffres allant avec les mois
 enum Mois {
     Janvier = 1,
     Fevrier,

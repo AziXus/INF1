@@ -73,7 +73,8 @@ void saisieDate(const string&  msg,
 
         //Lecture du jour
         //Essaie de lire la date et s'arrête à la première erreur.
-        //les cin.get vide les '-' du buffer
+        //les cin.get vide les SEPARATEUR_DATE du buffer
+        //si SEPARATEUR_DATE = '-' on va supprimer le '-'
         valeurOk = cin >> jour and cin.get() == SEPARATEUR_DATE and cin >> mois and cin.get() == SEPARATEUR_DATE and cin >> annee;
 
         if (!valeurOk) {
