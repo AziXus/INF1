@@ -25,10 +25,17 @@
 
 using namespace std;
 
+void afficherResultat(const unsigned jourDebut,
+                      const unsigned moisDebut,
+                      const unsigned anneeDebut,
+                      const unsigned jourFin,
+                      const unsigned moisFin,
+                      const unsigned anneeFin);
+
 int main() {
     const string MSG_SAISIE_DEBUT = "Veuillez saisir la date de début entre le ",
                  MSG_SAISIE_FIN   = "Veuillez saisir la date de fin entre le ",
-                 MSG_ERREUR       = "Saisie incorrecte veuillez recommencer",
+                 MSG_ERREUR       = "Saisie incorrecte, veuillez recommencer",
                  MSG_RECOMMENCER  = "Voulez-vous recommencer ?";
     
     const unsigned int ANNEE_MIN = 1900,
@@ -40,20 +47,28 @@ int main() {
                  jourFin,
                  moisFin,
                  anneeFin;
-    do{
+    do {
         //Demande de saisie des dates à l'utilisateur
         saisieDate(MSG_SAISIE_DEBUT, MSG_ERREUR, ANNEE_MIN, ANNEE_MAX, jourDebut, moisDebut, anneeDebut);
         saisieDate(MSG_SAISIE_FIN, MSG_ERREUR, jourDebut, moisDebut, anneeDebut, ANNEE_MAX, jourFin, moisFin, anneeFin);
-        //Affichage du nombre de jour séparant les 2 dates rentrées
-        cout << "Il y a " 
-             << nbJoursEntre(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin) << " entre le ";
-             afficherDate(jourDebut, moisDebut, anneeDebut);
-             cout << " et le ";
-             afficherDate(jourFin, moisFin, anneeFin);
-             cout << endl;
-    }while(repondsOui(MSG_RECOMMENCER, MSG_ERREUR));//Demande à l'utilisateur s'il veut recommencer
+
+        afficherResultat(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin);
+    } while(repondsOui(MSG_RECOMMENCER, MSG_ERREUR)); //Demande à l'utilisateur s'il veut recommencer
 
     return EXIT_SUCCESS;
 }
 
-
+void afficherResultat(const unsigned jourDebut,
+                      const unsigned moisDebut,
+                      const unsigned anneeDebut,
+                      const unsigned jourFin,
+                      const unsigned moisFin,
+                      const unsigned anneeFin) {
+    //Affichage du nombre de jour séparant les 2 dates rentrées
+    cout << "Il y a "
+         << nbJoursEntre(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin) << " jour(s) entre le ";
+    afficherDate(jourDebut, moisDebut, anneeDebut);
+    cout << " et le ";
+    afficherDate(jourFin, moisFin, anneeFin);
+    cout << endl;
+}

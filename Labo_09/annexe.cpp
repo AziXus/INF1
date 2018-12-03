@@ -5,18 +5,13 @@
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 05.12.2018
 
- But         : Gérer les fonctions d'entrées sorties du programme ainsi que des 
-               fonctions particulières
-
- Remarque(s) : Utilisation de la fonction srand pour générer des nombres aléatoires             
-
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */
 #include <iostream>
 #include <iomanip>
 #include <limits>
-#include "annexe.h" 
+#include "annexe.h"
 
 using namespace std;
 
@@ -29,10 +24,12 @@ bool repondsOui(const string& msg, const string& msg_erreur, const char oui, con
 {
     char valeurSaisie;
     bool valeurOK;
+
     //boucle vérifiant que la valeur entrée soit o ou n et aucune autre valeur
     do {
-        cout << msg << " : " << " [ " << oui << " |  " << non << "] : ";
+        cout << msg << " [" << oui << "/" << non << "] : ";
         cin  >> valeurSaisie;
+
         if(valeurSaisie == oui || valeurSaisie == non)
             valeurOK = true;
         else

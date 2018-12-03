@@ -29,7 +29,5 @@ void viderBuffer(const char delimiteur = '\n');
  * Permet de déterminer si la partie devra être recommencée ou non
  * @return true pour recommencer et false pour arrêter
  */
-bool repondsOui(const std::string& msg, const std::string& msg_erreur, const char oui = 'o', const char non = 'n');
+bool repondsOui(const std::string& msg, const std::string& msg_erreur, const char oui = 'O', const char non = 'N');
 #endif
-
-
