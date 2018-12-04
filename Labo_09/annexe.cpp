@@ -15,30 +15,30 @@
 
 using namespace std;
 
-void viderBuffer(const char delimiteur)
+void viderBuffer(const char DELIMITEUR)
 {
-   cin.ignore(numeric_limits<streamsize>::max(), delimiteur);
+   cin.ignore(numeric_limits<streamsize>::max(), DELIMITEUR);
 }
 
-bool repondsOui(const string& msg, const string& msg_erreur, const char oui, const char non)
+bool repondsOui(const string& MSG, const string& MSG_ERREUR, const char OUI, const char NON)
 {
     char valeurSaisie;
     bool valeurOK;
 
     //boucle vérifiant que la valeur entrée soit o ou n et aucune autre valeur
     do {
-        cout << msg << " [" << oui << "/" << non << "] : ";
+        cout << MSG << " [" << OUI << "/" << NON << "] : ";
         cin  >> valeurSaisie;
 
-        if(valeurSaisie == oui || valeurSaisie == non)
+        if(valeurSaisie == OUI || valeurSaisie == NON)
             valeurOK = true;
         else
         {
             valeurOK = false;
-            cout << msg_erreur << endl;
+            cout << MSG_ERREUR << endl;
         }
         viderBuffer();
     } while(!valeurOK);
     
-    return valeurSaisie == oui;
+    return valeurSaisie == OUI;
 }

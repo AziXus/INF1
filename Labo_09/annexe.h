@@ -23,11 +23,11 @@ static const int PRECISION_FLOAT = 2;
 /**
  * Fonction permettant de vider le buffer
  */
-void viderBuffer(const char delimiteur = '\n');
+void viderBuffer(const char DELIMITEUR = '\n');
 
 /**
  * Permet de déterminer si la partie devra être recommencée ou non
  * @return true pour recommencer et false pour arrêter
  */
-bool repondsOui(const std::string& msg, const std::string& msg_erreur, const char oui = 'O', const char non = 'N');
+bool repondsOui(const std::string& MSG, const std::string& MSG_ERREUR, const char OUI = 'O', const char NON = 'N');
 #endif

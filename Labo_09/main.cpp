@@ -11,7 +11,8 @@
                Le programme peut ensuite être recommencé ou stoppé.
 
  Remarque(s) : Les dates entrées doivent être incluses entre 01-01-1900 et 31-12-2200.
-               Utilisation des libraires annexe et date.              
+               Utilisation des libraires annexe et date.
+               Utilisation de tableaux pour stocker les dates.
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -25,12 +26,13 @@
 
 using namespace std;
 
-void afficherResultat(const unsigned jourDebut,
-                      const unsigned moisDebut,
-                      const unsigned anneeDebut,
-                      const unsigned jourFin,
-                      const unsigned moisFin,
-                      const unsigned anneeFin);
+/**
+ *
+ * @param nbJoursEntreDate
+ * @param dateDebut
+ * @param dateFin
+ */
+void afficherResultat(unsigned nbJoursEntreDate, const unsigned dateDebut[], const unsigned dateFin[]);
 
 int main() {
     const string MSG_SAISIE_DEBUT = "Veuillez saisir la date de début entre le ",
@@ -40,35 +42,30 @@ int main() {
     
     const unsigned int ANNEE_MIN = 1900,
                        ANNEE_MAX = 2200;
-    
-    unsigned int jourDebut,
-                 moisDebut,
-                 anneeDebut,
-                 jourFin,
-                 moisFin,
-                 anneeFin;
+
+    unsigned dateDebut[3],
+             dateFin[3];
+
+    unsigned nbJoursEntreDate;
+
     do {
         //Demande de saisie des dates à l'utilisateur
-        saisieDate(MSG_SAISIE_DEBUT, MSG_ERREUR, ANNEE_MIN, ANNEE_MAX, jourDebut, moisDebut, anneeDebut);
-        saisieDate(MSG_SAISIE_FIN, MSG_ERREUR, jourDebut, moisDebut, anneeDebut, ANNEE_MAX, jourFin, moisFin, anneeFin);
+        saisieDate(MSG_SAISIE_DEBUT, MSG_ERREUR, ANNEE_MIN, ANNEE_MAX, dateDebut);
+        saisieDate(MSG_SAISIE_FIN, MSG_ERREUR, dateDebut, ANNEE_MAX, dateFin);
 
-        afficherResultat(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin);
+        nbJoursEntreDate = nbJoursEntre(dateDebut, dateFin);
+
+        afficherResultat(nbJoursEntreDate, dateDebut, dateFin);
     } while(repondsOui(MSG_RECOMMENCER, MSG_ERREUR)); //Demande à l'utilisateur s'il veut recommencer
 
     return EXIT_SUCCESS;
 }
 
-void afficherResultat(const unsigned jourDebut,
-                      const unsigned moisDebut,
-                      const unsigned anneeDebut,
-                      const unsigned jourFin,
-                      const unsigned moisFin,
-                      const unsigned anneeFin) {
+void afficherResultat(unsigned nbJoursEntreDate, const unsigned dateDebut[], const unsigned dateFin[]) {
     //Affichage du nombre de jour séparant les 2 dates rentrées
-    cout << "Il y a "
-         << nbJoursEntre(jourDebut, moisDebut, anneeDebut, jourFin, moisFin, anneeFin) << " jour(s) entre le ";
-    afficherDate(jourDebut, moisDebut, anneeDebut);
+    cout << "Il y a " << nbJoursEntreDate << " jour(s) entre le ";
+    afficherDate(dateDebut);
     cout << " et le ";
-    afficherDate(jourFin, moisFin, anneeFin);
+    afficherDate(dateFin);
     cout << endl;
 }

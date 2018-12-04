@@ -18,10 +18,17 @@
 #define DATE_H
 
 #include <string>
-//permet de changer la valeur de SEPRATEUR_CHAR si nécessaire 
+
+//La valeur de SEPARATEUR_CHAR peut être changé, sa valeur par défaut est '-'
 extern char SEPARATEUR_DATE;
 
-//défini les chiffres allant avec les mois
+//Index de l'emplacement de jour, mois, année dans les tableaux de dates
+const unsigned INDEX_JOUR    =    0,
+               INDEX_MOIS    =    1,
+               INDEX_ANNEE   =    2;
+
+//Défini les numéros des mois. Les mois ont tous été définies afin de pouvoir réutiliser l'enum dans
+//d'autres programmes.
 enum Mois {
     Janvier = 1,
     Fevrier,
@@ -41,86 +48,72 @@ enum Mois {
  * Fonction permettant de lire une date saisie par l'utilisateur dans une borne donnée en gérant les
  * erreurs de saisie.
  * @param msg string constante contenant le message à afficher lors de la saisie
- * @param msg_erreur string constante contenant le message d'erreur lors d'une saisie erronée
- * @param jour_min entier non-signé constant contenant le jour minimal pouvant être saisie
- * @param mois_min entier non-signé constant contenant le mois minimial pouvant être saisie
- * @param annee_min entier non-signé constant contenant l'année minimal pouvant être saisie
- * @param jour_max entier non-signé constant contenant le jour maximal pouvant être saisie
- * @param mois_max entier non-signé constant contenant le mois maximal pouvant être saisie
- * @param annee_max entier non-signé constant contenant l'annee maximal pouvant être saisie
+ * @param msgErreur string constante contenant le message d'erreur lors d'une saisie erronée
+ * @param jourMin entier non-signé constant contenant le jour minimal pouvant être saisie
+ * @param moisMin entier non-signé constant contenant le mois minimial pouvant être saisie
+ * @param anneeMin entier non-signé constant contenant l'année minimal pouvant être saisie
+ * @param jourMax entier non-signé constant contenant le jour maximal pouvant être saisie
+ * @param moisMax entier non-signé constant contenant le mois maximal pouvant être saisie
+ * @param anneeMax entier non-signé constant contenant l'annee maximal pouvant être saisie
  * @param jour entier non-signé contenant le jour saisie par l'utilisteur
  * @param mois entier non-signé contenant le mois saisie par l'utilisteur
  * @param annee entier non-signé contenant l'annee saisie par l'utilisteur
  */
 void saisieDate(const std::string& msg,
-                const std::string& msg_erreur,
-                const unsigned     jour_min,
-                const unsigned     mois_min,
-                const unsigned     annee_min,
-                const unsigned     jour_max,
-                const unsigned     mois_max,
-                const unsigned     annee_max,
-                unsigned&          jour,
-                unsigned&          mois,
-                unsigned&          annee);
+                const std::string& msgErreur,
+                const unsigned     dateMin[],
+                const unsigned     dateMax[],
+                unsigned           dateSaisie[]);
 
  /**
  * Surcharge de saisieDate en spécifiant la borne des années.
  * @param msg string constante contenant le message à afficher lors de la saisie
- * @param msg_erreur string constante contenant le message d'erreur lors d'une saisie erronée
- * @param annee_min entier non-signé constant contenant l'année minimal pouvant être saisie
- * @param annee_max entier non-signé constant contenant l'annee maximal pouvant être saisie
+ * @param msgErreur string constante contenant le message d'erreur lors d'une saisie erronée
+ * @param anneeMin entier non-signé constant contenant l'année minimal pouvant être saisie
+ * @param anneeMax entier non-signé constant contenant l'annee maximal pouvant être saisie
  * @param jour entier non-signé contenant le jour saisie par l'utilisteur
  * @param mois entier non-signé contenant le mois saisie par l'utilisteur
  * @param annee entier non-signé contenant l'annee saisie par l'utilisteur
   */
-void saisieDate(const std::string& msg,
-                const std::string& msg_erreur,
-                const unsigned     annee_min,
-                const unsigned     annee_max,
-                unsigned&          jour,
-                unsigned&          mois,
-                unsigned&          annee);
+ void saisieDate(const std::string& msg,
+                 const std::string& msgErreur,
+                 const unsigned     dateMin[],
+                 unsigned           anneeMax,
+                 unsigned           dateSaisie[]);
 
 /**
  * Surcharge de saisieDate en spécifiant la date minimale et uniquement l'année maximale
  * @param msg string constante contenant le message à afficher lors de la saisie
- * @param msg_erreur string constante contenant le message d'erreur lors d'une saisie erronée
- * @param jour_min entier non-signé constant contenant le jour minimal pouvant être saisie
- * @param mois_min entier non-signé constant contenant le mois minimial pouvant être saisie
- * @param annee_min entier non-signé constant contenant l'année minimal pouvant être saisie
- * @param annee_max entier non-signé constant contenant l'annee maximal pouvant être saisie
+ * @param msgErreur string constante contenant le message d'erreur lors d'une saisie erronée
+ * @param jourMin entier non-signé constant contenant le jour minimal pouvant être saisie
+ * @param moisMin entier non-signé constant contenant le mois minimial pouvant être saisie
+ * @param anneeMin entier non-signé constant contenant l'année minimal pouvant être saisie
+ * @param anneeMax entier non-signé constant contenant l'annee maximal pouvant être saisie
  * @param jour entier non-signé contenant le jour saisie par l'utilisteur
  * @param mois entier non-signé contenant le mois saisie par l'utilisteur
  * @param annee entier non-signé contenant l'annee saisie par l'utilisteur
  */
 void saisieDate(const std::string& msg,
-                const std::string& msg_erreur,
-                const unsigned     jour_min,
-                const unsigned     mois_min,
-                const unsigned     annee_min,
-                const unsigned     annee_max,
-                unsigned&          jour,
-                unsigned&          mois,
-                unsigned&          annee);
+                const std::string& msgErreur,
+                unsigned           anneeMin,
+                unsigned           anneeMax,
+                unsigned           dateSaisie[]);
 
 /**
  * Vérifie si l'année passée en paramètre est comprise entre deux années (annee_min, annee_max)
  * @param annee entier non-signée contenant l'année à vérifier
- * @param annee_min entier non-signée contenant l'année minimale de la borne
- * @param annee_max entier non-signée contenant l'année maximale de la borne
+ * @param anneeMin entier non-signée contenant l'année minimale de la borne
+ * @param anneeMax entier non-signée contenant l'année maximale de la borne
  * @return true si l'année est dans la borne et false sinon
  */
-bool anneeCorrecte(const unsigned annee,
-                   const unsigned annee_min,
-                   const unsigned annee_max);
+bool anneeCorrecte(unsigned annee);
 
 /**
  * Vérifie si le mois passée en paramètre est correct
  * @param mois entier non-signé contenant le mois à vérifier
  * @return true si le mois est dans la borne (1-12) et false sinon
  */
-bool moisCorrect(const unsigned mois);
+bool moisCorrect(unsigned mois);
 
 /**
  * Permet de définir si le jour passé en paramètre est correct.
@@ -131,14 +124,14 @@ bool moisCorrect(const unsigned mois);
  * @param annee entier non-signé constant contenant l'annee
  * @return true si le jour est dans la borne et false sinon
  */
-bool jourCorrect(const unsigned jour, const unsigned mois, const unsigned annee);
+bool jourCorrect(const unsigned date[]);
 
 /**
  * Détermine si l'année est bissextile
  * @param annee entier non-signée constant contenant l'annee à vérifier
  * @return true si l'année est bissextile false si ce n'est pas le cas
  */
-bool estBissextile(const unsigned annee);
+bool estBissextile(unsigned annee);
 
 /**
  * Calcul le nombre de jour dans un mois donné
@@ -146,7 +139,7 @@ bool estBissextile(const unsigned annee);
  * @param annee entier non-signée constant contenant l'annee
  * @return un entier non-signée indiquant le nombre de jour dans le mois donné
  */
-unsigned int nbJoursDansMois(const unsigned mois, const unsigned annee);
+unsigned int nbJoursDansMois(unsigned mois, unsigned annee);
 
 /**
  * Calcul le nombre de jours écoulés entre deux dates. La date de fin n'est pas incluse de sorte
@@ -159,19 +152,14 @@ unsigned int nbJoursDansMois(const unsigned mois, const unsigned annee);
  * @param anneeFin entier non-signé constant contenant l'année de fin
  * @return un entier non-signé représentant le nombre de jours entre deux dates
  */
-unsigned nbJoursEntre(const unsigned jourDebut,
-                      const unsigned moisDebut,
-                      const unsigned anneeDebut,
-                      const unsigned jourFin,
-                      const unsigned moisFin,
-                      const unsigned anneeFin);
+unsigned nbJoursEntre(const unsigned dateDebut[], const unsigned dateFin[]);
 
 /**
  * Calcul le nombre de jours pour une année donnée
  * @param annee entier non-signé contenant l'année à utiliser
  * @return entier non-signé indiquant le nombre de jour dans une année (365 ou 366 si bissextile)
  */
-unsigned nbJoursDansAnnee(unsigned annee);
+unsigned nbJoursDansAnnee(unsigned int annee);
 
 /**
  * Permet de définir le nombre de jour écoulés depuis le début d'une année donnée
@@ -180,7 +168,7 @@ unsigned nbJoursDansAnnee(unsigned annee);
  * @param annee entier non-signé contenant l'année à utiliser
  * @return un entier non-signée indiquant le nombre de jour écoulé depuis le début de l'annee
  */
-unsigned nbJoursDepuisDebutAnnee(unsigned jour, unsigned mois, unsigned annee);
+unsigned nbJoursDepuisDebutAnnee(const unsigned date[]);
 
 /**
  * Affiche la date dans le format JJ-MM-AAAA
@@ -188,6 +176,36 @@ unsigned nbJoursDepuisDebutAnnee(unsigned jour, unsigned mois, unsigned annee);
  * @param mois entier non-signé contenant le mois à afficher
  * @param annee entier non-signé contenant l'année à afficher
  */
-void afficherDate(unsigned jour, unsigned mois, unsigned annee);
-#endif
+void afficherDate(const unsigned date[],
+                  char           carRemplissage = '0',
+                  int            tailleJour     = 2,
+                  int            tailleMois     = 2,
+                  int            tailleAnnee    = 4);
 
+/**
+ * Vérifie si le jour, mois et l'année est correct et place les valeurs dans le tableau date
+ * @param jour
+ * @param mois
+ * @param annee
+ * @param date
+ * @return
+ */
+bool creerDate(unsigned jour, unsigned mois, unsigned annee, unsigned date[]);
+
+/**
+ * Fonction vérifiant si la date se situe dans l'intervalle donné
+ * @param date
+ * @param dateMin
+ * @param dateMax
+ * @return
+ */
+bool dateDansBorne(const unsigned date[], const unsigned dateMin[], const unsigned dateMax[]);
+
+/**
+ *
+ * @param date
+ * @return
+ */
+bool dateValide(const unsigned date[]);
+
+#endif

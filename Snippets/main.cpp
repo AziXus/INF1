@@ -14,23 +14,22 @@ using namespace std;
  * xx
  * x
  */
-void printTriangle_1(unsigned int n, char c = 'x');
-void printTriangle_2(unsigned int n, char c = 'x');
-void printTriangle_3R(unsigned int n, unsigned int w, char c = 'x');
-void printTriangle_3(unsigned int n, char c = 'x');
-void printTriangle_4(unsigned int n, char c = 'x');
-void printTriangle_4R1(unsigned int n, unsigned int w, char c = 'x');
-void printTriangle_4R2(unsigned int n, unsigned int w, char c = 'x');
-void recursiveChar(unsigned int n, char c = 'x');
+
+void printTriangle1(unsigned n, char c = 'x');
+void printTriangle2(unsigned n, char c = 'x');
+void printTriangle3(unsigned n, char c = 'x');
+void printTriangle3R(unsigned n, char c, int w);
+void printTriangle4R(unsigned n, char c, int w);
+void printTriangle4(unsigned n, char c = 'x');
 
 int main() {
-    printTriangle_1(4);
+    printTriangle1(4);
     cout << endl;
-    printTriangle_2(4);
+    printTriangle2(4);
     cout << endl;
-    printTriangle_3(4);
+    printTriangle3(4);
     cout << endl;
-    printTriangle_4(4);
+    printTriangle4(4);
 
     cout << "\nPress ENTER to quit\n";
     EMPTY_BUFFER;
@@ -38,57 +37,40 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-void recursiveChar(unsigned int n, char c) {
-    if (n == 0)
-        return;
-
-    cout << c;
-    recursiveChar(n - 1);
-}
-
-void printTriangle_1(unsigned int n, char c) {
-    if (n == 0)
-        return;
-
-    cout << string(n, c) << endl;
-
-    printTriangle_1(n - 1, c);
-}
-
-void printTriangle_2(unsigned int n, char c) {
+void printTriangle1(unsigned n, char c) {
     if (n > 0) {
-        printTriangle_2(n - 1, c);
+        cout << string(n, c) << endl;
+        printTriangle1(n - 1, c);
+    }
+}
+
+void printTriangle2(unsigned n, char c) {
+    if (n > 0) {
+        printTriangle2(n - 1, c);
         cout << string(n, c) << endl;
     }
 }
 
-void printTriangle_3(unsigned int n, char c) {
-    printTriangle_3R(n, n, c);
+void printTriangle3(unsigned n, char c) {
+    printTriangle3R(n, c, 0);
 }
 
-void printTriangle_3R(unsigned int n, unsigned int w, char c) {
+void printTriangle3R(unsigned n, char c, signed w) {
     if (n > 0) {
-        printTriangle_3R(n - 1, w, c);
-        cout << setw(w) << string(n, c) << endl;
+        printTriangle3R(n - 1, c, w + 1);
+        cout << string(w, ' ') << string(n, c) << endl;
     }
 }
 
-void printTriangle_4(unsigned int n, char c) {
-    printTriangle_4R1(n, n, c);
-    printTriangle_4R2(n - 1, n, c);
+void printTriangle4(unsigned n, char c) {
+    printTriangle3R(n, c, 0);
+    printTriangle4R(n - 1, c, 1);
 }
 
-void printTriangle_4R1(unsigned int n, unsigned int w, char c) {
-    if (n > 0) {
-        printTriangle_4R1(n - 1, w, c);
-        cout << setw(w) << string(n, c) << endl;
-    }
-}
 
-void printTriangle_4R2(unsigned int n, unsigned int w, char c) {
+void printTriangle4R(unsigned n, char c, signed w) {
     if (n > 0) {
-        cout << setw(w) << string(n, c) << endl;
-        printTriangle_4R2(n - 1, w, c);
+        cout << string(w, ' ') << string(n, c) << endl;
+        printTriangle4R(n - 1, c, w + 1);
     }
-
 }
