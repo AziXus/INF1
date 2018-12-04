@@ -43,7 +43,6 @@ int main() {
     const unsigned int ANNEE_MIN = 1900,
                        ANNEE_MAX = 2200;
 
-
     unsigned dateDebut[3],
              dateFin[3];
 
