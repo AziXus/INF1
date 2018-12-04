@@ -5,13 +5,16 @@
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 05.12.2018
 
- But         : Permet de gérer les saisies de dates et de vérifier la validité de dates.
+ But         : Permet de gérer les saisies de dates et de vérifier la validité des dates.
                Permet de déterminer si les années sont bissextiles et de calculer la
                différence de jours entre 2 dates.
 
  Remarque(s) : Utilisation de la libraire annexe.
-               Les dates sont stockées dans un tableau d'entiers non-signés avec en
-               position 0 le jour, en position 1 le mois et en position 2 l'année.
+               Les dates sont stockées dans un tableau d'entiers non-signés de taille
+               minimum de 3 avec en position 0 le jour, en position 1 le mois 
+               et en position 2 l'année.
+               Utilisation de la fonction Substring(substr) et StringToInt(stoi) car
+               cela a été autorisé pour ce labo.
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -30,8 +33,8 @@ const unsigned INDEX_JOUR  = 0,
                INDEX_MOIS  = 1,
                INDEX_ANNEE = 2;
 
-//Défini les numéros des mois. Les mois ont tous été définies afin de pouvoir réutiliser l'enum dans
-//d'autres programmes.
+//Défini les numéros des mois. Les mois ont tous été définis afin de pouvoir réutiliser 
+//l'enum dans d'autres programmes.
 enum Mois {
     Janvier = 1,
     Fevrier,
@@ -54,7 +57,7 @@ enum Mois {
  * @param msgErreur string constante contenant le message d'erreur lors d'une saisie erronée
  * @param dateMin tableau d'entiers non-signés contenant la date minimale pouvant être saisie
  * @param dateMax tableau d'entiers non-signés contenant la date maximale pouvant être saisie
- * @param dateSaisie tableau d'entiers non-signés contenant la date saisie
+ * @param dateSaisie tableau d'entiers non-signés qui va contenir la date saisie
  */
 void saisieDate(const std::string& msg,
                 const std::string& msgErreur,
@@ -63,12 +66,12 @@ void saisieDate(const std::string& msg,
                 unsigned           dateSaisie[]);
 
  /**
- * Surcharge de saisieDate en spécifiant la date minimale ainsi que l'année maximale (31-12-AAAA).
+ * Surcharge de saisieDate en spécifiant la date minimale et l'année maximale (31-12-AAAA).
  * @param msg string constante contenant le message à afficher lors de la saisie
  * @param msgErreur string constante contenant le message d'erreur lors d'une saisie erronée
  * @param dateMin tableau d'entiers non-signés contenant la date minimale pouvant être saisie
- * @param anneeMax entier non-signé constant contenant l'annee maximal pouvant être saisie
- * @param dateSaisie tableau d'entiers non-signés contenant la date saisie
+ * @param anneeMax entier non-signé contenant l'année maximale pouvant être saisie
+ * @param dateSaisie tableau d'entiers non-signés qui va contenir la date saisie
  */
  void saisieDate(const std::string& msg,
                  const std::string& msgErreur,
@@ -80,9 +83,9 @@ void saisieDate(const std::string& msg,
 * Surcharge de saisieDate en spécifiant uniquement l'année minimale (01-01-AAAA) et l'année maximale (31-12-AAAA).
 * @param msg string constante contenant le message à afficher lors de la saisie
 * @param msgErreur string constante contenant le message d'erreur lors d'une saisie erronée
-* @param anneeMin entier non-signé constant contenant l'annee minimale pouvant être saisie
-* @param anneeMax entier non-signé constant contenant l'annee maximale pouvant être saisie
-* @param dateSaisie tableau d'entiers non-signés contenant la date saisie
+* @param anneeMin entier non-signé contenant l'annee minimale pouvant être saisie
+* @param anneeMax entier non-signé contenant l'annee maximale pouvant être saisie
+* @param dateSaisie tableau d'entiers non-signés qui va contenir la date saisie
 */
 void saisieDate(const std::string& msg,
                 const std::string& msgErreur,
@@ -91,7 +94,7 @@ void saisieDate(const std::string& msg,
                 unsigned           dateSaisie[]);
 
 /**
- * Fonction vérifiant si la date en paramètre se situe dans une intervalle passé en paramètre (dateMin et dateMax)
+ * Fonction vérifiant si la date en paramètre se situe dans une intervalle (dateMin et dateMax)
  * @param date tableau d'entiers non-signés contenant la date à vérifier
  * @param dateMin tableau d'entiers non-signés contenant la date minimale
  * @param dateMax tableau d'entiers non-signés contenant la date maximale
@@ -108,15 +111,15 @@ bool moisCorrect(unsigned mois);
 
 /**
  * Permet de définir si le jour contenu dans date est correct.
- * La date complète est passée en paramètre afin de déterminer si l'année est bissexitile
- * et si le mois est Février. Dans ce cas la borne passe de 28 ou 29 au lieu de 30 ou 31.
+ * La date complète est passée en paramètre afin de déterminer si l'année est bissexitile ou non,
+ * et si le mois est Février. Dans ce cas la borne a pour maximum 28 ou 29 au lieu de 30 ou 31.
  * @param date tableau d'entiers non-signés contenant la date à vérifier
  * @return true si le jour est valide et false sinon
  */
 bool jourCorrect(const unsigned date[]);
 
 /**
- * Place les valeurs en paramètre dans le tableau date également passé en paramètre
+ * Place les valeurs en paramètre dans un tableau nommé date
  * @param jour entier non-signé représentant un jour
  * @param mois entier non-signé représentant un mois
  * @param annee entier non-signé représentant une année
@@ -126,15 +129,15 @@ void creerTableauDate(unsigned jour, unsigned mois, unsigned annee, unsigned dat
 
 /**
  * Détermine si l'année est bissextile
- * @param annee entier non-signée constant contenant l'annee à vérifier
+ * @param annee entier non-signée contenant l'année à vérifier
  * @return true si l'année est bissextile false si ce n'est pas le cas
  */
 bool estBissextile(unsigned annee);
 
 /**
  * Calcul le nombre de jour dans un mois donné
- * @param mois entier non-signée constant contenant le mois
- * @param annee entier non-signée constant contenant l'annee
+ * @param mois entier non-signée contenant le mois
+ * @param annee entier non-signée contenant l'annee
  * @return un entier non-signée indiquant le nombre de jour dans le mois donné
  */
 unsigned int nbJoursDansMois(unsigned mois, unsigned annee);

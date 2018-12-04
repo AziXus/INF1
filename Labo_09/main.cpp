@@ -7,12 +7,13 @@
 
  But         : Calculer le nombre de jours séparant 2 dates entrées par l'utilsateur.
                Les dates doivent être au format JJ-MM-AAAA.
-               L'erreur de saisie doit être gérée.
+               Les erreurs de saisie doivent être gérées.
                Le programme peut ensuite être recommencé ou stoppé.
 
  Remarque(s) : Les dates entrées doivent être incluses entre 01-01-1900 et 31-12-2200.
                Utilisation des libraires annexe et date.
-               Utilisation de tableaux pour stocker les dates.
+               Les dates sont stockées dans un tableau d'entiers non-signés avec en
+               position 0 le jour, en position 1 le mois et en position 2 l'année.
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -20,7 +21,6 @@
 
 #include <cstdlib>
 #include <iostream>
-#include <iomanip>
 #include "date.h"
 #include "annexe.h"
 
@@ -42,7 +42,8 @@ int main() {
     
     const unsigned int ANNEE_MIN = 1900,
                        ANNEE_MAX = 2200;
-
+    //Initialisation des tableaux qui contiendront le jour, mois, annee 
+    //saisie par l'utilisateur
     unsigned dateDebut[3],
              dateFin[3];
 
@@ -54,7 +55,7 @@ int main() {
         //Demande de saisie des dates à l'utilisateur
         saisieDate(MSG_SAISIE_DEBUT, MSG_ERREUR, ANNEE_MIN, ANNEE_MAX, dateDebut);
         saisieDate(MSG_SAISIE_FIN, MSG_ERREUR, dateDebut, ANNEE_MAX, dateFin);
-
+        //calcul de la différence de jour entre la date de début et de fin
         nbJoursEntreDate = nbJoursEntre(dateDebut, dateFin);
 
         afficherResultat(nbJoursEntreDate, dateDebut, dateFin);
@@ -64,7 +65,6 @@ int main() {
 }
 
 void afficherResultat(unsigned nbJoursEntreDate, const unsigned dateDebut[], const unsigned dateFin[]) {
-    //Affichage du nombre de jour séparant les 2 dates rentrées
     cout << "Il y a " << nbJoursEntreDate << " jour(s) entre le ";
     afficherDate(dateDebut);
     cout << " et le ";

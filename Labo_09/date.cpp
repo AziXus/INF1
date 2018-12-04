@@ -29,7 +29,7 @@ void saisieDate(const std::string& msg,
                 unsigned           anneeMin,
                 unsigned           anneeMax,
                 unsigned           dateSaisie[]) {
-    //dateMin et dateMax sont interne à la librairie
+    //dateMin et dateMax sont internes à la librairie et donc la taille est fixe
     unsigned dateMin[3];
     unsigned dateMax[3];
 
@@ -44,7 +44,7 @@ void saisieDate(const std::string& msg,
                 const unsigned     dateMin[],
                 unsigned           anneeMax,
                 unsigned           dateSaisie[]) {
-    //dateMax est interne à la librairie
+    //dateMax est interne à la librairie et donc la taille est fixe
     unsigned dateMax[3];
     creerTableauDate(JOUR_MAX, Mois::Decembre, anneeMax, dateMax);
 
@@ -56,7 +56,7 @@ void saisieDate(const std::string& msg,
                 const unsigned     dateMin[],
                 const unsigned     dateMax[],
                 unsigned           dateSaisie[]) {
-    //static const pour les initialiser une seule fois
+    //static const pour les initialiser qu'une seule fois
     static const unsigned POS_JOUR     = 0,
                           TAILLE_JOUR  = 2,
                           POS_MOIS     = POS_JOUR + TAILLE_JOUR + 1, //+1 a cause du séparateur
@@ -83,6 +83,7 @@ void saisieDate(const std::string& msg,
         if (date.size() != POS_ANNEE + TAILLE_ANNEE) {
             valeurOk = false;
         } else {
+            //substr permet de sélectionner une partie de la chaîne de caractère
             jour  = date.substr(POS_JOUR, TAILLE_JOUR);
             mois  = date.substr(POS_MOIS, TAILLE_MOIS);
             annee = date.substr(POS_ANNEE, TAILLE_ANNEE);
@@ -97,8 +98,9 @@ void saisieDate(const std::string& msg,
             }
         }
 
-        //Vérification des saisies
-        //On assume que les années sont toujours valides
+        //Vérification des saisies et que la date soit dans les bornes
+        //On assume que les années sont toujours valides car le format de l'année est AAAA (0000-9999)
+        //et rien d'autre
         if(!valeurOk or !moisCorrect(dateSaisie[INDEX_MOIS]) or
            !jourCorrect(dateSaisie) or !dateDansBorne(dateSaisie, dateMin, dateMax))
         {
@@ -188,7 +190,7 @@ unsigned nbJoursEntre(const unsigned dateDebut[], const unsigned dateFin[]) {
     nbJoursAnneeDebut = nbJoursDansAnnee(dateDebut[INDEX_ANNEE]) - nbJoursDepuisDebutAnnee(dateDebut);
 
     //Calcul le nombre de jours du début de la dernière année à la date de fin
-    nbJoursAnneeFin   = nbJoursDepuisDebutAnnee(dateFin);
+    nbJoursAnneeFin = nbJoursDepuisDebutAnnee(dateFin);
 
     nbJours = nbJoursAnneeDebut + nbJoursAnneeFin;
 
@@ -197,7 +199,10 @@ unsigned nbJoursEntre(const unsigned dateDebut[], const unsigned dateFin[]) {
         nbJours += nbJoursDansAnnee(anneeActuelle);
     }
 
-    //Si l'année de depart est identique à l'année de fin, on enlève une année (365 ou 366) au nombre de jours.
+    //Si l'année de départ est identique à l'année de fin, on enlève une année (365 ou 366) au nombre de jours.
+    //Car nbJoursAnneeDebut donne les jours de la date de début jusqu'au 31-12 et 
+    //nbJoursAnneFin donne de 01-01 à la date de fin.
+    //La valeur voulu est celle se situant entre ces deux nombres et c'est pour cela qu'il faut enlever une année.
     if (dateDebut[INDEX_ANNEE] == dateFin[INDEX_ANNEE])
         nbJours -= nbJoursDansAnnee(dateDebut[INDEX_ANNEE]);
 

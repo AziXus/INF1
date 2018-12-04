@@ -1,6 +1,6 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : Labo_08_Clavier
+ Laboratoire : Labo_09_Date
  Fichier     : annexe.cpp
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 05.12.2018
@@ -9,7 +9,6 @@
  -----------------------------------------------------------------------------------
  */
 #include <iostream>
-#include <iomanip>
 #include <limits>
 #include "annexe.h"
 
@@ -45,10 +44,10 @@ bool repondsOui(const string& msg, const string& msgErreur, char oui, char non)
 
 bool estUnNombre(const string& chaineCaractere) {
     //Caractère '0' (plus petit chiffre)
-    static const char CAR_ZERO = '0'; //static afin de l'initialiser une seule fois
-
+    static const char CAR_ZERO = '0'; //static afin de l'initialiser qu'une seule fois
+    //boucle parcourant la chaîne de caractère
     for (char c: chaineCaractere) {
-        //INDEX_NOMBRE_ASCII + 9 correspond au caractère '9'
+        //CAR_ZERO + 9 correspond au caractère '9'
         if (c < CAR_ZERO or c > CAR_ZERO + 9)
             return false;
     }
