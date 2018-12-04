@@ -21,10 +21,8 @@ using namespace std;
 char SEPARATEUR_DATE = '-';
 
 //Valeurs par défaut de la librairie
-const unsigned JOUR_MIN      =    1,
-               JOUR_MAX      =   31,
-               JOURS_FEVRIER =   28,
-               JOURS_ANNEE   =  365;
+const unsigned JOUR_MIN =  1,
+               JOUR_MAX = 31;
 
 void saisieDate(const std::string& msg,
                 const std::string& msgErreur,
@@ -58,13 +56,13 @@ void saisieDate(const std::string& msg,
                 const unsigned     dateMin[],
                 const unsigned     dateMax[],
                 unsigned           dateSaisie[]) {
-
-    const int POS_JOUR     = 0,
-              TAILLE_JOUR  = 2,
-              POS_MOIS     = POS_JOUR + TAILLE_JOUR + 1, //+1 a cause du séparateur
-              TAILLE_MOIS  = 2,
-              POS_ANNEE    = POS_MOIS + TAILLE_MOIS + 1, //+1 a cause du séparateur
-              TAILLE_ANNEE = 4;
+    //static const pour les initialiser une seule fois
+    static const unsigned POS_JOUR     = 0,
+                          TAILLE_JOUR  = 2,
+                          POS_MOIS     = POS_JOUR + TAILLE_JOUR + 1, //+1 a cause du séparateur
+                          TAILLE_MOIS  = 2,
+                          POS_ANNEE    = POS_MOIS + TAILLE_MOIS + 1, //+1 a cause du séparateur
+                          TAILLE_ANNEE = 4;
 
     string date, jour, mois, annee;
     bool valeurOk;
@@ -92,8 +90,9 @@ void saisieDate(const std::string& msg,
             //Vérifie que les chaines de caractères sont des nombres
             valeurOk = estUnNombre(jour) and estUnNombre(mois) and estUnNombre(annee);
 
-            //Si la saisie est correct, on créé le tableau date
+            //Si la saisie est correct (i.e. toutes les chaines sont des nombres), on créé le tableau date.
             if (valeurOk) {
+                //Les valeurs string représentant des nombres sont convertis en int grâce à stoi
                 creerTableauDate((unsigned)stoi(jour), (unsigned)stoi(mois), (unsigned)stoi(annee), dateSaisie);
             }
         }
@@ -112,8 +111,8 @@ void saisieDate(const std::string& msg,
 bool dateDansBorne(const unsigned date[], const unsigned dateMin[], const unsigned dateMax[]) {
     //Converti les dates vers le format entier AAAAMMJJ afin de pouvoir faire une comparaison entière
     unsigned dateEntier    =    date[INDEX_ANNEE] * 10000 +    date[INDEX_MOIS] * 100 +    date[INDEX_JOUR],
-            dateMinEntier = dateMin[INDEX_ANNEE] * 10000 + dateMin[INDEX_MOIS] * 100 + dateMin[INDEX_JOUR],
-            dateMaxEntier = dateMax[INDEX_ANNEE] * 10000 + dateMax[INDEX_MOIS] * 100 + dateMax[INDEX_JOUR];
+             dateMinEntier = dateMin[INDEX_ANNEE] * 10000 + dateMin[INDEX_MOIS] * 100 + dateMin[INDEX_JOUR],
+             dateMaxEntier = dateMax[INDEX_ANNEE] * 10000 + dateMax[INDEX_MOIS] * 100 + dateMax[INDEX_JOUR];
 
     return dateEntier >= dateMinEntier and dateEntier <= dateMaxEntier;
 }
@@ -137,6 +136,9 @@ bool estBissextile(unsigned annee) {
 }
 
 unsigned int nbJoursDansMois(unsigned mois, unsigned annee) {
+    //static const afin de l'initialiser une seule fois
+    static const unsigned JOURS_FEVRIER = 28;
+
     unsigned int nbJours;
 
     if (mois == Mois::Fevrier) {
@@ -156,13 +158,17 @@ unsigned int nbJoursDansMois(unsigned mois, unsigned annee) {
 }
 
 unsigned nbJoursDansAnnee(unsigned int annee) {
+    //static const afin de l'initialiser une seule fois
+    static const unsigned JOURS_ANNEE = 365;
+
+    //une année bissextile comprend 366 jours
     return JOURS_ANNEE + estBissextile(annee);
 }
 
 unsigned nbJoursDepuisDebutAnnee(const unsigned date[]) {
     unsigned nbJours = 0;
 
-    //De janvier jusqu'a mois - 1
+    //Boucle de janvier jusqu'au mois en paramètre (non-compris) calculant le nombre de jours total
     for (unsigned moisActuel = 1; moisActuel < date[INDEX_MOIS]; ++moisActuel) {
         nbJours += nbJoursDansMois(moisActuel, date[INDEX_ANNEE]);
     }
@@ -178,10 +184,10 @@ unsigned nbJoursEntre(const unsigned dateDebut[], const unsigned dateFin[]) {
              nbJoursAnneeFin,
              nbJours;
 
-    //Calcul le nombre de jours de la date de départ jusqu'à la fin de l'année de départ non-compris
+    //Calcul le nombre de jours de la date de départ jusqu'à la fin de l'année de départ
     nbJoursAnneeDebut = nbJoursDansAnnee(dateDebut[INDEX_ANNEE]) - nbJoursDepuisDebutAnnee(dateDebut);
 
-    //Calcul le nombre de jours du début de la dernière année à la date de fin compris
+    //Calcul le nombre de jours du début de la dernière année à la date de fin
     nbJoursAnneeFin   = nbJoursDepuisDebutAnnee(dateFin);
 
     nbJours = nbJoursAnneeDebut + nbJoursAnneeFin;
@@ -203,10 +209,9 @@ void afficherDate(const unsigned date[],
                   int            tailleJour,
                   int            tailleMois,
                   int            tailleAnnee) {
-    cout << setfill(carRemplissage)
+    cout << setfill(carRemplissage) //Défini le caractère de remplissage
          << setw(tailleJour)  << date[INDEX_JOUR] << SEPARATEUR_DATE
          << setw(tailleMois)  << date[INDEX_MOIS] << SEPARATEUR_DATE
          << setw(tailleAnnee) << date[INDEX_ANNEE]
-         //Redéfini le caractère de remplissage par défaut ' '
-         << setfill(' ');
+         << setfill(' '); //Redéfini le caractère de remplissage par défaut ' '
 }

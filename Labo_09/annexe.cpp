@@ -15,7 +15,7 @@
 
 using namespace std;
 
-void viderBuffer(const char delimiteur)
+void viderBuffer(char delimiteur)
 {
    cin.ignore(numeric_limits<streamsize>::max(), delimiteur);
 }
@@ -44,12 +44,12 @@ bool repondsOui(const string& msg, const string& msgErreur, char oui, char non)
 }
 
 bool estUnNombre(const string& chaineCaractere) {
-    //La valeur ASCII 48 correspond au nombre 0
-    const int INDEX_NOMBRE_ASCII = 48;
+    //Caractère '0' (plus petit chiffre)
+    static const char CAR_ZERO = '0'; //static afin de l'initialiser une seule fois
 
     for (char c: chaineCaractere) {
-        //INDEX_NOMBRE_ASCII + 9 correspond au caractère 9
-        if (c < INDEX_NOMBRE_ASCII or c > INDEX_NOMBRE_ASCII + 9)
+        //INDEX_NOMBRE_ASCII + 9 correspond au caractère '9'
+        if (c < CAR_ZERO or c > CAR_ZERO + 9)
             return false;
     }
 

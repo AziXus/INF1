@@ -5,11 +5,13 @@
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 05.12.2018
 
- But         : Permet de gérer les saisies de dates.
-               Permet de définir si les années sont bissextiles et de calculer la 
+ But         : Permet de gérer les saisies de dates et de vérifier la validité de dates.
+               Permet de déterminer si les années sont bissextiles et de calculer la
                différence de jours entre 2 dates.
 
- Remarque(s) : Utilisation de la libraire annexe.              
+ Remarque(s) : Utilisation de la libraire annexe.
+               Les dates sont stockées dans un tableau d'entiers non-signés avec en
+               position 0 le jour, en position 1 le mois et en position 2 l'année.
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -24,9 +26,9 @@ extern char SEPARATEUR_DATE;
 
 //Index de l'emplacement de jour, mois, année dans les tableaux de dates.
 //La position 0 est le jour, la position 1 le mois et la position 2 l'année.
-const unsigned INDEX_JOUR    =    0,
-               INDEX_MOIS    =    1,
-               INDEX_ANNEE   =    2;
+const unsigned INDEX_JOUR  = 0,
+               INDEX_MOIS  = 1,
+               INDEX_ANNEE = 2;
 
 //Défini les numéros des mois. Les mois ont tous été définies afin de pouvoir réutiliser l'enum dans
 //d'autres programmes.

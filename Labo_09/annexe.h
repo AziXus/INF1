@@ -5,10 +5,10 @@
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 05.12.2018
 
- But         : Gérer les fonctions d'entrées sorties du programme ainsi que des 
+ But         : Gérer les fonctions d'entrées sorties ainsi que des
                fonctions particulières
 
- Remarque(s) :              
+ Remarque(s) :
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -18,12 +18,10 @@
 #define ANNEXE_H
 #include <string>
 
-static const int PRECISION_FLOAT = 2;
-
 /**
  * Fonction permettant de vider le buffer
  */
-void viderBuffer(const char delimiteur = '\n');
+void viderBuffer(char delimiteur = '\n');
 
 /**
  * Permet de déterminer si la partie devra être recommencée ou non
