@@ -23,8 +23,6 @@ char SEPARATEUR_DATE = '-';
 //Valeurs par défaut de la librairie
 const unsigned JOUR_MIN      =    1,
                JOUR_MAX      =   31,
-               ANNEE_MIN     = 1000, //OK OR NOT ?
-               ANNEE_MAX     = 9999,
                JOURS_FEVRIER =   28,
                JOURS_ANNEE   =  365;
 
