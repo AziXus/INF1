@@ -27,10 +27,10 @@
 using namespace std;
 
 /**
- *
- * @param nbJoursEntreDate
- * @param dateDebut
- * @param dateFin
+ * Fonction permettant d'afficher le nombre de jours entre deux dates
+ * @param nbJoursEntreDate entier non-signé contenant le nombre de jours entre dateDebut et dateFin
+ * @param dateDebut tableau d'entiers non-signés contenant la date de début
+ * @param dateFin tableau d'entiers non-signés contenant la date de fin
  */
 void afficherResultat(unsigned nbJoursEntreDate, const unsigned dateDebut[], const unsigned dateFin[]);
 
@@ -43,10 +43,13 @@ int main() {
     const unsigned int ANNEE_MIN = 1900,
                        ANNEE_MAX = 2200;
 
+
     unsigned dateDebut[3],
              dateFin[3];
 
     unsigned nbJoursEntreDate;
+
+    cout << "Ce programme permet de calculer le nombre de jours entre deux dates saisies\n\n";
 
     do {
         //Demande de saisie des dates à l'utilisateur

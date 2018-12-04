@@ -15,30 +15,43 @@
 
 using namespace std;
 
-void viderBuffer(const char DELIMITEUR)
+void viderBuffer(const char delimiteur)
 {
-   cin.ignore(numeric_limits<streamsize>::max(), DELIMITEUR);
+   cin.ignore(numeric_limits<streamsize>::max(), delimiteur);
 }
 
-bool repondsOui(const string& MSG, const string& MSG_ERREUR, const char OUI, const char NON)
+bool repondsOui(const string& msg, const string& msgErreur, char oui, char non)
 {
     char valeurSaisie;
     bool valeurOK;
 
     //boucle vérifiant que la valeur entrée soit o ou n et aucune autre valeur
     do {
-        cout << MSG << " [" << OUI << "/" << NON << "] : ";
+        cout << msg << " [" << oui << "/" << non << "] : ";
         cin  >> valeurSaisie;
 
-        if(valeurSaisie == OUI || valeurSaisie == NON)
+        if(valeurSaisie == oui || valeurSaisie == non)
             valeurOK = true;
         else
         {
             valeurOK = false;
-            cout << MSG_ERREUR << endl;
+            cout << msgErreur << endl;
         }
         viderBuffer();
     } while(!valeurOK);
     
-    return valeurSaisie == OUI;
+    return valeurSaisie == oui;
+}
+
+bool estUnNombre(const string& chaineCaractere) {
+    //La valeur ASCII 48 correspond au nombre 0
+    const int INDEX_NOMBRE_ASCII = 48;
+
+    for (char c: chaineCaractere) {
+        //INDEX_NOMBRE_ASCII + 9 correspond au caractère 9
+        if (c < INDEX_NOMBRE_ASCII or c > INDEX_NOMBRE_ASCII + 9)
+            return false;
+    }
+
+    return true;
 }
