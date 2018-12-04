@@ -35,7 +35,7 @@ using namespace std;
 void afficherResultat(unsigned nbJoursEntreDate, const unsigned dateDebut[], const unsigned dateFin[]);
 
 int main() {
-    const string MSG_SAISIE_DEBUT = "Veuillez saisir la date de début entre le ",
+    const string MSG_SAISIE_DEBUT = "Veuillez saisir la date de debut entre le ",
                  MSG_SAISIE_FIN   = "Veuillez saisir la date de fin entre le ",
                  MSG_ERREUR       = "Saisie incorrecte, veuillez recommencer",
                  MSG_RECOMMENCER  = "Voulez-vous recommencer ?";
