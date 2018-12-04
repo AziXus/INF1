@@ -59,13 +59,17 @@ void saisieDate(const std::string& msg,
                 const unsigned     dateMax[],
                 unsigned           dateSaisie[]) {
 
-    unsigned jour, mois, annee;
+    const int POS_JOUR     = 0,
+              TAILLE_JOUR  = 2,
+              POS_MOIS     = POS_JOUR + TAILLE_JOUR + 1, //+1 a cause du séparateur
+              TAILLE_MOIS  = 2,
+              POS_ANNEE    = POS_MOIS + TAILLE_MOIS + 1, //+1 a cause du séparateur
+              TAILLE_ANNEE = 4;
+
+    string date, jour, mois, annee;
     bool valeurOk;
 
     do {
-        //On assume qu'il n'y a pas d'erreur en début de boucle
-        valeurOk = true;
-
         //Message de saisie
         cout << msg;
         afficherDate(dateMin);
@@ -73,19 +77,26 @@ void saisieDate(const std::string& msg,
         afficherDate(dateMax);
         cout << " : ";
 
-        //Lecture du jour
-        //Essaie de lire la date et s'arrête à la première erreur.
-        //les cin.get vide les SEPARATEUR_DATE du buffer
-        //si SEPARATEUR_DATE = '-' on va supprimer le '-'
-        valeurOk = cin >> jour and cin.get() == SEPARATEUR_DATE and cin >> mois
-                               and cin.get() == SEPARATEUR_DATE and cin >> annee;
+        //Lecture de la date
+        getline(cin, date);
 
-        if (valeurOk) {
-            creerTableauDate(jour, mois, annee, dateSaisie);
+        //Vérifie que la taille de la saisie correspond exactement au format de date.
+        // Si elle est de la bonne taille, on lit les valeurs.
+        if (date.size() != POS_ANNEE + TAILLE_ANNEE) {
+            valeurOk = false;
         } else {
-            cin.clear();
+            jour  = date.substr(POS_JOUR, TAILLE_JOUR);
+            mois  = date.substr(POS_MOIS, TAILLE_MOIS);
+            annee = date.substr(POS_ANNEE, TAILLE_ANNEE);
+
+            //Vérifie que les chaines de caractères sont des nombres
+            valeurOk = estUnNombre(jour) and estUnNombre(mois) and estUnNombre(annee);
+
+            //Si la saisie est correct, on créé le tableau date
+            if (valeurOk) {
+                creerTableauDate((unsigned)stoi(jour), (unsigned)stoi(mois), (unsigned)stoi(annee), dateSaisie);
+            }
         }
-        viderBuffer();
 
         //Vérification des saisies
         //On assume que les années sont toujours valides
@@ -98,12 +109,27 @@ void saisieDate(const std::string& msg,
     } while(!valeurOk);
 }
 
+bool dateDansBorne(const unsigned date[], const unsigned dateMin[], const unsigned dateMax[]) {
+    //Converti les dates vers le format entier AAAAMMJJ afin de pouvoir faire une comparaison entière
+    unsigned dateEntier    =    date[INDEX_ANNEE] * 10000 +    date[INDEX_MOIS] * 100 +    date[INDEX_JOUR],
+            dateMinEntier = dateMin[INDEX_ANNEE] * 10000 + dateMin[INDEX_MOIS] * 100 + dateMin[INDEX_JOUR],
+            dateMaxEntier = dateMax[INDEX_ANNEE] * 10000 + dateMax[INDEX_MOIS] * 100 + dateMax[INDEX_JOUR];
+
+    return dateEntier >= dateMinEntier and dateEntier <= dateMaxEntier;
+}
+
 bool moisCorrect(unsigned mois){
     return mois >= Mois::Janvier and mois <= Mois::Decembre;
 }
 
 bool jourCorrect(const unsigned date[]) {
     return date[INDEX_JOUR] >= JOUR_MIN and date[INDEX_JOUR] <= nbJoursDansMois(date[INDEX_MOIS], date[INDEX_ANNEE]);
+}
+
+void creerTableauDate(unsigned jour, unsigned mois, unsigned annee, unsigned date[]) {
+    date[INDEX_JOUR]  = jour;
+    date[INDEX_MOIS]  = mois;
+    date[INDEX_ANNEE] = annee;
 }
 
 bool estBissextile(unsigned annee) {
@@ -125,6 +151,24 @@ unsigned int nbJoursDansMois(unsigned mois, unsigned annee) {
         //Pour Septembre: 31 - (9 - 1) % 7 % 2 => 31 - 1 => 30 jours
         nbJours = JOUR_MAX - (mois - 1) % 7 % 2;
     }
+
+    return nbJours;
+}
+
+unsigned nbJoursDansAnnee(unsigned int annee) {
+    return JOURS_ANNEE + estBissextile(annee);
+}
+
+unsigned nbJoursDepuisDebutAnnee(const unsigned date[]) {
+    unsigned nbJours = 0;
+
+    //De janvier jusqu'a mois - 1
+    for (unsigned moisActuel = 1; moisActuel < date[INDEX_MOIS]; ++moisActuel) {
+        nbJours += nbJoursDansMois(moisActuel, date[INDEX_ANNEE]);
+    }
+
+    //Ajoute le nombre de jours du dernier mois
+    nbJours += date[INDEX_JOUR];
 
     return nbJours;
 }
@@ -154,24 +198,6 @@ unsigned nbJoursEntre(const unsigned dateDebut[], const unsigned dateFin[]) {
     return nbJours;
 }
 
-unsigned nbJoursDansAnnee(unsigned int annee) {
-    return JOURS_ANNEE + estBissextile(annee);
-}
-
-unsigned nbJoursDepuisDebutAnnee(const unsigned date[]) {
-    unsigned nbJours = 0;
-
-    //De janvier jusqu'a mois - 1
-    for (unsigned moisActuel = 1; moisActuel < date[INDEX_MOIS]; ++moisActuel) {
-        nbJours += nbJoursDansMois(moisActuel, date[INDEX_ANNEE]);
-    }
-
-    //Ajoute le nombre de jours du dernier mois
-    nbJours += date[INDEX_JOUR];
-
-    return nbJours;
-}
-
 void afficherDate(const unsigned date[],
                   char           carRemplissage,
                   int            tailleJour,
@@ -183,19 +209,4 @@ void afficherDate(const unsigned date[],
          << setw(tailleAnnee) << date[INDEX_ANNEE]
          //Redéfini le caractère de remplissage par défaut ' '
          << setfill(' ');
-}
-
-void creerTableauDate(unsigned jour, unsigned mois, unsigned annee, unsigned date[]) {
-    date[INDEX_JOUR]  = jour;
-    date[INDEX_MOIS]  = mois;
-    date[INDEX_ANNEE] = annee;
-}
-
-bool dateDansBorne(const unsigned date[], const unsigned dateMin[], const unsigned dateMax[]) {
-    //Converti les dates vers le format entier AAAAMMJJ afin de pouvoir faire une comparaison entière
-    unsigned dateEntier    =    date[INDEX_ANNEE] * 10000 +    date[INDEX_MOIS] * 100 +    date[INDEX_JOUR],
-             dateMinEntier = dateMin[INDEX_ANNEE] * 10000 + dateMin[INDEX_MOIS] * 100 + dateMin[INDEX_JOUR],
-             dateMaxEntier = dateMax[INDEX_ANNEE] * 10000 + dateMax[INDEX_MOIS] * 100 + dateMax[INDEX_JOUR];
-
-    return dateEntier >= dateMinEntier and dateEntier <= dateMaxEntier;
 }

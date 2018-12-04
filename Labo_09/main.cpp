@@ -49,6 +49,8 @@ int main() {
 
     unsigned nbJoursEntreDate;
 
+    cout << "Ce programme permet de calculer le nombre de jours entre deux dates saisies\n\n";
+
     do {
         //Demande de saisie des dates à l'utilisateur
         saisieDate(MSG_SAISIE_DEBUT, MSG_ERREUR, ANNEE_MIN, ANNEE_MAX, dateDebut);

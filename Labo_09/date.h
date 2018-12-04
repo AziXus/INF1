@@ -89,6 +89,15 @@ void saisieDate(const std::string& msg,
                 unsigned           dateSaisie[]);
 
 /**
+ * Fonction vérifiant si la date en paramètre se situe dans une intervalle passé en paramètre (dateMin et dateMax)
+ * @param date tableau d'entiers non-signés contenant la date à vérifier
+ * @param dateMin tableau d'entiers non-signés contenant la date minimale
+ * @param dateMax tableau d'entiers non-signés contenant la date maximale
+ * @return true si la date est dans l'intervalle, false sinon
+ */
+bool dateDansBorne(const unsigned date[], const unsigned dateMin[], const unsigned dateMax[]);
+
+/**
  * Vérifie si le mois passée en paramètre est correct
  * @param mois entier non-signé contenant le mois à vérifier
  * @return true si le mois est dans la borne (1-12) et false sinon
@@ -103,6 +112,15 @@ bool moisCorrect(unsigned mois);
  * @return true si le jour est valide et false sinon
  */
 bool jourCorrect(const unsigned date[]);
+
+/**
+ * Place les valeurs en paramètre dans le tableau date également passé en paramètre
+ * @param jour entier non-signé représentant un jour
+ * @param mois entier non-signé représentant un mois
+ * @param annee entier non-signé représentant une année
+ * @param date tableau d'entiers non-signés qui va contenir la date
+ */
+void creerTableauDate(unsigned jour, unsigned mois, unsigned annee, unsigned date[]);
 
 /**
  * Détermine si l'année est bissextile
@@ -120,15 +138,6 @@ bool estBissextile(unsigned annee);
 unsigned int nbJoursDansMois(unsigned mois, unsigned annee);
 
 /**
- * Calcul le nombre de jours écoulés entre deux dates. Si les deux dates sont égales,
- * la différence est de 0 jour.
- * @param dateDebut tableau d'entiers non-signés contenant la date de début pouvant être saisie
- * @param dateFin tableau d'entiers non-signés contenant la date de fin pouvant être saisie
- * @return un entier non-signé représentant le nombre de jours séparant deux dates
- */
-unsigned nbJoursEntre(const unsigned dateDebut[], const unsigned dateFin[]);
-
-/**
  * Calcul le nombre de jours pour une année donnée
  * @param annee entier non-signé contenant l'année à utiliser
  * @return entier non-signé indiquant le nombre de jour dans une année (365 ou 366 si bissextile)
@@ -143,6 +152,15 @@ unsigned nbJoursDansAnnee(unsigned int annee);
 unsigned nbJoursDepuisDebutAnnee(const unsigned date[]);
 
 /**
+ * Calcul le nombre de jours écoulés entre deux dates. Si les deux dates sont égales,
+ * la différence est de 0 jour.
+ * @param dateDebut tableau d'entiers non-signés contenant la date de début pouvant être saisie
+ * @param dateFin tableau d'entiers non-signés contenant la date de fin pouvant être saisie
+ * @return un entier non-signé représentant le nombre de jours séparant deux dates
+ */
+unsigned nbJoursEntre(const unsigned dateDebut[], const unsigned dateFin[]);
+
+/**
  * Affiche la date dans le format JJ-MM-AAAA
  * @param date tableau d'entiers non-signés contenant la date à afficher
  * @param carRemplissage caractère de remplissage pour la fonction setfill et setw (valeur par défaut '0')
@@ -152,25 +170,8 @@ unsigned nbJoursDepuisDebutAnnee(const unsigned date[]);
  */
 void afficherDate(const unsigned date[],
                   char           carRemplissage = '0',
-                  int            tailleJour     = 2,
-                  int            tailleMois     = 2,
-                  int            tailleAnnee    = 4);
+                  int            tailleJour     =  2,
+                  int            tailleMois     =  2,
+                  int            tailleAnnee    =  4);
 
-/**
- * Place les valeurs en paramètre dans le tableau date également passé en paramètre
- * @param jour entier non-signé représentant un jour
- * @param mois entier non-signé représentant un mois
- * @param annee entier non-signé représentant une année
- * @param date tableau d'entiers non-signés qui va contenir la date
- */
-void creerTableauDate(unsigned jour, unsigned mois, unsigned annee, unsigned date[]);
-
-/**
- * Fonction vérifiant si la date en paramètre se situe dans une intervalle passé en paramètre (dateMin et dateMax)
- * @param date tableau d'entiers non-signés contenant la date à vérifier
- * @param dateMin tableau d'entiers non-signés contenant la date minimale
- * @param dateMax tableau d'entiers non-signés contenant la date maximale
- * @return true si la date est dans l'intervalle, false sinon
- */
-bool dateDansBorne(const unsigned date[], const unsigned dateMin[], const unsigned dateMax[]);
 #endif

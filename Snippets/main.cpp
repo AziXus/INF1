@@ -21,15 +21,21 @@ void printTriangle3(unsigned n, char c = 'x');
 void printTriangle3R(unsigned n, char c, int w);
 void printTriangle4R(unsigned n, char c, int w);
 void printTriangle4(unsigned n, char c = 'x');
+bool isDigit(const string& val);
 
 int main() {
-    printTriangle1(4);
-    cout << endl;
-    printTriangle2(4);
-    cout << endl;
-    printTriangle3(4);
-    cout << endl;
-    printTriangle4(4);
+    const int JOUR_POS =
+
+    cout << "Saisie : ";
+    string valeurSaisie, jour, mois, annee;
+
+    getline(cin, valeurSaisie);
+
+    jour  = valeurSaisie.substr(0, 2);
+    mois  = valeurSaisie.substr(3, 2);
+    annee = valeurSaisie.substr(6, 4);
+
+    cout << "Date valide : " << boolalpha << (isDigit(jour) and isDigit(mois) and isDigit(annee)) << endl;
 
     cout << "\nPress ENTER to quit\n";
     EMPTY_BUFFER;
@@ -73,4 +79,15 @@ void printTriangle4R(unsigned n, char c, signed w) {
         cout << string(w, ' ') << string(n, c) << endl;
         printTriangle4R(n - 1, c, w + 1);
     }
+}
+
+bool isDigit(const string& val) {
+    const int NOMBRE_ASCII = 48;
+
+    for (char c: val) {
+        if (c < NOMBRE_ASCII or c > NOMBRE_ASCII + 9)
+            return false;
+    }
+
+    return true;
 }
