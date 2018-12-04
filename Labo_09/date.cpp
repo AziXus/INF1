@@ -23,8 +23,6 @@ char SEPARATEUR_DATE = '-';
 //Valeurs par défaut de la librairie
 const unsigned JOUR_MIN      =    1,
                JOUR_MAX      =   31,
-               ANNEE_MIN     = 1000, //OK OR NOT ?
-               ANNEE_MAX     = 9999,
                JOURS_FEVRIER =   28,
                JOURS_ANNEE   =  365;
 
@@ -33,9 +31,12 @@ void saisieDate(const std::string& msg,
                 unsigned           anneeMin,
                 unsigned           anneeMax,
                 unsigned           dateSaisie[]) {
-    unsigned dateMin[] = {JOUR_MIN, Mois::Janvier,  anneeMin};
-    unsigned dateMax[] = {JOUR_MAX, Mois::Decembre, anneeMax};
-    //creerDate(JOUR_MIN, Mois::Janvier,  anneeMin, dateMin);
+    //dateMin et dateMax sont interne à la librairie
+    unsigned dateMin[3];
+    unsigned dateMax[3];
+
+    creerTableauDate(JOUR_MIN, Mois::Janvier, anneeMin, dateMin);
+    creerTableauDate(JOUR_MAX, Mois::Decembre, anneeMax, dateMax);
 
     saisieDate(msg, msgErreur, dateMin, dateMax, dateSaisie);
 }
@@ -45,7 +46,9 @@ void saisieDate(const std::string& msg,
                 const unsigned     dateMin[],
                 unsigned           anneeMax,
                 unsigned           dateSaisie[]) {
-    unsigned dateMax[] = {JOUR_MAX, Mois::Decembre, anneeMax};
+    //dateMax est interne à la librairie
+    unsigned dateMax[3];
+    creerTableauDate(JOUR_MAX, Mois::Decembre, anneeMax, dateMax);
 
     saisieDate(msg, msgErreur, dateMin, dateMax, dateSaisie);
 }
@@ -56,6 +59,7 @@ void saisieDate(const std::string& msg,
                 const unsigned     dateMax[],
                 unsigned           dateSaisie[]) {
 
+    unsigned jour, mois, annee;
     bool valeurOk;
 
     do {
@@ -73,25 +77,25 @@ void saisieDate(const std::string& msg,
         //Essaie de lire la date et s'arrête à la première erreur.
         //les cin.get vide les SEPARATEUR_DATE du buffer
         //si SEPARATEUR_DATE = '-' on va supprimer le '-'
-        valeurOk = cin >> dateSaisie[INDEX_JOUR] and cin.get() == SEPARATEUR_DATE and cin >> dateSaisie[INDEX_MOIS]
-                                                 and cin.get() == SEPARATEUR_DATE and cin >> dateSaisie[INDEX_ANNEE];
+        valeurOk = cin >> jour and cin.get() == SEPARATEUR_DATE and cin >> mois
+                               and cin.get() == SEPARATEUR_DATE and cin >> annee;
 
-        if (!valeurOk) {
+        if (valeurOk) {
+            creerTableauDate(jour, mois, annee, dateSaisie);
+        } else {
             cin.clear();
         }
         viderBuffer();
 
         //Vérification des saisies
-        if(!valeurOk or !dateValide(dateSaisie) or !dateDansBorne(dateSaisie, dateMin, dateMax))
+        //On assume que les années sont toujours valides
+        if(!valeurOk or !moisCorrect(dateSaisie[INDEX_MOIS]) or
+           !jourCorrect(dateSaisie) or !dateDansBorne(dateSaisie, dateMin, dateMax))
         {
             cout << msgErreur << endl;
             valeurOk = false;
         }
     } while(!valeurOk);
-}
-
-bool anneeCorrecte(unsigned annee){
-    return annee >= ANNEE_MIN and annee <= ANNEE_MAX;
 }
 
 bool moisCorrect(unsigned mois){
@@ -181,38 +185,17 @@ void afficherDate(const unsigned date[],
          << setfill(' ');
 }
 
+void creerTableauDate(unsigned jour, unsigned mois, unsigned annee, unsigned date[]) {
+    date[INDEX_JOUR]  = jour;
+    date[INDEX_MOIS]  = mois;
+    date[INDEX_ANNEE] = annee;
+}
+
 bool dateDansBorne(const unsigned date[], const unsigned dateMin[], const unsigned dateMax[]) {
-    /**
-     *
-     * if (annee > annee)
-     */
     //Converti les dates vers le format entier AAAAMMJJ afin de pouvoir faire une comparaison entière
     unsigned dateEntier    =    date[INDEX_ANNEE] * 10000 +    date[INDEX_MOIS] * 100 +    date[INDEX_JOUR],
              dateMinEntier = dateMin[INDEX_ANNEE] * 10000 + dateMin[INDEX_MOIS] * 100 + dateMin[INDEX_JOUR],
              dateMaxEntier = dateMax[INDEX_ANNEE] * 10000 + dateMax[INDEX_MOIS] * 100 + dateMax[INDEX_JOUR];
 
     return dateEntier >= dateMinEntier and dateEntier <= dateMaxEntier;
-}
-
-bool creerDate(unsigned jour, unsigned mois, unsigned annee, unsigned date[]) {
-    bool dateOk;
-
-    //Affectation du tableau ? Tableau temp ?
-    date[INDEX_JOUR]  = jour;
-    date[INDEX_MOIS]  = mois;
-    date[INDEX_ANNEE] = annee;
-
-    dateOk = anneeCorrecte(date[INDEX_ANNEE]) and moisCorrect(date[INDEX_MOIS]) and jourCorrect(date);
-
-    if (!dateOk) {
-        date[INDEX_JOUR]  = 0;
-        date[INDEX_MOIS]  = 0;
-        date[INDEX_ANNEE] = 0;
-    }
-
-    return dateOk;
-}
-
-bool dateValide(const unsigned date[]) {
-    return anneeCorrecte(date[INDEX_ANNEE]) and moisCorrect(date[INDEX_MOIS]) and jourCorrect(date);
 }
