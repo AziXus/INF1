@@ -82,12 +82,10 @@ void calcul2date(const string& MESSAGE_SAISIE1,const string& MESSAGE_SAISIE2, co
       //On affiche le resultat
       cout << MESSAGE_RESULTAT << nbrJour << endl << endl;
 }
-void calculjour(const string& MESSAGE_SAISIE1,const string& MESSAGE_SAISIE2, const string& MESSAGE_ERREUR,const string& MESSAGE_RESULTAT, const int JOUR_MIN, const int MOIS_MIN,const int ANNEE_MIN
+void calculjour(const string& MESSAGE_SAISIE1, const string& MESSAGE_ERREUR, const int JOUR_MIN, const int MOIS_MIN,const int ANNEE_MIN
                  ,const int JOUR_MAX, const int MOIS_MAX,  const int ANNEE_MAX)
 {
    int jour1, mois1, annee1; 
-   
-   int jour2, mois2, annee2; 
    
    unsigned int nbrJour = 10;
    
@@ -96,14 +94,11 @@ void calculjour(const string& MESSAGE_SAISIE1,const string& MESSAGE_SAISIE2, con
     //On boucle tant que la 2 eme date est inferieur ou egal a la 1 ere 
       do{
          saisie(MESSAGE_SAISIE1, MESSAGE_ERREUR, jour1, mois1, annee1, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
-         
-         if(ajouteJourADate(jour1, mois1, annee1, nbrJour)){
+         erreurDate = ajouteJourADate(jour1, mois1, annee1, nbrJour);
+         if(erreurDate){
             cout << MESSAGE_ERREUR << endl; 
          }
       }while(erreurDate); 
-      
-      //On incremente la variable nbrJour
-      nbrJour = calculNombreJour(jour1, jour2, mois1, mois2, annee1, annee2); 
     
     
 }
