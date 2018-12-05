@@ -40,7 +40,7 @@ int main() {
                  MSG_ERREUR       = "Saisie incorrecte, veuillez recommencer",
                  MSG_RECOMMENCER  = "Voulez-vous recommencer ?";
     
-    const unsigned int ANNEE_MIN = 1900,
+    const unsigned int ANNEE_MIN = 1800,
                        ANNEE_MAX = 2200;
     //Initialisation des tableaux qui contiendront le jour, mois, annee 
     //saisie par l'utilisateur
