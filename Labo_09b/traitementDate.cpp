@@ -82,3 +82,36 @@ int calculNombreJour(int jour1, int jour2, int mois1, int mois2,  int annee1, in
    return nbJoursTotal;
 }
 
+//Ajout suite à la demande
+bool ajouteJourADate(int& jour, int& mois, int& annee, int nbJour)
+{
+    if(!dateExistante(jour,mois,annee))
+    {
+      return false; 
+    }
+    
+    int increment = nbJour < 0 ? -1 : 1;//si le nombre de jour est négatif on décremente
+    
+    for(int i = abs(nbJour); i >= 0; i--)
+    {
+        jour += increment;
+        //dépassement du jour
+        if(!dateExistante(jour,mois,annee))
+        {
+            jour = nbJour < 0 ? 31 : 1;
+            mois += increment;
+        }
+        //dépassement du mois
+        if(!dateExistante(jour,mois,annee))
+        {
+            mois = nbJour < 0 ? 12 : 1;
+            annee += increment;
+        }
+        //depassement de l'année
+        if(!dateExistante(jour,mois,annee))
+        {
+            return false;
+        }
+    }
+    return true;
+}

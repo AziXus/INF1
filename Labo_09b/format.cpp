@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
 #include "format.h"
 #include "annexe.h"
 #include "traitementDate.h"
