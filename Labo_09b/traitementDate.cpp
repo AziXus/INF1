@@ -6,6 +6,9 @@
 using namespace std;
 
 
+const int JANVIER  = 1,
+          DECEMBRE = 12;
+
 int nbrJoursMois(int mois, int annee){
    int nbrJours; 
    // Si le mois est février on vérifie si l'année est bissextile et on incémente 
@@ -48,10 +51,6 @@ bool bissextile (int annee){
 
 //Fonction qui permet de calculer le nombre de jours entre 2 dates
 int calculNombreJour(int jour1, int jour2, int mois1, int mois2,  int annee1, int annee2){
-    
-      const int JANVIER = 1,
-                DECEMBRE = 12;
-    
    unsigned int nbJoursTotal = 0;
     
    //condition permettant de vérifier si le programme doit juste calculer le nombre de jour entre 2 date du mêmme mois et de la même année
@@ -75,43 +74,45 @@ int calculNombreJour(int jour1, int jour2, int mois1, int mois2,  int annee1, in
              }
              else
              {
-                mois1++;
+                 mois1++;
              }
-           }
-   } 
-   return nbJoursTotal;
+            }
+   }
+    return nbJoursTotal;
 }
 
 //Ajout suite à la demande
 bool ajouteJourADate(int& jour, int& mois, int& annee, int nbJour)
 {
     if(!dateExistante(jour,mois,annee))
-    {
-      return false; 
-    }
-    
-    int increment = nbJour < 0 ? -1 : 1;//si le nombre de jour est négatif on décremente
-    
-    for(int i = abs(nbJour); i >= 0; i--)
+        return false;
+
+    int increment = nbJour < 0 ? -1 : 1; //si le nombre de jour est négatif on décremente
+
+    for(int i = abs(nbJour); i > 0; i--)
     {
         jour += increment;
-        //dépassement du jour
-        if(!dateExistante(jour,mois,annee))
+        //dépassement du jour, modification du jour et du mois
+        if(!dateExistante(jour, mois, annee))
         {
-            jour = nbJour < 0 ? 31 : 1;
+            if (increment < 0 and mois == JANVIER)
+                jour = 31;
+            else
+                jour = increment < 0 ? nbrJoursMois(mois + increment, annee) : 1;
+
             mois += increment;
         }
-        //dépassement du mois
+
+        //dépassement du mois, modification du mois et de l'année
         if(!dateExistante(jour,mois,annee))
         {
-            mois = nbJour < 0 ? 12 : 1;
+            mois = increment < 0 ? DECEMBRE : JANVIER;
             annee += increment;
         }
-        //depassement de l'année
+
+        //depassement de l'année, date invalide
         if(!dateExistante(jour,mois,annee))
-        {
             return false;
-        }
     }
     return true;
 }

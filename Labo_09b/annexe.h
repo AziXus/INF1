@@ -30,6 +30,17 @@ bool recommencer(char oui, char non, std::string messageRecommencer);
 void afficherMessageFin(const std::string message);
 
 /// La fonction vide le buffer 
-void viderBuffer(); 
+void viderBuffer();
+
+/**
+ * Lecture d'une saisie et vérification que la valeur entrée soit un entier
+ * et définie dans une borne.
+ * @param message string constante contenant le message indiquant le but de la valeur à entrée
+ * @param minimum entier constant permettant de définir le minimum de la borne
+ * @param maximum entier constant permettant de définir le maximum de la borne
+ * @return le nombre saisi par l'utilisateur
+ */
+int saisieValeur(const std::string& msg, const std::string& msgErreur, int minimum, int maximum);
+
 #endif 
 

@@ -27,19 +27,28 @@
 
 using namespace std;
 
-void calcul2date();
-void calculjour();
+void calcul2date(const string& MESSAGE_SAISIE1, const string& MESSAGE_SAISIE2,
+                 const string& MESSAGE_ERREUR,  const string& MESSAGE_RESULTAT,
+                 const int     JOUR_MIN,        const int     MOIS_MIN,
+                 const int     ANNEE_MIN,       const int     JOUR_MAX,
+                 const int     MOIS_MAX,        const int     ANNEE_MAX);
+
+void calculjour(const string& MSG_DATE,        const string& MSG_JOURS,
+                const string& MSG_ERREUR,      const int JOUR_MIN,
+                const int     MOIS_MIN,        const int     ANNEE_MIN,
+                const int     JOUR_MAX,        const int     MOIS_MAX,
+                const int     ANNEE_MAX);
 
 int main() {
    const string   MESSAGE_SAISIE1   = "Veuillez saisir la 1 ere date : ",  
-                  MESSAGE_SAISIE2   = "Veuillez saisir la 2 eme date : ", 
+                  MESSAGE_SAISIE2   = "Veuillez saisir la 2 eme date : ",
                   MESSAGE_RESULTAT  = "Nombre de jour separant les deux dates : ",
                   MESSAGE_ERREUR    = "Erreur dans la saisie", 
                   MESSAGE_RECOMMENCER = "Voulez-vous recommencer ? ",
                   MESSAGE_FIN_PROGRAMME = "Fin du programme, appuyer sur une touche pour quitter";
            
    const char     OUI = 'o', 
-                  NON = 'n'; 
+                  NON = 'n';
    
    const int      JOUR_MIN = 1,
                   MOIS_MIN = 1, 
@@ -47,18 +56,25 @@ int main() {
    
    const int      JOUR_MAX = 31, 
                   MOIS_MAX = 12, 
-                  ANNEE_MAX = 2200;  
-   do{
-      
-   }while(recommencer(OUI, NON, MESSAGE_RECOMMENCER)); //On demande à l'utilisateur s'il veut recommencer
-   
+                  ANNEE_MAX = 2200;
+
+   do {
+       //Demande à l'utilisateur
+       if (recommencer('1', '2', "1) pour calculer la différence entre deux dates, 2) pour additionner un nombre de jours à une date "))
+           calcul2date(MESSAGE_SAISIE1, MESSAGE_SAISIE2, MESSAGE_ERREUR, MESSAGE_RESULTAT, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
+       else
+           calculjour("Veuillez entrer une date : ", "Veuillez entrez un nombre de jour à additioner : ", "Erreur", JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
+   } while(recommencer(OUI, NON, MESSAGE_RECOMMENCER)); //On demande à l'utilisateur s'il veut recommencer
+
   afficherMessageFin(MESSAGE_FIN_PROGRAMME);
    return EXIT_SUCCESS; 
 }
-void calcul2date(const string& MESSAGE_SAISIE1,const string& MESSAGE_SAISIE2, const string& MESSAGE_ERREUR,const string& MESSAGE_RESULTAT, const int JOUR_MIN, const int MOIS_MIN,const int ANNEE_MIN
-                 ,const int JOUR_MAX, const int MOIS_MAX,  const int ANNEE_MAX)
-{
-    int jour1, mois1, annee1; 
+void calcul2date(const string& MESSAGE_SAISIE1, const string& MESSAGE_SAISIE2,
+                 const string& MESSAGE_ERREUR,  const string& MESSAGE_RESULTAT,
+                 const int     JOUR_MIN,        const int     MOIS_MIN,
+                 const int     ANNEE_MIN,       const int     JOUR_MAX,
+                 const int     MOIS_MAX,        const int     ANNEE_MAX) {
+   int jour1, mois1, annee1;
    
    int jour2, mois2, annee2; 
    
@@ -67,14 +83,14 @@ void calcul2date(const string& MESSAGE_SAISIE1,const string& MESSAGE_SAISIE2, co
    
    bool erreurDate;
     //On boucle tant que la 2 eme date est inferieur ou egal a la 1 ere 
-      do{
+      do {
          saisie(MESSAGE_SAISIE1, MESSAGE_ERREUR, jour1, mois1, annee1, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
          saisie(MESSAGE_SAISIE2, MESSAGE_ERREUR, jour2, mois2, annee2, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
          erreurDate = date1AntDate2(jour2, jour1, mois2, mois1, annee2, annee1); 
          if(erreurDate){
             cout << MESSAGE_ERREUR << endl; 
          }
-      }while(erreurDate); 
+      } while(erreurDate);
       
       //On incremente la variable nbrJour
       nbrJour = calculNombreJour(jour1, jour2, mois1, mois2, annee1, annee2); 
@@ -82,24 +98,26 @@ void calcul2date(const string& MESSAGE_SAISIE1,const string& MESSAGE_SAISIE2, co
       //On affiche le resultat
       cout << MESSAGE_RESULTAT << nbrJour << endl << endl;
 }
-void calculjour(const string& MESSAGE_SAISIE1, const string& MESSAGE_ERREUR, const int JOUR_MIN, const int MOIS_MIN,const int ANNEE_MIN
-                 ,const int JOUR_MAX, const int MOIS_MAX,  const int ANNEE_MAX)
-{
-   int jour1, mois1, annee1; 
-   
-   unsigned int nbrJour = 10;
-   
-   
-   bool erreurDate;
-    //On boucle tant que la 2 eme date est inferieur ou egal a la 1 ere 
-      do{
-         saisie(MESSAGE_SAISIE1, MESSAGE_ERREUR, jour1, mois1, annee1, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
-         erreurDate = ajouteJourADate(jour1, mois1, annee1, nbrJour);
-         if(erreurDate){
-            cout << MESSAGE_ERREUR << endl; 
-         }
-      }while(erreurDate); 
-    
-    
+
+void calculjour(const string& MSG_DATE,        const string& MSG_JOURS,
+                const string& MSG_ERREUR,      const int JOUR_MIN,
+                const int     MOIS_MIN,        const int     ANNEE_MIN,
+                const int     JOUR_MAX,        const int     MOIS_MAX,
+                const int     ANNEE_MAX) {
+   int jour, mois, annee;
+   int nbrJour;
+   bool dateValide;
+
+   //On boucle tant que la 2 eme date est inferieur ou egal a la 1 ere
+   saisie(MSG_DATE, MSG_ERREUR, jour, mois, annee, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
+   nbrJour = saisieValeur(MSG_JOURS, MSG_ERREUR, -99999, 99999);
+
+   dateValide = ajouteJourADate(jour, mois, annee, nbrJour);
+
+   if(!dateValide){
+      cout << MSG_ERREUR << endl;
+   } else {
+      cout << jour << "-" << mois << "-" << annee << endl;
+   }
 }
 

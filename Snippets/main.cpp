@@ -22,19 +22,19 @@ void printTriangle3R(unsigned n, char c, int w);
 void printTriangle4R(unsigned n, char c, int w);
 void printTriangle4(unsigned n, char c = 'x');
 bool isDigit(const string& val);
+string substring(const string& chaine, int position, int longueur);
 
 int main() {
-    const int JOUR_POS =
-
     cout << "Saisie : ";
     string valeurSaisie, jour, mois, annee;
 
     getline(cin, valeurSaisie);
 
-    jour  = valeurSaisie.substr(0, 2);
-    mois  = valeurSaisie.substr(3, 2);
-    annee = valeurSaisie.substr(6, 4);
+    jour  = substring(valeurSaisie, 0, 2);
+    mois  = substring(valeurSaisie, 3, 2);
+    annee = substring(valeurSaisie, 6, 4);
 
+    cout << jour << "-" << mois << "-" << annee << endl;
     cout << "Date valide : " << boolalpha << (isDigit(jour) and isDigit(mois) and isDigit(annee)) << endl;
 
     cout << "\nPress ENTER to quit\n";
@@ -90,4 +90,14 @@ bool isDigit(const string& val) {
     }
 
     return true;
+}
+
+std::string substring(const std::string& chaineCaractere, int position, int longueur) {
+    string nouvelleChaine;
+
+    for (int i = position; i < position + longueur; ++i) {
+        nouvelleChaine += chaineCaractere[i];
+    }
+
+    return nouvelleChaine;
 }
