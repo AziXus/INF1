@@ -82,7 +82,7 @@ int calculNombreJour(int jour1, int jour2, int mois1, int mois2,  int annee1, in
 }
 
 //Ajout suite à la demande
-bool ajouteJourADate(int& jour, int& mois, int& annee, int nbJour)
+bool ajouteJourADate(int nbJour, int& jour, int& mois, int& annee, int jourMin, int moisMin, int anneeMin, int jourMax, int moisMax, int anneeMax)
 {
     //Si la date est invalide dés le début, on sort de la fonction
     if(!dateExistante(jour,mois,annee))
@@ -90,14 +90,17 @@ bool ajouteJourADate(int& jour, int& mois, int& annee, int nbJour)
 
     int increment = nbJour < 0 ? -1 : 1; //si le nombre de jour est négatif on décremente
 
+    //Boucle qui ajoute / soustrait nbJour à date
     for(int i = abs(nbJour); i > 0; i--) {
         jour += increment;
+
         //dépassement du jour, modification du jour et du mois
         if(!dateExistante(jour, mois, annee)) {
-            if (increment < 0 and mois == JANVIER)
-                jour = 31; //Pas de constante car pas utilisé par l'ancien programmeur
+            if (increment < 0) //Si on effectue une soustraction
+                //Si on est début de l'année, on passe au 31, sinon au dernier jour du mois précédent
+                jour = mois == JANVIER ? 31 : nbrJoursMois(mois + increment, annee);
             else
-                jour = increment < 0 ? nbrJoursMois(mois + increment, annee) : 1;
+                jour = 1;
 
             mois += increment;
         }
@@ -108,9 +111,10 @@ bool ajouteJourADate(int& jour, int& mois, int& annee, int nbJour)
             annee += increment;
         }
 
-        //depassement de l'année, date invalide
-        if(!dateExistante(jour,mois,annee))
+        //Vérification que la date soit toujours dans les bornes, sinon sort de la fonction
+        if (!controleDate(jour, mois, annee, jourMin, moisMin, anneeMin, jourMax, moisMax, anneeMax))
             return false;
     }
+
     return true;
 }

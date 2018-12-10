@@ -1,15 +1,19 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : Labo09
- Fichier     : annexe.h
- Auteur(s)   : Mohamed El-Sheikh et Gaetan Daubresse 
- Date        : 04.12.2018
+ Laboratoire   : Labo09
+ Fichier       : annexe.h
+ Auteur(s)     : Mohamed El-Sheikh et Gaetan Daubresse
 
- But         : Librairie comprenant toutes les fonctions utiles usuelle utilisé dans la plupart des programmes   
+ Modifié par   : Robin Müller, Stéphane Teixeira Carvalho
+ Date          : 11.12.2018
 
- Remarque(s) : -  
+ But           : Librairie comprenant toutes les fonctions utiles usuelle utilisé dans la plupart des programmes
 
- Compilateur : MinGW-g++ 6.3.0
+ Remarque(s)   : -
+
+ Modifications : Ajout ajdksfl
+
+ Compilateur   : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */
 #ifndef ANNEXE_H
@@ -18,11 +22,11 @@
 #include <string>
 
 /// 
-/// \param oui : lettre pour oui 
-/// \param non : lettre pour non 
-/// \param messageRecommencer : message a l'utilisateur 
-/// \return : true si l'utilisateur presse oui, false s'il presse sur non 
-bool recommencer(char oui, char non, std::string messageRecommencer);
+/// \param oui : lettre pour réponse positive
+/// \param non : lettre pour réponse négative
+/// \param message : message a l'utilisateur
+/// \return : true si l'utilisateur répond positif, false s'il répond négatif
+bool repondsQuestion(const std::string& message, char oui = 'o', char non = 'n');
 
 /// 
 /// \param message : message de fin 
@@ -32,6 +36,7 @@ void afficherMessageFin(const std::string message);
 /// La fonction vide le buffer 
 void viderBuffer();
 
+//Ajout
 /**
  * Lecture d'une saisie et vérification que la valeur entrée soit un entier
  * et définie dans une borne.
