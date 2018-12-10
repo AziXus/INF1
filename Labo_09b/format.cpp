@@ -73,7 +73,7 @@ bool controleDate(int jour, int mois, int annee, const int jourMin, const int mo
 }
 
 //Verifie si la date existe
-//Ajour jour >= 1, mois >= 1
+//Ajout du test jour >= 1 et mois >= 1
 bool dateExistante(int jour, int mois, int annee){
    return (jour >= 1 and jour <= nbrJoursMois(mois, annee) and mois >= 1 and mois <=12);
 }

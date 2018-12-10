@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo09
- Fichier     : Labo_09_ElSheikh_Daubresse.cpp
+ Fichier     : main.cpp
  Auteur(s)   : Mohamed El-Sheikh et Gaetan Daubresse 
  Date        : 04.12.2018
 
@@ -27,17 +27,17 @@
 
 using namespace std;
 
-void calcul2date(const string& MESSAGE_SAISIE1, const string& MESSAGE_SAISIE2,
-                 const string& MESSAGE_ERREUR,  const string& MESSAGE_RESULTAT,
-                 const int     JOUR_MIN,        const int     MOIS_MIN,
-                 const int     ANNEE_MIN,       const int     JOUR_MAX,
-                 const int     MOIS_MAX,        const int     ANNEE_MAX);
+void calculJoursEntreDates(const string& MESSAGE_SAISIE1, const string& MESSAGE_SAISIE2,
+                           const string& MESSAGE_ERREUR,  const string& MESSAGE_RESULTAT,
+                           const int     JOUR_MIN,        const int     MOIS_MIN,
+                           const int     ANNEE_MIN,       const int     JOUR_MAX,
+                           const int     MOIS_MAX,        const int     ANNEE_MAX);
 
-void calculjour(const string& MSG_DATE,        const string& MSG_JOURS,
-                const string& MSG_ERREUR,      const int JOUR_MIN,
-                const int     MOIS_MIN,        const int     ANNEE_MIN,
-                const int     JOUR_MAX,        const int     MOIS_MAX,
-                const int     ANNEE_MAX);
+void ajouterJoursADate(const string& MSG_DATE,   const string& MSG_JOURS,
+                       const string& MSG_ERREUR, const int JOUR_MIN,
+                       const int     MOIS_MIN,   const int     ANNEE_MIN,
+                       const int     JOUR_MAX,   const int     MOIS_MAX,
+                       const int     ANNEE_MAX);
 
 int main() {
    const string   MESSAGE_SAISIE1   = "Veuillez saisir la 1 ere date : ",  
@@ -52,7 +52,7 @@ int main() {
    
    const int      JOUR_MIN = 1,
                   MOIS_MIN = 1, 
-                  ANNEE_MIN = 1600;//changé pour l'exercice 
+                  ANNEE_MIN = 1600;//changé pour le Labo_09b
    
    const int      JOUR_MAX = 31, 
                   MOIS_MAX = 12, 
@@ -61,21 +61,21 @@ int main() {
    do {
        //Demande à l'utilisateur
        if (recommencer('1', '2', "1) pour calculer la différence entre deux dates, 2) pour additionner un nombre de jours à une date "))
-           calcul2date(MESSAGE_SAISIE1, MESSAGE_SAISIE2, MESSAGE_ERREUR, MESSAGE_RESULTAT, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
+          calculJoursEntreDates(MESSAGE_SAISIE1, MESSAGE_SAISIE2, MESSAGE_ERREUR, MESSAGE_RESULTAT, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
        else
-           calculjour("Veuillez entrer une date : ", "Veuillez entrez un nombre de jour à additioner : ", "Erreur", JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
+          ajouterJoursADate("Veuillez entrer une date : ", "Veuillez entrez un nombre de jour à additioner : ", "Erreur", JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
    } while(recommencer(OUI, NON, MESSAGE_RECOMMENCER)); //On demande à l'utilisateur s'il veut recommencer
 
   afficherMessageFin(MESSAGE_FIN_PROGRAMME);
    return EXIT_SUCCESS; 
 }
-void calcul2date(const string& MESSAGE_SAISIE1, const string& MESSAGE_SAISIE2,
-                 const string& MESSAGE_ERREUR,  const string& MESSAGE_RESULTAT,
-                 const int     JOUR_MIN,        const int     MOIS_MIN,
-                 const int     ANNEE_MIN,       const int     JOUR_MAX,
-                 const int     MOIS_MAX,        const int     ANNEE_MAX) {
+void calculJoursEntreDates(const string& MESSAGE_SAISIE1, const string& MESSAGE_SAISIE2,
+                 const string& MESSAGE_ERREUR, const string& MESSAGE_RESULTAT,
+                 const int     JOUR_MIN,       const int     MOIS_MIN,
+                 const int     ANNEE_MIN,      const int     JOUR_MAX,
+                 const int     MOIS_MAX,       const int     ANNEE_MAX) {
    int jour1, mois1, annee1;
-   
+
    int jour2, mois2, annee2; 
    
    unsigned int nbrJour; 
@@ -99,11 +99,13 @@ void calcul2date(const string& MESSAGE_SAISIE1, const string& MESSAGE_SAISIE2,
       cout << MESSAGE_RESULTAT << nbrJour << endl << endl;
 }
 
-void calculjour(const string& MSG_DATE,        const string& MSG_JOURS,
-                const string& MSG_ERREUR,      const int JOUR_MIN,
-                const int     MOIS_MIN,        const int     ANNEE_MIN,
-                const int     JOUR_MAX,        const int     MOIS_MAX,
-                const int     ANNEE_MAX) {
+void ajouterJoursADate(const string& MSG_DATE,   const string& MSG_JOURS,
+                       const string& MSG_ERREUR, const int     JOUR_MIN,
+                       const int     MOIS_MIN,   const int     ANNEE_MIN,
+                       const int     JOUR_MAX,   const int     MOIS_MAX,
+                       const int     ANNEE_MAX) {
+
+
    int jour, mois, annee;
    int nbrJour;
    bool dateValide;
