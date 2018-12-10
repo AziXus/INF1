@@ -38,5 +38,7 @@ bool bissextile(int annee);
 /// \return : Fonction qui permet de calculer le nombre total de jours entre 2 dates
 int calculNombreJour(int jour1, int jour2, int mois1, int mois2, int annee1, int annee2);
 
+bool ajouteJourADate(int& jour, int& mois, int& annee, int nbJour);
+
 #endif 
 
