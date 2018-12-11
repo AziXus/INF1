@@ -49,8 +49,9 @@ bool controleSaisie(string saisie){
    const char SEPARATION = '-',
        BORNE_CHIFFRE_MIN = '0',
        BORNE_CHIFFRE_MAX = '9';
-    
-   bool formatOk = saisie[2] == SEPARATION or saisie[5] == SEPARATION; 
+
+   //Correction de la condition (remplacement de or par and)
+   bool formatOk = saisie[2] == SEPARATION and saisie[5] == SEPARATION;
          
    bool decimalOk =    ((BORNE_CHIFFRE_MAX >= saisie[0] and saisie[0] >= BORNE_CHIFFRE_MIN) and 
                         (BORNE_CHIFFRE_MAX >= saisie[1] and saisie[1] >= BORNE_CHIFFRE_MIN) and 
