@@ -10,26 +10,51 @@
 
 using namespace std;
 
-void swap(int& a, int& b) {
-    int tmp = a;
-    a = b;
-    b = tmp;
-}
+bool estUnNombre(const string& str) {
+    //Caractère '0' (plus petit chiffre)
+    static const char CAR_ZERO    = '0', //static afin de l'initialiser qu'une seule fois
+                      CAR_POSITIF = '+',
+                      CAR_NEGATIF = '-';
 
-void swapTillOdd(int tab[], size_t taille, size_t pos) {
-    while (pos - 1 < taille and tab[pos - 1] % 2 == 0) {
-        swap(tab[pos], tab[pos-1]);
-        --pos;
+    if (str.empty())
+        return false;
+    else if (str.size() == 1 and
+            (str[0] == CAR_POSITIF or str[0] == CAR_NEGATIF))
+        return false;
+
+
+    //boucle parcourant la chaîne de caractère
+    for (char c: str) {
+        //CAR_ZERO + 9 correspond au caractère '9'
+        if (c != CAR_POSITIF and c != CAR_NEGATIF and (c < CAR_ZERO or c > CAR_ZERO + 9))
+            return false;
     }
+
+    return true;
 }
 
-void sort(int tab[], size_t taille) {
-    for (size_t i = 1; i < taille; ++i) {
-        if (tab[i] % 2 == 0) {
-        } else {
-            swapTillOdd(tab, taille, i);
+vector<int> stringSplit(const string& str, char delimiteur) {
+    vector<int> splitValues;
+    string splitString;
+
+    //On parcours les caractères de la chaine
+    for (char c: str) {
+        //On concat si différent du dénominateur
+        if (c != delimiteur)
+            splitString += c;
+        //Sinon on ajoute une case on vecteur si c'est un entier
+        else {
+            if (estUnNombre(splitString))
+                splitValues.push_back(stoi(splitString));
+            splitString = "";
         }
     }
+
+    //On verifie s'il reste une valeur dans splitValues
+    if (estUnNombre(splitString))
+        splitValues.push_back(stoi(splitString));
+
+    return splitValues;
 }
 
 bool isAllOdd(const vector<int>& v);
@@ -40,7 +65,15 @@ vector<vector<char>> generateCharMatrix();
 string matrixToString(const vector<vector<char>>& v);
 
 int main() {
-    cout << (unsigned char)(179);
+    string str;
+
+    cout << "Entrer une ligne : ";
+    getline(cin, str);
+    cout << "Valeur split : ";
+    vector<int> v = stringSplit(str, ' ');
+    for (int i: v)
+        cout << i << endl;
+
     /*
     int tab[] = {6, 1, 2, 2, 2, 2, 4, 5, 6, 7, 8};
     unsigned taille = sizeof(tab) / sizeof(int);
