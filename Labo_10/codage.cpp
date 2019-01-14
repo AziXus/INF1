@@ -1,14 +1,9 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : <nn>
+ Laboratoire : Labo_10_Encodeur
  Fichier     : codage.cpp
- Auteur(s)   : Robin Müller
- Date        : 08.01.2019
-
- But         : <à compléter>
-
- Remarque(s) : <à compléter>
-
+ Auteur(s)   : Robin Müller, Bruno Egremy
+ Date        : 14.01.2019
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */

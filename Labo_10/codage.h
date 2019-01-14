@@ -2,12 +2,12 @@
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_10_Encodeur
  Fichier     : codage.h
- Auteur(s)   : Robin Müller
- Date        : 08.01.2019
+ Auteur(s)   : Robin Müller, Bruno Egremy
+ Date        : 14.01.2019
 
  But         : Permet d'encoder/décoder une chaîne de caratère en fonction d'une clé
 
- Remarque(s) : <à compléter>
+ Remarque(s) :
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
