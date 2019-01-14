@@ -1,43 +1,35 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : <nn>
+ Laboratoire : Labo_10_Encodeur
  Fichier     : annexe.cpp
- Auteur(s)   : Robin Müller
- Date        : 08.01.2019
-
- But         : <à compléter>
-
- Remarque(s) : <à compléter>
+ Author(s)   : Robin Müller, Bruno Egremy
+ Date        : 14.01.19
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */
 #include "annexe.h"
 #include <iostream>
-#include <limits>
 
 using namespace std;
 
-void viderBuffer(char delimiteur) {
-    cin.ignore(numeric_limits<streamsize>::max(), delimiteur);
-}
-
 bool estUnNombre(const string& str) {
     //Caractère '0' (plus petit chiffre)
-    static const char CAR_ZERO    = '0', //static afin de l'initialiser qu'une seule fois
-            CAR_POSITIF = '+',
-            CAR_NEGATIF = '-';
+    static const char CAR_ZERO    = '0', //static afin d'initialiser une seule fois
+                      CAR_POSITIF = '+',
+                      CAR_NEGATIF = '-';
 
+    //Si la chaine est vide ou ne comporte qu'un signe, on sort de la fonction
     if (str.empty())
         return false;
-    else if (str.size() == 1 and
-             (str[0] == CAR_POSITIF or str[0] == CAR_NEGATIF))
+    else if (str.size() == 1 and (str[0] == CAR_POSITIF or str[0] == CAR_NEGATIF))
         return false;
 
 
-    //boucle parcourant la chaîne de caractère
+    //Boucle parcourant la chaîne de caractère
     for (char c: str) {
         //CAR_ZERO + 9 correspond au caractère '9'
+        //Si ce n'est pas un nombre, on retourne faux
         if (c != CAR_POSITIF and c != CAR_NEGATIF and (c < CAR_ZERO or c > CAR_ZERO + 9))
             return false;
     }
