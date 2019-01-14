@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rmuller/coding/INF1/Labo_09/annexe.h
+string
+-
+
+/home/rmuller/coding/INF1/Labo_09/date.cpp
+date.h
+/home/rmuller/coding/INF1/Labo_09/date.h
+annexe.h
+/home/rmuller/coding/INF1/Labo_09/annexe.h
+iostream
+-
+iomanip
+-
+
+/home/rmuller/coding/INF1/Labo_09/date.h
+string
+-
+

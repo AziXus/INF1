@@ -116,8 +116,6 @@ void ajouterJoursADate(const string& MSG_DATE,   const string& MSG_JOURS,
                        const int     MOIS_MIN,   const int     ANNEE_MIN,
                        const int     JOUR_MAX,   const int     MOIS_MAX,
                        const int     ANNEE_MAX) {
-
-
    int jour, mois, annee, nbJoursMax;
    int nbrJour;
    bool dateValide;

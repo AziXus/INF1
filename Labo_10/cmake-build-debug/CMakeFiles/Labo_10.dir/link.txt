@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2018.3.3\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Labo_10.dir/objects.a
+C:\MinGW\bin\ar.exe cr CMakeFiles\Labo_10.dir/objects.a @CMakeFiles\Labo_10.dir\objects1.rsp
+C:\MinGW\bin\g++.exe  -Wall -Wconversion -Wextra -pedantic -g   -Wl,--whole-archive CMakeFiles\Labo_10.dir/objects.a -Wl,--no-whole-archive  -o Labo_10.exe -Wl,--out-implib,libLabo_10.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Labo_10.dir\linklibs.rsp
