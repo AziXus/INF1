@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : <nn>
- Fichier     : <nom du fichier>.h
+ Fichier     : vecteur.h
  Auteur(s)   : <prénom> <nom>
  Date        : <jj.mm.aaaa>
 
@@ -15,8 +15,12 @@
 
 #ifndef VECTEUR_H
 #define VECTEUR_H
+#include <iostream>
+#include <vector>
 
+std::ostream& operator <<(std::ostream& os, const std::vector<int>& v);
 
+std::ostream& operator <<(std::ostream& os, const std::vector<std::vector<int>>& v);
 
 #endif /* VECTEUR_H */
 

@@ -12,13 +12,16 @@
  Compilateur : MinGW-g++ <x.y.z>
  -----------------------------------------------------------------------------------
  */
-
+#include "vecteur.h"
 #include <cstdlib>
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
 int main() {
-
+    vector<vector<int>> v = {{1,2},{3,3}};
+    cout << v;
     return EXIT_SUCCESS;
 }
 
