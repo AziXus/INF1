@@ -35,9 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/5c0/Labo_09_ElSheikh_Daubresse.o \
 	${OBJECTDIR}/_ext/5c0/annexe.o \
 	${OBJECTDIR}/_ext/5c0/format.o \
+	${OBJECTDIR}/_ext/5c0/main.o \
 	${OBJECTDIR}/_ext/5c0/traitementDate.o
 
 
@@ -65,25 +65,25 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppapplication_1.exe: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/cppapplication_1 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/_ext/5c0/Labo_09_ElSheikh_Daubresse.o: ../Labo_09_ElSheikh_Daubresse.cpp
-	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/Labo_09_ElSheikh_Daubresse.o ../Labo_09_ElSheikh_Daubresse.cpp
-
 ${OBJECTDIR}/_ext/5c0/annexe.o: ../annexe.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/annexe.o ../annexe.cpp
+	$(COMPILE.cc) -s -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/annexe.o ../annexe.cpp
 
 ${OBJECTDIR}/_ext/5c0/format.o: ../format.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/format.o ../format.cpp
+	$(COMPILE.cc) -s -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/format.o ../format.cpp
+
+${OBJECTDIR}/_ext/5c0/main.o: ../main.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.cc) -s -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/main.o ../main.cpp
 
 ${OBJECTDIR}/_ext/5c0/traitementDate.o: ../traitementDate.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/traitementDate.o ../traitementDate.cpp
+	$(COMPILE.cc) -s -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/traitementDate.o ../traitementDate.cpp
 
 # Subprojects
 .build-subprojects:

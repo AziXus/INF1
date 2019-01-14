@@ -15,9 +15,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../Labo_09_ElSheikh_Daubresse.cpp</itemPath>
       <itemPath>../annexe.cpp</itemPath>
       <itemPath>../format.cpp</itemPath>
+      <itemPath>../main.cpp</itemPath>
       <itemPath>../traitementDate.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -41,9 +41,12 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <developmentMode>0</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <standard>8</standard>
+        </ccTool>
       </compileType>
-      <item path="../Labo_09_ElSheikh_Daubresse.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../annexe.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../annexe.h" ex="false" tool="3" flavor2="0">
@@ -51,6 +54,8 @@
       <item path="../format.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../format.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../traitementDate.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -68,7 +73,9 @@
           <developmentMode>5</developmentMode>
         </cTool>
         <ccTool>
-          <developmentMode>5</developmentMode>
+          <developmentMode>0</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <standard>8</standard>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -77,8 +84,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="../Labo_09_ElSheikh_Daubresse.cpp" ex="false" tool="1" flavor2="0">
-      </item>
       <item path="../annexe.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../annexe.h" ex="false" tool="3" flavor2="0">
@@ -86,6 +91,8 @@
       <item path="../format.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../format.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../traitementDate.cpp" ex="false" tool="1" flavor2="0">
       </item>

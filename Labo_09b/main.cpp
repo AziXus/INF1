@@ -15,7 +15,8 @@
                  ou date pas dans les bornes), il affiche un message d'erreur et
                  l'utilisateur doit saisir une nouvelle fois les dates.
 
- Modifications : Ajout ajdksfl
+ Modifications : Ajout de la fonctionnalité permettant de calculer une nouvelle date
+                 en ajoutant ou soustrayant un nombre de jour à une date donnée.
 
  Compilateur   : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -76,7 +77,7 @@ int main() {
    } while(repondsQuestion(MESSAGE_RECOMMENCER)); //On demande à l'utilisateur s'il veut recommencer
 
   afficherMessageFin(MESSAGE_FIN_PROGRAMME);
-   return EXIT_SUCCESS; 
+  return EXIT_SUCCESS; 
 }
 
 void calculJoursEntreDates(const string& MESSAGE_DATE, const string& MESSAGE_DATE2,
@@ -93,7 +94,7 @@ void calculJoursEntreDates(const string& MESSAGE_DATE, const string& MESSAGE_DAT
    
    
    bool erreurDate;
-    //On boucle tant que la 2 eme date est inferieur ou egal a la 1 ere 
+      //On boucle tant que la 2 eme date est inferieur ou egal a la 1 ere 
       do {
          saisie(MESSAGE_DATE, MESSAGE_ERREUR, jour1, mois1, annee1, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
          saisie(MESSAGE_DATE2, MESSAGE_ERREUR, jour2, mois2, annee2, JOUR_MIN, MOIS_MIN, ANNEE_MIN, JOUR_MAX, MOIS_MAX, ANNEE_MAX);
