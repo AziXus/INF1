@@ -16,8 +16,6 @@
 
 using namespace std;
 
-char calculCar(char car, int val);
-
 string encoder(const string& message, const vector<int>& cle) {
     string messageEncoder;
     size_t tailleCle = cle.size();

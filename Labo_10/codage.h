@@ -21,5 +21,7 @@
 std::string encoder(const std::string& message, const std::vector<int>& cle);
 std::string decoder(const std::string& message, const std::vector<int>& cle);
 std::vector<int> inverserCle(const std::vector<int>& cle);
+char calculCar(char car, int val);
+
 
 #endif //LABO_10_CODAGE_H
