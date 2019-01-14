@@ -1,0 +1,287 @@
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <string>
+#include <cmath>
+#include <limits>
+
+#define EMPTY_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
+
+using namespace std;
+
+void print1DArray(const int intArray[], int size);
+void print2DArray(const int* intArray, int rows, int columns);
+void printArray();
+void getAverageGrade();
+double getArrayAverage(double *a, int size);
+void swapArray(int a[], int size);
+void setEvenValues(int a[], int size, int value);
+void rightCircularShift(int a[], int size);
+void removeAt(int arr[], unsigned& size, unsigned pos);
+void deleteMatchingValues(int arr[], unsigned& size, int valueToDelete);
+void removeDuplicates(int arr[], unsigned& size);
+bool isEqual(const int arr1[], unsigned size1, const int arr2[], unsigned size2);
+int rightDiagonalSum(const int* array, int size);
+int leftDiagonalSum(const int* array, int size);
+
+double getValue(const string& msg, double min, double max);
+void sumMatrix();
+
+int main() {
+    const int ci = 5;
+    int i = 5;
+
+    printArray();
+    //getAverageGrade();
+
+    int t[] = {1, 2, 3};
+    print1DArray(t, sizeof(t) / sizeof(int));
+    cout << endl;
+    rightCircularShift(t, sizeof(t) / sizeof(int));
+    print1DArray(t, sizeof(t) / sizeof(int));
+    cout << endl;
+
+    int t2[] = {3, 3, 1, 1, 2, 1};
+    int t3[] = {1, 2, 3};
+    unsigned size2 = sizeof(t2) / sizeof(int);
+    unsigned size3 = sizeof(t3) / sizeof(int);
+
+    cout << "Array equal : " << boolalpha << isEqual(t2, size2, t3, size3) << endl;
+
+    print1DArray(t2, size2);
+    cout << endl;
+    //deleteMatchingValues(t2, size2, 2);
+    removeDuplicates(t2, size2);
+    print1DArray(t2, size2);
+    cout << endl;
+    sumMatrix();
+
+    return EXIT_SUCCESS;
+}
+
+void getAverageGrade() {
+    const int NB_GRADES = 5;
+    double grades[NB_GRADES];
+    double average, grade;
+
+    /*for (int i = 0; i < NB_GRADES; ++i) {
+        grades[i] = getValue("Please enter grade " + to_string(i + 1), 1.0, 6.0);
+    }*/
+    cout << "Please enter your grades (max 10, 0 to stop) :" << endl;
+    bool validInput;
+    int i;
+    for (i = 0; i < 10; ++i) {
+        validInput = cin >> grade and grade != 0 and grade >= 1.0 and grade <= 6.0;
+
+        if (!validInput) {
+            cin.clear();
+            break;
+        }
+        EMPTY_BUFFER;
+
+        grades[i] = grade;
+    }
+
+
+    average = getArrayAverage(grades, i);
+
+    cout << setprecision(2);
+    cout << "Moyenne : " << average << endl;
+}
+
+double getArrayAverage(double a[], int size) {
+    double sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += a[i];
+    }
+
+    return sum / size;
+}
+
+void printArray() {
+    int t0[0];
+    int t1[1] = {1};
+    int t2[2] = {1, 2};
+    print1DArray(t0, sizeof(t0) / sizeof(int));
+    cout << endl;
+    print1DArray(t1, sizeof(t1) / sizeof(int));
+    cout << endl;
+    print1DArray(t2, sizeof(t2) / sizeof(int));
+    cout << endl;
+}
+
+void print1DArray(const int intArray[], int size) {
+    cout << "[";
+    for (int i = 0; i < size; ++i) {
+        if (i > 0)
+            cout << ", ";
+        cout << intArray[i];
+    }
+    cout << "]";
+}
+
+void print2DArray(const int* intArray, int rows, int columns) {
+    cout << "[";
+    for (int row = 0; row < rows; ++row) {
+        if (row > 0)
+            cout << ", ";
+        cout << "(";
+        for (int column = 0; column < columns; ++column) {
+            if (column > 0)
+                cout << ", ";
+            cout << *(intArray + row*columns + column);
+        }
+        cout << ")";
+    }
+    cout << "]";
+}
+void swapArray(int a[], int size) {
+    int tmp = a[0];
+    a[0] = a[size - 1];
+    a[size - 1] = tmp;
+}
+
+void setEvenValues(int a[], int size, int value) {
+    for (int i = 0; i < size; ++i) {
+        if (a[i] % 2 == 0)
+            a[i] = value;
+    }
+}
+
+void rightCircularShift(int a[], int size) {
+    /*
+     * [1, 2, 3]
+     * [3, 1, 2]
+     * [2, 3, 1]
+     * [1, 2, 3]
+     */
+    int tmp = a[size - 1];
+    for (int i = size - 1; i > 0; --i) {
+        a[i] = a[i - 1];
+    }
+    a[0] = tmp;
+
+}
+
+//Read user input until value is between min and max inclusive
+double getValue(const string& msg, double min, double max) {
+    bool validEntry;
+    int input;
+    //Loop until input is between min and max
+    do {
+        cout << msg << " [" << min << " - " << max << "]: ";
+        validEntry = cin >> input and input >= min and input <= max;
+        if (!validEntry) {
+            cin.clear();
+            cout << "Invalid entry. Value must be between " << min << " and " << max << endl;
+        }
+        EMPTY_BUFFER;
+    } while (!validEntry);
+
+    return input;
+}
+
+int alternateSum(const int array[], int size) {
+    int sum = 0;
+    int coeff = 1;
+
+    if (size < 1)
+       return 0;
+    for (int i = 0; i < size; ++i) {
+        sum += coeff * array[i];
+        coeff *= -1;
+    }
+
+    return sum;
+}
+
+void removeAt(int arr[], unsigned& size, unsigned pos) {
+    if (pos < size) {
+        for (unsigned i = pos + 1; i < size; ++i) {
+            arr[i - 1] = arr[i];
+        }
+        --size;
+    }
+}
+
+void deleteMatchingValues(int arr[], unsigned& size, int valueToDelete) {
+    for (unsigned i = 0; i < size; ++i) {
+        if (arr[i] == valueToDelete) {
+            removeAt(arr, size, i);
+            i--;
+        }
+    }
+}
+
+void removeDuplicates(int arr[], unsigned& size) {
+    for (unsigned i = 0; i < size; ++i) {
+        for (unsigned j = i + 1; j < size; ++j) {
+            if (arr[j] == arr[i]) {
+                removeAt(arr, size, j);
+                j--;
+            }
+        }
+    }
+}
+
+bool isIn(const int arr[], int size, int val) {
+    for (unsigned i = 0; i < size; ++i) {
+        if (arr[i] == val) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool isIncluded(const int arr1[], size_t size1, const int arr2[2], size_t size2) {
+    for (int i = 0; i < size1; ++i) {
+        if (!isIn(arr2, size2, arr1[i]))
+            return false;
+    }
+    return true;
+}
+
+/*
+ * for each
+ * !appartienta
+ *  false
+ * true
+ */
+bool isEqual(const int arr1[], unsigned size1, const int arr2[], unsigned size2) {
+    return isIncluded(arr1, size1, arr2, size2) and isIncluded(arr2, size2, arr1, size1);
+}
+
+void sumMatrix() {
+    int t[][3] = { {1, 0, 1},
+                   {0, 1, 0},
+                   {1, 1, 0}};
+
+    cout << endl << "La somme des elements de la diagonale gauche de ";
+    print2DArray(*t, 3, 3);
+    cout << " vaut " << leftDiagonalSum(*t, 3);
+
+    cout << endl << "La somme des elements de la diagonale droite de ";
+    print2DArray(*t, 3, 3);
+    cout << " vaut " << rightDiagonalSum(*t, 3);
+
+}
+
+int rightDiagonalSum(const int* array, int size) {
+    int sum = 0;
+
+    for (int row = 0; row < size; ++row) {
+        sum += *(array + row*size + size-1 - row);
+    }
+
+    return sum;
+}
+
+int leftDiagonalSum(const int* array, int size) {
+    int sum = 0;
+
+    for (int row = 0; row < size; ++row) {
+        sum += *(array + row*size + row);
+    }
+
+    return sum;
+}

@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/rmuller/coding/INF1/Labo_09b/annexe.h
+string
+-
+
+/home/rmuller/coding/INF1/Labo_09b/format.h
+string
+-
+
+/home/rmuller/coding/INF1/Labo_09b/main.cpp
+cstdlib
+-
+iostream
+-
+string
+-
+annexe.h
+/home/rmuller/coding/INF1/Labo_09b/annexe.h
+traitementDate.h
+/home/rmuller/coding/INF1/Labo_09b/traitementDate.h
+format.h
+/home/rmuller/coding/INF1/Labo_09b/format.h
+
+/home/rmuller/coding/INF1/Labo_09b/traitementDate.h
+
