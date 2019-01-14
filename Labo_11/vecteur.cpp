@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : <nn>
- Fichier     : <nom du fichier>.cpp
+ Fichier     : vecteur.cpp
  Auteur(s)   : <prénom> <nom>
  Date        : <jj.mm.aaaa>
 
@@ -12,13 +12,4 @@
  Compilateur : MinGW-g++ <x.y.z>
  -----------------------------------------------------------------------------------
  */
-
-#include <cstdlib>
-
-using namespace std;
-
-int main() {
-
-    return EXIT_SUCCESS;
-}
 

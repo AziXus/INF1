@@ -1,7 +1,7 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : <nn>
- Fichier     : <nom du fichier>.cpp
+ Fichier     : <nom du fichier>.h
  Auteur(s)   : <prénom> <nom>
  Date        : <jj.mm.aaaa>
 
@@ -13,12 +13,10 @@
  -----------------------------------------------------------------------------------
  */
 
-#include <cstdlib>
+#ifndef VECTEUR_H
+#define VECTEUR_H
 
-using namespace std;
 
-int main() {
 
-    return EXIT_SUCCESS;
-}
+#endif /* VECTEUR_H */
 
