@@ -12,7 +12,8 @@
  Compilateur : MinGW-g++ <x.y.z>
  -----------------------------------------------------------------------------------
  */
-#include <iostream>
+#include "vecteur.h"
+
 using namespace std;
 
 ostream& operator <<(ostream& os, const vector<int>& v)
@@ -27,6 +28,7 @@ ostream& operator <<(ostream& os, const vector<int>& v)
         os << *it;
     }
     os << ']';
+    return os;
 }
 
 ostream& operator <<(ostream& os, const vector<vector<int>>& v)
@@ -42,4 +44,5 @@ ostream& operator <<(ostream& os, const vector<vector<int>>& v)
         os << *it;
     }
     os << ']';
+    return os;
 }
