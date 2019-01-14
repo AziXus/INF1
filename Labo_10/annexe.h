@@ -19,7 +19,9 @@
 #include <vector>
 
 void viderBuffer(char delimiteur = '\n');
+bool estUnNombre(const std::string& str);
+std::vector<int> stringSplit(const std::string& str, char delimiteur);
 std::string saisieTexte(const std::string& MSG_SAISIE, const std::string& MSG_ERREUR, size_t tailleMin = 1);
-std::vector<int> saisieVecteur(const std::string& MSG_SAISIE, const std::string& MSG_ERREUR);
+std::vector<int> saisieVecteur(const std::string& MSG_SAISIE, const std::string& MSG_ERREUR, size_t tailleMin = 1);
 
 #endif //LABO_10_ANNEXE_H
