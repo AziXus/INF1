@@ -1,3 +1,18 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo_10_Encodeur
+ Fichier     : main.cpp
+ Auteur(s)   : Robin Müller
+ Date        : 08.01.2019
+
+ But         : <à compléter>
+
+ Remarque(s) : <à compléter>
+
+ Compilateur : MinGW-g++ 6.3.0
+ -----------------------------------------------------------------------------------
+ */
+
 #include <iostream>
 #include <limits>
 #include <vector>
