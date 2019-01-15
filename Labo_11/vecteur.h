@@ -18,9 +18,26 @@
 #include <iostream>
 #include <vector>
 
+using Ligne = std::vector<int>;
+using Matrice = std::vector<Ligne>;
+
 std::ostream& operator <<(std::ostream& os, const std::vector<int>& v);
 
-std::ostream& operator <<(std::ostream& os, const std::vector<std::vector<int>>& v);
+std::ostream& operator <<(std::ostream& os, const Matrice& v);
+
+bool estCarre(const Matrice& m);
+
+int maxCol(const Matrice& m);
+
+std::vector<int> sommeLignes(const Matrice& m);
+
+int sommeLigne(const Ligne& ligne);
+
+std::vector<int> vectSommeMin(const Matrice& m);
+
+void shuffleMatrice(Matrice& m);
+
+void sortMatrice(Matrice& m);
 
 #endif /* VECTEUR_H */
 
