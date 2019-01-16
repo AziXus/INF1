@@ -54,7 +54,7 @@ bool estCarre(const Matrice& m)
 {
     if(!m.empty())
     {
-        unsigned int nbColonnes = m.at(0).size();
+        size_t nbColonnes = m.at(0).size();
         size_t nbLignes = m.size();
         if(nbLignes == nbColonnes)
         {
