@@ -19,6 +19,20 @@
 #include <ctime>
 
 using namespace std;
+/**
+ * Fonction interne
+ * @param i
+ * @param j
+ * @return 
+ */
+bool plusGrand(Ligne i, Ligne j);
+/**
+ * 
+ * @param i
+ * @return 
+ */
+int nombreAleatoire(int i);
+bool comparerTaille(Ligne i, Ligne j);
 
 ostream& operator <<(ostream& os, const vector<int>& v)
 {
@@ -58,12 +72,11 @@ bool estCarre(const Matrice& m)
         size_t nbLignes = m.size();
         if(nbLignes == nbColonnes)
         {
-            for(size_t i = 0; i < m.size();i++)
+            for(Ligne ligne : m)
             {
-                if(m.at(i).size() != nbColonnes)
+                if(ligne.size() != nbColonnes)
                     return false;
             }
-
             return true;
         }
         return false;
@@ -71,15 +84,9 @@ bool estCarre(const Matrice& m)
     return false;
 }
 
-bool plusGrand(Ligne i, Ligne j)
-{
-    return i.size() < j.size();
-}
-
 int maxCol(const Matrice& m)
 {
-    Matrice::const_iterator it = max_element(m.begin(),m.end(),plusGrand);
-    return (*it).size();
+    return (*max_element(m.begin(),m.end(),plusGrand)).size();
 }
 
 vector<int> sommeLignes(const Matrice& m)
@@ -105,25 +112,9 @@ vector<int> vectSommeMin(const Matrice& m)
     return m.at(distanceValeur);
 }
 
-int random(int i)
-{
-    static bool premierAppel = true;
-    if(premierAppel)
-    {
-        srand(time(NULL));
-        premierAppel = false;
-    }
-    return rand()%i;
-}
-
 void shuffleMatrice(Matrice& m)
 {
-    random_shuffle(m.begin(),m.end(),random);
-}
-
-bool comparerTaille(Ligne i, Ligne j)
-{
-    return sommeLigne(i) < sommeLigne(j);
+    random_shuffle(m.begin(),m.end(),nombreAleatoire);
 }
 
 void sortMatrice(Matrice& m)
@@ -155,4 +146,25 @@ bool sommeDiagGD(const Matrice& m, int& sommeGD)
         return true;
     }
     return false;
+}
+
+bool plusGrand(Ligne i, Ligne j)
+{
+    return i.size() < j.size();
+}
+
+int nombreAleatoire(int i)
+{
+    static bool premierAppel = true;
+    if(premierAppel)
+    {
+        srand(time(NULL));
+        premierAppel = false;
+    }
+    return rand()%i;
+}
+
+bool comparerTaille(Ligne i, Ligne j)
+{
+    return sommeLigne(i) < sommeLigne(j);
 }

@@ -14,13 +14,11 @@
  */
 #include "vecteur.h"
 #include <cstdlib>
-#include <iostream>
-#include <vector>
 
 using namespace std;
 
 int main() {
-    vector<vector<int>> v = {{1,2,4},{3,3,3},{3,5,5}};
+    vector<vector<int>> v = {{1,2,4},{3,3,3},{3,5,5},{6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,}};
     int somme = 0;
     cout << v << endl;
     cout << maxCol(v) << endl;
@@ -30,7 +28,7 @@ int main() {
     cout << v << endl;
     sortMatrice(v);
     cout << v << endl;
-    bool matriceCarree=true;
+    bool matriceCarree;
     matriceCarree = sommeDiagDG(v,somme);
     cout << somme << endl;
     somme=0;
