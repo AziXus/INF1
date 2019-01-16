@@ -100,21 +100,6 @@ vector<int> vectSommeMin(const Matrice& m)
     return m.at(distanceValeur);
 }
 
-void shuffleMatrice(Matrice& m)
-{
-    random_shuffle(m.begin(),m.end(),random);
-}
-
-bool comparer(Ligne i, Ligne j)
-{
-    return sommeLigne(i) < sommeLigne(j);
-}
-
-void sortMatrice(Matrice& m)
-{
-    sort(m.begin(),m.end(),comparer);
-}
-
 int random(int i)
 {
     static bool premierAppel = true;
@@ -124,4 +109,32 @@ int random(int i)
         premierAppel = false;
     }
     return rand()%i;
+}
+
+void shuffleMatrice(Matrice& m)
+{
+    random_shuffle(m.begin(),m.end(),random);
+}
+
+bool comparerTaille(Ligne i, Ligne j)
+{
+    return sommeLigne(i) < sommeLigne(j);
+}
+
+void sortMatrice(Matrice& m)
+{
+    sort(m.begin(),m.end(),comparerTaille);
+}
+
+bool sommeDiagDG(const Matrice& m, int& sommeDG)
+{
+    if(estCarre(m))
+    {
+        for(size_t i = 0; i < m.size();i++)
+        {
+          sommeDG += *((m.at(i).end() - 1) - i);
+        }
+        return true;
+    }
+    return false;
 }

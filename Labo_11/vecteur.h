@@ -39,5 +39,7 @@ void shuffleMatrice(Matrice& m);
 
 void sortMatrice(Matrice& m);
 
+bool sommeDiagDG(const Matrice& m, int& sommeDG);
+
 #endif /* VECTEUR_H */
 
