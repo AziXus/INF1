@@ -54,14 +54,19 @@ bool estCarre(const Matrice& m)
 {
     if(!m.empty())
     {
-        int nbColonnes = m.at(0).size();
-        for(size_t i = 0; i < m.size();i++)
+        unsigned int nbColonnes = m.at(0).size();
+        size_t nbLignes = m.size();
+        if(nbLignes == nbColonnes)
         {
-            if(m.at(i).size() != nbColonnes)
-                return false;
+            for(size_t i = 0; i < m.size();i++)
+            {
+                if(m.at(i).size() != nbColonnes)
+                    return false;
+            }
+
+            return true;
         }
-        
-        return true;
+        return false;
     }
     return false;
 }
@@ -133,6 +138,19 @@ bool sommeDiagDG(const Matrice& m, int& sommeDG)
         for(size_t i = 0; i < m.size();i++)
         {
           sommeDG += *((m.at(i).end() - 1) - i);
+        }
+        return true;
+    }
+    return false;
+}
+
+bool sommeDiagGD(const Matrice& m, int& sommeGD)
+{
+    if(estCarre(m))
+    {
+        for(size_t i = 0; i < m.size();i++)
+        {
+          sommeGD += m.at(i).at(i);
         }
         return true;
     }

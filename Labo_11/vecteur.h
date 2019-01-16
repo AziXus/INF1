@@ -41,5 +41,7 @@ void sortMatrice(Matrice& m);
 
 bool sommeDiagDG(const Matrice& m, int& sommeDG);
 
+bool sommeDiagGD(const Matrice& m, int& sommeGD);
+
 #endif /* VECTEUR_H */
 
