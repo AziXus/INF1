@@ -84,7 +84,7 @@ bool estCarre(const Matrice& m)
     return false;
 }
 
-int maxCol(const Matrice& m)
+unsigned maxCol(const Matrice& m)
 {
     return (*max_element(m.begin(),m.end(),plusGrand)).size();
 }
@@ -124,6 +124,7 @@ void sortMatrice(Matrice& m)
 
 bool sommeDiagDG(const Matrice& m, int& sommeDG)
 {
+    sommeDG = 0;
     if(estCarre(m))
     {
         for(size_t i = 0; i < m.size();i++)
@@ -137,6 +138,7 @@ bool sommeDiagDG(const Matrice& m, int& sommeDG)
 
 bool sommeDiagGD(const Matrice& m, int& sommeGD)
 {
+    sommeGD = 0;
     if(estCarre(m))
     {
         for(size_t i = 0; i < m.size();i++)

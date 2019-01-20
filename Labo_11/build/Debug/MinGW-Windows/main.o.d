@@ -1,3 +1,3 @@
-build/Debug/MinGW-Windows/main.o: main.cpp vecteur.h
+build/Debug/MinGW-Windows/main.o: main.cpp matrice.h
 
-vecteur.h:
+matrice.h:

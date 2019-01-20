@@ -4,7 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>vecteur.h</itemPath>
+      <itemPath>matrice.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,7 +14,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>main.cpp</itemPath>
-      <itemPath>vecteur.cpp</itemPath>
+      <itemPath>matrice.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -44,9 +44,9 @@
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="vecteur.cpp" ex="false" tool="1" flavor2="0">
+      <item path="matrice.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="vecteur.h" ex="false" tool="3" flavor2="0">
+      <item path="matrice.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -71,9 +71,9 @@
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="vecteur.cpp" ex="false" tool="1" flavor2="0">
+      <item path="matrice.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="vecteur.h" ex="false" tool="3" flavor2="0">
+      <item path="matrice.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
