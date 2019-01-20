@@ -19,22 +19,22 @@ using namespace std;
  * Fonction interne permettant de comparer la taille de deux lignes
  * @param i la ligne de gauche à comparer
  * @param j la ligne de droite à comparer
- * @return vrai si de la ligne de gauche est plus grande que la ligne de droite, sinon faux
+ * @return vrai si la ligne de droite est plus grande que la ligne de gauche, sinon faux
  */
 bool comparerTaille(const Ligne& i, const Ligne& j);
 
 /**
- * 
- * @param i
- * @return 
+ * Génère un nombre aléatoire pour le random_shuffle de la matrice
+ * @param i taille de la matrice
+ * @return un nombre aléatoire
  */
 int nombreAleatoire(int i);
 
 /**
- *
- * @param i
- * @param j
- * @return
+ * Compare deux lignes en fonction de leur élément maximal
+ * @param i la ligne de gauche à comparer
+ * @param j la ligne de droite à comparer
+ * @return vrai si l'élément max de la ligne de droite est plus grand que la ligne de gauche
  */
 bool comparerElementMax(const Ligne& i, const Ligne& j);
 
@@ -113,8 +113,7 @@ Ligne vectSommeMin(const Matrice& m)
 {
     vector<int> somme = sommeLigne(m);
     vector<int>::iterator it = min_element(somme.begin(),somme.end());
-    //Calcul la position de l'iterateur
-    size_t distanceValeur = distance(somme.begin(), it);
+    size_t distanceValeur = distance(somme.begin(), it); //Calcul la position de l'iterateur
     return m.at(distanceValeur);
 }
 
