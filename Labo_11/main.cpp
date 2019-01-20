@@ -36,17 +36,17 @@ int main() {
     
     cout << "Ligne ayant la somme la plus petite de la matrice : " << vectSommeMin(m) << endl;
     
-    shuffleMatrice(m);
+    shuffleMatrice(m);//Mélange les lignes de la matrice
     cout << "Affichage de la matrice apres un Randomshuffle : " << m << endl;
     
     sortMatrice(m);
-    cout << "Mise en ordre de la matrice de la plus petite somme a la plus grande : " << m << endl;
+    cout << "Tri croissant de la matrice en fonction de l'élément max d'une ligne : " << m << endl;
     
     cout << boolalpha << "La matrice est-elle carree ? " << sommeDiagDG(m,sommeDiag) << endl;
-    cout << "Somme de la diagonale de droite a gauche: " << sommeDiag << endl;
+    cout << "Somme de la diagonale de droite a gauche : " << sommeDiag << endl;
     
     cout << boolalpha << "La matrice est-elle carree ? " << sommeDiagGD(m,sommeDiag) << endl;
-    cout << "Somme de la diagonale de gauche a droite: " << sommeDiag << endl;
+    cout << "Somme de la diagonale de gauche a droite : " << sommeDiag << endl;
     
     return EXIT_SUCCESS;
 }

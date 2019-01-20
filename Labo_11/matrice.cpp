@@ -104,14 +104,6 @@ int sommeUneLigne(const Ligne& ligne)
 
 vector<int> sommeLigne(const Matrice& m)
 {
-    /*
-    vector<int> sommeLignes;
-    for(const Ligne& ligne : m)
-    {
-        sommeLignes.push_back(sommeUneLigne(ligne));
-    }
-    return sommeLignes;
-     */
     vector<int> sommes(m.size());
     transform(m.begin(), m.end(), sommes.begin(), sommeUneLigne);
     return sommes;
