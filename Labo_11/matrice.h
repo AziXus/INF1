@@ -5,9 +5,11 @@
  Auteur(s)   : Robin Müller, Stéphane Teixeira Carvalho
  Date        : 21.01.2019
 
- But         : <à compléter>
+ But         : Mettre à disposition des fonctions nécessaire à la manipulation de
+               matrice. 
 
- Remarque(s) : <à compléter>
+ Remarque(s) : Surcharge de la fonction operator.
+               Utilisation de la libraire vector et algorithm.
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -22,7 +24,7 @@ using Ligne = std::vector<int>;
 using Matrice = std::vector<Ligne>;
 
 /**
- * Surcharge de l'opérateur de flux pour les lignes d'une matrice
+ * Surcharge de l'opérateur de flux pour pouvoir afficher une ligne
  * @param os operateur de flux passé en référence
  * @param ligne ligne de la matrice à injecter dans le flux
  * @return le nouveau flux modifié
@@ -30,7 +32,7 @@ using Matrice = std::vector<Ligne>;
 std::ostream& operator<<(std::ostream& os, const Ligne& ligne);
 
 /**
- * Surcharge de l'opérateur de flux pour une matrice
+ * Surcharge de l'opérateur de flux pour l'affichage d'une matrice
  * @param os operateur de flux passé en référence
  * @param ligne matrice à injecter dans le flux
  * @return le nouveau flux modifié
@@ -59,7 +61,8 @@ size_t maxCol(const Matrice& m);
 int sommeUneLigne(const Ligne& ligne);
 
 /**
- * Calcul la somme de toutes les lignes d'une matrice
+ * Calcul la somme des valeurs, ligne par ligne, d'une matrice. 
+ * Les sommes sont stockés dans un vecteur.
  * @param m la matrice à utiliser
  * @return vecteur de int contenant la somme des différentes lignes dans l'ordre d'origine
  */
@@ -73,7 +76,7 @@ std::vector<int> sommeLigne(const Matrice& m);
 Ligne vectSommeMin(const Matrice& m);
 
 /**
- * Mélange les lignes d'une matrice
+ * Mélange les lignes d'une matrice aléatoirement
  * @param m matrice en référence à mélanger
  */
 void shuffleMatrice(Matrice& m);
@@ -88,7 +91,7 @@ void sortMatrice(Matrice& m);
  * Calcul la somme de la diagonale "/" (droite-gauche)
  * @param m matrice à analyser
  * @param sommeDG entier en référence contenant la somme de la diagonale
- * @return vrai si le calcul à fonctionner, faux sinon
+ * @return vrai si la matrice est carree, faux sinon
  */
 bool sommeDiagDG(const Matrice& m, int& sommeDG);
 
@@ -96,7 +99,7 @@ bool sommeDiagDG(const Matrice& m, int& sommeDG);
  * Calcul la somme de la diagonale "\" (gauche-droite)
  * @param m matrice à analyser
  * @param sommeGD entier en référence contenant la somme de la diagonale
- * @return vrai si le calcul à fonctionner, faux sinon
+ * @return vrai si la matrice est carree, faux sinon
  */
 bool sommeDiagGD(const Matrice& m, int& sommeGD);
 
