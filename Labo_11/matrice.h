@@ -49,20 +49,55 @@ bool estCarre(const Matrice& m);
  * @param m matrice à analyser
  * @return taille de la ligne la plus grande
  */
-unsigned maxCol(const Matrice& m);
+size_t maxCol(const Matrice& m);
 
-std::vector<int> sommeLignes(const Matrice& m);
+/**
+ * Calcul la somme des valeurs d'une ligne
+ * @param ligne la ligne à utiliser
+ * @return la somme de la ligne
+ */
+int sommeUneLigne(const Ligne& ligne);
 
-int sommeLigne(const Ligne& ligne);
+/**
+ * Calcul la somme de toutes les lignes d'une matrice
+ * @param m la matrice à utiliser
+ * @return vecteur de int contenant la somme des différentes lignes dans l'ordre d'origine
+ */
+std::vector<int> sommeLigne(const Matrice& m);
 
-std::vector<int> vectSommeMin(const Matrice& m);
+/**
+ * Retourne la ligne ayant la somme la plus faible d'une matrice
+ * @param m la matrice à analyser
+ * @return la ligne ayant la plus petite somme
+ */
+Ligne vectSommeMin(const Matrice& m);
 
+/**
+ * Mélange les lignes d'une matrice
+ * @param m matrice en référence à mélanger
+ */
 void shuffleMatrice(Matrice& m);
 
+/**
+ * Tri la matrice dans un ordre croissant en fonction de l'élement le plus grand de chaque ligne
+ * @param m matrice à trier
+ */
 void sortMatrice(Matrice& m);
 
+/**
+ * Calcul la somme de la diagonale "/" (droite-gauche)
+ * @param m matrice à analyser
+ * @param sommeDG entier en référence contenant la somme de la diagonale
+ * @return vrai si le calcul à fonctionner, faux sinon
+ */
 bool sommeDiagDG(const Matrice& m, int& sommeDG);
 
+/**
+ * Calcul la somme de la diagonale "\" (gauche-droite)
+ * @param m matrice à analyser
+ * @param sommeGD entier en référence contenant la somme de la diagonale
+ * @return vrai si le calcul à fonctionner, faux sinon
+ */
 bool sommeDiagGD(const Matrice& m, int& sommeGD);
 
 #endif /* MATRICE_H */

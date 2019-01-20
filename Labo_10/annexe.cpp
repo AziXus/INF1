@@ -43,7 +43,7 @@ vector<int> stringSplit(const string& str, char delimiteur) {
 
     //On parcours les caractères de la chaine
     for (char c: str) {
-        //On concat si différent du dénominateur
+        //On concat si différent du delimiteur
         if (c != delimiteur)
             splitString += c;
         //Sinon on ajoute une case au vecteur si c'est un entier
@@ -65,7 +65,7 @@ string saisieTexte(const string& MSG_SAISIE, const string& MSG_ERREUR, size_t ta
     string saisie;
     bool saisieOk;
 
-    //On veut s'assurer que le texte saisie comporte au moins tailleMin carcatères
+    //On veut s'assurer que le texte saisie comporte au moins tailleMin caractères
     do {
         //Message de saisie
         cout << MSG_SAISIE << " (min " << tailleMin << " caractère(s)) : ";
@@ -86,10 +86,10 @@ vector<int> saisieVecteur(const string& MSG_SAISIE, const string& MSG_ERREUR, si
     string saisie;
     bool saisieOk;
 
-    //On veut s'assurer que le texte saisie comporte au moins tailleMin carcatères
+    //On veut s'assurer que le texte saisie comporte au moins tailleMin caractères
     do {
         //Message de saisie
-        cout << MSG_SAISIE << " (min " << tailleMin << " nombre(s)) : ";
+        cout << MSG_SAISIE << " (min " << tailleMin << " entier(s)) : ";
 
         //On ajouter des valeurs au vecteurs jusqu'à ce qu'il y ai un caractère soit saisie
         getline(cin, saisie);

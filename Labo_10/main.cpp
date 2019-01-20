@@ -9,7 +9,8 @@
                Les erreurs de saisie sont gérées et le programme affiche uniquement les
                caractères imprimables.
 
- Remarque(s) : La clé saisie par l'utilisateur doit comporter au minimum 1 chiffre et
+ Remarque(s) : Le message à encoder doit comporter uniquement des caractères ASCII 7 bits.
+               La clé saisie par l'utilisateur doit comporter au minimum 1 chiffre et
                est stocké dans un vecteur de int tandis que le message est stockée dans
                une string.
                Les librairies annexe et codage sont nécessaires.
@@ -27,6 +28,7 @@
 #include "codage.h"
 
 using namespace std;
+
 int main() {
     const string SAISIE_MESSAGE = "Veuillez saisir le message à encoder",
                  ERREUR_MESSAGE = "Message à encoder invalide...",

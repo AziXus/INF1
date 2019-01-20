@@ -7,18 +7,14 @@
 #IncludeRegexTransform: 
 
 /home/rmuller/coding/INF1/Snippets/main.cpp
+cstdlib
+-
 iostream
+-
+vector
 -
 iomanip
 -
-cstdlib
--
-string
--
-cmath
--
-limits
--
-vector
+algorithm
 -
 

@@ -4,6 +4,7 @@
  Fichier     : codage.cpp
  Auteur(s)   : Robin Müller, Bruno Egremy
  Date        : 14.01.2019
+
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
  */

@@ -7,7 +7,7 @@
 
  But         : Permet d'encoder/décoder une chaîne de caratère en fonction d'une clé
 
- Remarque(s) :
+ Remarque(s) : Le message à encoder doit comporter des caractères ASCII 7 bits.
 
  Compilateur : MinGW-g++ 6.3.0
  -----------------------------------------------------------------------------------
@@ -19,8 +19,7 @@
 #include <vector>
 
 /**
- * @brief Permet d'encoder une chaîne de caractère à l'aide d'une autre chaîne de
- *        caractère appelé clé
+ * @brief Permet d'encoder une chaîne de caractère à l'aide d'une clé d'encodage
  * @param message
  * @param cle
  * @return Une chaîne de caractère encodée
@@ -48,7 +47,7 @@ std::vector<int> inverserCle(const std::vector<int>& cle);
  * @brief Génére un caractère en fonction d'un caractère de base et une valeur entière (clé)
  * @param car
  * @param val
- * @return Un caratère encodé/décodé
+ * @return Un caractère encodé/décodé
  */
 char calculCar(char car, int val);
 

@@ -1,14 +1,14 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo_10_Encodeur
- Fichier     : annexe.cpp
+ Fichier     : annexe.h
  Auteur(s)   : Robin Müller, Bruno Egremy
  Date        : 14.01.2019
 
  But         : Cette libraire gère les fonctions de saisies requises par notre programme.
                Elle permet principalement la lecture d'un texte et d'un vecteur de int.
 
- Remarque(s) : Elle comporte également deux fonctions de manipulations de string requisent
+ Remarque(s) : Elle comporte également deux fonctions de manipulations de string requise
                pour la lecture du vecteur de int
 
  Compilateur : MinGW-g++ 6.3.0
