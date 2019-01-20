@@ -12,7 +12,7 @@
  Compilateur : MinGW-g++ <x.y.z>
  -----------------------------------------------------------------------------------
  */
-#include "vecteur.h"
+#include "matrice.h"
 #include <algorithm>
 #include <numeric>
 #include <iterator>
