@@ -11,12 +11,11 @@
 #include "matrice.h"
 #include <algorithm>
 #include <numeric>
-#include <iterator>
 #include <ctime>
 
 using namespace std;
 /**
- * Fonction interne permettant de comparer la taille de deux lignes
+ * Fonction permettant de comparer la taille de deux lignes
  * @param i la ligne de gauche à comparer
  * @param j la ligne de droite à comparer
  * @return vrai si la ligne de droite est plus grande que la ligne de gauche, sinon faux
@@ -34,7 +33,8 @@ int nombreAleatoire(int i);
  * Compare deux lignes en fonction de leur élément maximal
  * @param i la ligne de gauche à comparer
  * @param j la ligne de droite à comparer
- * @return vrai si l'élément max de la ligne de droite est plus grand que la ligne de gauche
+ * @return vrai si l'élément max de la ligne de droite est plus grand que la ligne 
+           de gauche, sinon faux
  */
 bool comparerElementMax(const Ligne& i, const Ligne& j);
 
@@ -80,7 +80,7 @@ bool estCarre(const Matrice& m)
         size_t nbLignes = m.size();
         if(nbLignes == nbColonnes)
         {
-            //Vérifie que toutes les lignes sont de la même taille
+            //Vérifie que toutes les lignes ont le même nombre de colonnes
             for(const Ligne& ligne : m)
             {
                 if(ligne.size() != nbColonnes)
@@ -94,6 +94,7 @@ bool estCarre(const Matrice& m)
 
 size_t maxCol(const Matrice& m)
 {
+    //retourne la taille de l'iterateur de la ligne la plus grande.
     return (*max_element(m.begin(), m.end(), comparerTaille)).size();
 }
 
@@ -105,6 +106,7 @@ int sommeUneLigne(const Ligne& ligne)
 vector<int> sommeLigne(const Matrice& m)
 {
     vector<int> sommes(m.size());
+    //Calcul la somme de chaque ligne et les stockent dans le vecteur d'entier sommes
     transform(m.begin(), m.end(), sommes.begin(), sommeUneLigne);
     return sommes;
 }
@@ -112,8 +114,8 @@ vector<int> sommeLigne(const Matrice& m)
 Ligne vectSommeMin(const Matrice& m)
 {
     vector<int> somme = sommeLigne(m);
-    vector<int>::iterator it = min_element(somme.begin(),somme.end());
-    size_t distanceValeur = distance(somme.begin(), it); //Calcul la position de l'iterateur
+    //Calcul la position de ligne avec la plus petite somme
+    size_t distanceValeur = distance(somme.begin(), min_element(somme.begin(),somme.end()));
     return m.at(distanceValeur);
 }
 
@@ -129,11 +131,13 @@ void sortMatrice(Matrice& m)
 
 bool sommeDiagDG(const Matrice& m, int& sommeDG)
 {
-    sommeDG = 0;
+    sommeDG = 0;//la valeur de base d'une diagonale est 0
     if(estCarre(m))
     {
         for(size_t i = 0; i < m.size();i++)
         {
+          //pour la postion a additionée on effectue m.at(i).end() - 1 qui donnera la dernière
+          //case et ensuite - i pour être sur la diagonale
           sommeDG += *((m.at(i).end() - 1) - i);
         }
         return true;
@@ -143,7 +147,7 @@ bool sommeDiagDG(const Matrice& m, int& sommeDG)
 
 bool sommeDiagGD(const Matrice& m, int& sommeGD)
 {
-    sommeGD = 0;
+    sommeGD = 0;//la valeur de base d'une diagonale est 0
     if(estCarre(m))
     {
         for(size_t i = 0; i < m.size();i++)
@@ -162,6 +166,7 @@ bool comparerTaille(const Ligne& i, const Ligne& j)
 
 int nombreAleatoire(int i)
 {
+    //static car lors du premier appel on définie le srand
     static bool premierAppel = true;
     if(premierAppel)
     {

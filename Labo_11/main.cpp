@@ -40,7 +40,7 @@ int main() {
     cout << "Affichage de la matrice apres un Randomshuffle : " << m << endl;
     
     sortMatrice(m);
-    cout << "Tri croissant de la matrice en fonction de l'élément max d'une ligne : " << m << endl;
+    cout << "Tri croissant de la matrice en fonction de l'element max d'une ligne : " << m << endl;
     
     cout << boolalpha << "La matrice est-elle carree ? " << sommeDiagDG(m,sommeDiag) << endl;
     cout << "Somme de la diagonale de droite a gauche : " << sommeDiag << endl;
