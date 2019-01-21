@@ -44,7 +44,7 @@ ostream& operator<<(ostream& os, const Ligne& ligne)
     if(ligne.begin() != ligne.end())
     {
         Ligne::const_iterator it = ligne.begin();
-        for(; it != prev(ligne.end()); it++) //On parcours du premier à l'avant-dernier élément
+        for(; it != prev(ligne.end()); it++) //On parcourt du premier à l'avant-dernier élément
         {
             os << *it << ", ";
         }
@@ -61,7 +61,7 @@ ostream& operator<<(ostream& os, const Matrice& m)
     if(m.begin() != m.end())
     {
         Matrice::const_iterator it = m.begin();
-        for(; it != prev(m.end()); it++) //On parcours de la première à l'avant-dernière ligne
+        for(; it != prev(m.end()); it++) //On parcourt de la première à l'avant-dernière ligne
         {
             os << *it << ", ";
         }
