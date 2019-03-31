@@ -23,7 +23,7 @@
 using namespace std;
 
 int main() {
-    //déclaration de la matrice à manipuler
+    //Déclaration de la matrice à manipuler
     Matrice m = {{1,2,4,4},{3,3,3,3},{3,5,5,5},{6,6,6,6}};
     int sommeDiag;
     
